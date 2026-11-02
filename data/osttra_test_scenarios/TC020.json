@@ -1,0 +1,119 @@
+{
+  "scenario": {
+    "id": "TC020",
+    "traceabilityId": "TC_SM-42_001",
+    "tradeServComment": "Published",
+    "highLevelScenario": "Happy Path for ACk validations",
+    "expectation": "ACK",
+    "isValid": true,
+    "settlementCurrency": "USD",
+    "direction": "Buy",
+    "against": "Base",
+    "ccpAlias": null,
+    "clearingBroker": null,
+    "counterpartyClearingBroker": null,
+    "partyCcp": "PVP",
+    "counterpartyCcp": "PVP",
+    "notes": [
+      "Expected to pass: no runUpTo and no expect, so every step must genuinely pass, 01 through 15b - injection, both ledgers, netting, close, confirmation, settlement on all three sides, MT910 funding call and both settlement ledgers.",
+      "The sheet states the trade as USD 10000 against CNH 67400. The netting rule is configured CNH-USD, in alphabetical order, so the pair is carried as CNHUSD with each amount on its own currency: 67400 CNH base, 10000 USD reference - the amounts TC017 carries for the same sheet values.",
+      "direction and Against list both options in the sheet. The first of each, Buy and Base, is used, matching the rest of the pack: BNKA-HK is the base currency buyer, partyDirection Buy.",
+      "Settlement is the current date and tradeDate is the run date, both resolved from the run clock.",
+      "It nets under the same rule, party pair and value date as TC001, TC010, TC011 and TC018. Step 12 requires the group's settlement to be exactly this trade, so run on a day when that group is already closed, or the group holds the other rows' trades too and step 12 reports them.",
+      "It nets under the BNKA-HK / BNKB-HK spot rule. That entry's mode in data/trade_scenarios.py decides steps 10, 11 and 11b: manual, as it is now, runs them to match the group's proposals; any other mode skips them and the group goes from closed to CONFIRMED by itself.",
+      "The sheet's expected processing - TS confirms the trade with pvpIntent true for both parties, Baton contracts 1 to 3 ACK, pre-registered then PVP: Accepted, no exceptions, TS notifies both parties - happens outside the APIs this suite calls, so it is recorded here only. What the suite checks is that the trade is accepted (04), booked on both ledgers (05, 05b), netted, confirmed and settled.",
+      "Event New and CRDS relation PVP are reference data in the sheet, recorded here only.",
+      "tradeReference, tradeReferenceSupplement and counterpartyReferenceNumber are free-text boxes, so they are generated per run as tradeId, the party partyTradeId and the counterparty partyTradeId.",
+      "ccpAlias, clearingBroker and counterpartyClearingBroker are blank in the sheet and have no wrapper field, so they are left out of the payload entirely.",
+      "Party CCP and Cpty CCP (both PVP) are legal-entity reference data in Baton, not trade fields, so they are recorded here and the payload carries the ordinary PVP settlement flag.",
+      "settlementCcy (USD) has no field in the wrapper, so it is recorded here only.",
+      "rate is carried as the sheet states it (2) even though 67400/10000 implies 6.74."
+    ]
+  },
+  "trade": {
+    "wrapper": {
+      "metaData": {
+        "determinedCounterpartyId": "BNKB-HK",
+        "determinedPartyId": "BNKA-HK",
+        "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+        "osttraTradeId": "{{GUID1}}",
+        "partyPerspective": "BNKA-HK",
+        "positionStatus": "Active",
+        "processingStatus": "Confirmed",
+        "status": "New",
+        "version": 0
+      },
+      "sourcePlatform": [
+        {
+          "eventType": "Trade",
+          "matchId": "{{GUID2}}",
+          "messageId": "{{GUID2}}",
+          "name": "TradeServ",
+          "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+          "sequence": 1,
+          "submissionSource": "WEB",
+          "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+          "submissionUserId": "Stephen Toal",
+          "tradeId": "{{TRADE_ID}}",
+          "tradeSideId": "{{TRADE_SIDE_ID}}",
+          "tradeStatus": "CONFIRMED",
+          "type": "TradeCapture",
+          "uniqueTransactionId": "{{UTI}}",
+          "version": "-1"
+        }
+      ],
+      "tradeData": {
+        "assetClass": "FX",
+        "documentationDetail": {
+          "contractualDefinitions": [
+            "ISDA1998FX"
+          ]
+        },
+        "fx": {
+          "activeStatus": "Active",
+          "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+          "fxCash": {
+            "baseCurrency": "CNH",
+            "currencyPair": "CNHUSD",
+            "nearLeg": {
+              "baseCurrencyAmount": 67400,
+              "baseCurrencyBuyer": "BNKA-HK",
+              "baseCurrencySeller": "BNKB-HK",
+              "dealtCurrency": "CNH",
+              "partyDirection": "Buy",
+              "quoteBasis": "RefCcyPerBaseCcy",
+              "rate": 2,
+              "referenceCurrencyAmount": 10000,
+              "valueDate": "{{TODAY}}"
+            },
+            "referenceCurrency": "USD"
+          },
+          "productType": "FxSpot",
+          "tradeDate": "{{TODAY}}",
+          "transactionType": "Trade"
+        },
+        "partyDetail": [
+          {
+            "partyId": "BNKA-HK",
+            "partyRole": "Party",
+            "partyTradeId": "{{PARTY_TRADE_ID}}"
+          },
+          {
+            "partyId": "BNKB-HK",
+            "partyRole": "Counterparty",
+            "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+          },
+          {
+            "partyId": "BNKA-HK",
+            "partyRole": "Submitter"
+          }
+        ],
+        "settlementDetail": {
+          "pvpFlag": "PVP",
+          "pvpRegistrationStatus": "Pre-Accepted",
+          "settlementStatus": false
+        }
+      }
+    }
+  }
+}

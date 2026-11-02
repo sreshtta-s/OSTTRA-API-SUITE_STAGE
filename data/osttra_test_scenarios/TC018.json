@@ -1,0 +1,390 @@
+{
+  "scenario": {
+    "id": "TC018",
+    "traceabilityId": "TC_SM-30_019",
+    "tradeServComment": "Published",
+    "highLevelScenario": "Zero amount net 4 trades - 2 trades with CNH-USD, 2 more trades with USD-CNH - ACK",
+    "expectation": "ACK",
+    "isValid": true,
+    "settlementCurrency": "USD",
+    "direction": "Buy",
+    "against": "Base",
+    "ccpAlias": null,
+    "clearingBroker": null,
+    "counterpartyClearingBroker": null,
+    "partyCcp": "PVP",
+    "counterpartyCcp": "PVP",
+    "notes": [
+      "Four trades, injected one at a time so the simulator is called four times. The runner loops them and each gets its own HTML report and Excel row.",
+      "All four are CNHUSD: the netting rule is configured CNH-USD, in alphabetical order, so every pair in the pack is written that way. The sheet's two USD-CNH trades are carried as CNHUSD the other way round - BNKA-HK buys 67400 CNH and pays 10000 USD, where the first two sell the same amounts - so they are the same trades, stated in the rule's order.",
+      "All four run the full pipeline with no expectations declared.",
+      "Amounts mirror across the two directions, 67400 CNH against 10000 USD, so the four net to zero in both currencies.",
+      "partyDirection is BNKA-HK's side of CNH, so it follows the base currency buyer and seller: Sell on the first two, where BNKB-HK is the buyer, and Buy on the last two. Steps 05 / 05b then expect CNH SELL / USD BUY on Domain A for the first two and the reverse on Domain B, and steps 07 / 07b expect CNH PAYABLE / USD RECEIVABLE on Domain A for them.",
+      "tradeReference, tradeReferenceSupplement and counterpartyReferenceNumber are free-text boxes, generated per run.",
+      "ccpAlias, clearingBroker and counterpartyClearingBroker are blank and have no wrapper field, so they are left out of the payload.",
+      "Party CCP and Cpty CCP are legal-entity reference data, not trade fields, so they are recorded here only."
+    ]
+  },
+  "trades": [
+    {
+      "label": "BNKA-HK sells CNH 1 of 2",
+      "expect": {},
+      "trade": {
+        "wrapper": {
+          "metaData": {
+            "determinedCounterpartyId": "BNKB-HK",
+            "determinedPartyId": "BNKA-HK",
+            "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+            "osttraTradeId": "{{GUID1}}",
+            "partyPerspective": "BNKA-HK",
+            "positionStatus": "Active",
+            "processingStatus": "Confirmed",
+            "status": "New",
+            "version": 0
+          },
+          "sourcePlatform": [
+            {
+              "eventType": "Trade",
+              "matchId": "{{GUID2}}",
+              "messageId": "{{GUID2}}",
+              "name": "TradeServ",
+              "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+              "sequence": 1,
+              "submissionSource": "WEB",
+              "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+              "submissionUserId": "Stephen Toal",
+              "tradeId": "{{TRADE_ID}}",
+              "tradeSideId": "{{TRADE_SIDE_ID}}",
+              "tradeStatus": "CONFIRMED",
+              "type": "TradeCapture",
+              "uniqueTransactionId": "{{UTI}}",
+              "version": "-1"
+            }
+          ],
+          "tradeData": {
+            "assetClass": "FX",
+            "documentationDetail": {
+              "contractualDefinitions": [
+                "ISDA1998FX"
+              ]
+            },
+            "fx": {
+              "activeStatus": "Active",
+              "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+              "fxCash": {
+                "baseCurrency": "CNH",
+                "currencyPair": "CNHUSD",
+                "nearLeg": {
+                  "baseCurrencyAmount": 67400,
+                  "baseCurrencyBuyer": "BNKB-HK",
+                  "baseCurrencySeller": "BNKA-HK",
+                  "dealtCurrency": "CNH",
+                  "partyDirection": "Sell",
+                  "quoteBasis": "RefCcyPerBaseCcy",
+                  "rate": 2,
+                  "referenceCurrencyAmount": 10000,
+                  "valueDate": "{{TODAY}}"
+                },
+                "referenceCurrency": "USD"
+              },
+              "productType": "FxSpot",
+              "tradeDate": "{{TODAY}}",
+              "transactionType": "Trade"
+            },
+            "partyDetail": [
+              {
+                "partyId": "BNKA-HK",
+                "partyRole": "Party",
+                "partyTradeId": "{{PARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKB-HK",
+                "partyRole": "Counterparty",
+                "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKA-HK",
+                "partyRole": "Submitter"
+              }
+            ],
+            "settlementDetail": {
+              "pvpFlag": "PVP",
+              "pvpRegistrationStatus": "Pre-Accepted",
+              "settlementStatus": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "label": "BNKA-HK sells CNH 2 of 2",
+      "expect": {},
+      "trade": {
+        "wrapper": {
+          "metaData": {
+            "determinedCounterpartyId": "BNKB-HK",
+            "determinedPartyId": "BNKA-HK",
+            "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+            "osttraTradeId": "{{GUID1}}",
+            "partyPerspective": "BNKA-HK",
+            "positionStatus": "Active",
+            "processingStatus": "Confirmed",
+            "status": "New",
+            "version": 0
+          },
+          "sourcePlatform": [
+            {
+              "eventType": "Trade",
+              "matchId": "{{GUID2}}",
+              "messageId": "{{GUID2}}",
+              "name": "TradeServ",
+              "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+              "sequence": 1,
+              "submissionSource": "WEB",
+              "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+              "submissionUserId": "Stephen Toal",
+              "tradeId": "{{TRADE_ID}}",
+              "tradeSideId": "{{TRADE_SIDE_ID}}",
+              "tradeStatus": "CONFIRMED",
+              "type": "TradeCapture",
+              "uniqueTransactionId": "{{UTI}}",
+              "version": "-1"
+            }
+          ],
+          "tradeData": {
+            "assetClass": "FX",
+            "documentationDetail": {
+              "contractualDefinitions": [
+                "ISDA1998FX"
+              ]
+            },
+            "fx": {
+              "activeStatus": "Active",
+              "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+              "fxCash": {
+                "baseCurrency": "CNH",
+                "currencyPair": "CNHUSD",
+                "nearLeg": {
+                  "baseCurrencyAmount": 67400,
+                  "baseCurrencyBuyer": "BNKB-HK",
+                  "baseCurrencySeller": "BNKA-HK",
+                  "dealtCurrency": "CNH",
+                  "partyDirection": "Sell",
+                  "quoteBasis": "RefCcyPerBaseCcy",
+                  "rate": 2,
+                  "referenceCurrencyAmount": 10000,
+                  "valueDate": "{{TODAY}}"
+                },
+                "referenceCurrency": "USD"
+              },
+              "productType": "FxSpot",
+              "tradeDate": "{{TODAY}}",
+              "transactionType": "Trade"
+            },
+            "partyDetail": [
+              {
+                "partyId": "BNKA-HK",
+                "partyRole": "Party",
+                "partyTradeId": "{{PARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKB-HK",
+                "partyRole": "Counterparty",
+                "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKA-HK",
+                "partyRole": "Submitter"
+              }
+            ],
+            "settlementDetail": {
+              "pvpFlag": "PVP",
+              "pvpRegistrationStatus": "Pre-Accepted",
+              "settlementStatus": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "label": "BNKA-HK buys CNH 1 of 2",
+      "expect": {},
+      "trade": {
+        "wrapper": {
+          "metaData": {
+            "determinedCounterpartyId": "BNKB-HK",
+            "determinedPartyId": "BNKA-HK",
+            "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+            "osttraTradeId": "{{GUID1}}",
+            "partyPerspective": "BNKA-HK",
+            "positionStatus": "Active",
+            "processingStatus": "Confirmed",
+            "status": "New",
+            "version": 0
+          },
+          "sourcePlatform": [
+            {
+              "eventType": "Trade",
+              "matchId": "{{GUID2}}",
+              "messageId": "{{GUID2}}",
+              "name": "TradeServ",
+              "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+              "sequence": 1,
+              "submissionSource": "WEB",
+              "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+              "submissionUserId": "Stephen Toal",
+              "tradeId": "{{TRADE_ID}}",
+              "tradeSideId": "{{TRADE_SIDE_ID}}",
+              "tradeStatus": "CONFIRMED",
+              "type": "TradeCapture",
+              "uniqueTransactionId": "{{UTI}}",
+              "version": "-1"
+            }
+          ],
+          "tradeData": {
+            "assetClass": "FX",
+            "documentationDetail": {
+              "contractualDefinitions": [
+                "ISDA1998FX"
+              ]
+            },
+            "fx": {
+              "activeStatus": "Active",
+              "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+              "fxCash": {
+                "baseCurrency": "CNH",
+                "currencyPair": "CNHUSD",
+                "nearLeg": {
+                  "baseCurrencyAmount": 67400,
+                  "baseCurrencyBuyer": "BNKA-HK",
+                  "baseCurrencySeller": "BNKB-HK",
+                  "dealtCurrency": "CNH",
+                  "partyDirection": "Buy",
+                  "quoteBasis": "RefCcyPerBaseCcy",
+                  "rate": 2,
+                  "referenceCurrencyAmount": 10000,
+                  "valueDate": "{{TODAY}}"
+                },
+                "referenceCurrency": "USD"
+              },
+              "productType": "FxSpot",
+              "tradeDate": "{{TODAY}}",
+              "transactionType": "Trade"
+            },
+            "partyDetail": [
+              {
+                "partyId": "BNKA-HK",
+                "partyRole": "Party",
+                "partyTradeId": "{{PARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKB-HK",
+                "partyRole": "Counterparty",
+                "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKA-HK",
+                "partyRole": "Submitter"
+              }
+            ],
+            "settlementDetail": {
+              "pvpFlag": "PVP",
+              "pvpRegistrationStatus": "Pre-Accepted",
+              "settlementStatus": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "label": "BNKA-HK buys CNH 2 of 2",
+      "expect": {},
+      "trade": {
+        "wrapper": {
+          "metaData": {
+            "determinedCounterpartyId": "BNKB-HK",
+            "determinedPartyId": "BNKA-HK",
+            "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+            "osttraTradeId": "{{GUID1}}",
+            "partyPerspective": "BNKA-HK",
+            "positionStatus": "Active",
+            "processingStatus": "Confirmed",
+            "status": "New",
+            "version": 0
+          },
+          "sourcePlatform": [
+            {
+              "eventType": "Trade",
+              "matchId": "{{GUID2}}",
+              "messageId": "{{GUID2}}",
+              "name": "TradeServ",
+              "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+              "sequence": 1,
+              "submissionSource": "WEB",
+              "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+              "submissionUserId": "Stephen Toal",
+              "tradeId": "{{TRADE_ID}}",
+              "tradeSideId": "{{TRADE_SIDE_ID}}",
+              "tradeStatus": "CONFIRMED",
+              "type": "TradeCapture",
+              "uniqueTransactionId": "{{UTI}}",
+              "version": "-1"
+            }
+          ],
+          "tradeData": {
+            "assetClass": "FX",
+            "documentationDetail": {
+              "contractualDefinitions": [
+                "ISDA1998FX"
+              ]
+            },
+            "fx": {
+              "activeStatus": "Active",
+              "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+              "fxCash": {
+                "baseCurrency": "CNH",
+                "currencyPair": "CNHUSD",
+                "nearLeg": {
+                  "baseCurrencyAmount": 67400,
+                  "baseCurrencyBuyer": "BNKA-HK",
+                  "baseCurrencySeller": "BNKB-HK",
+                  "dealtCurrency": "CNH",
+                  "partyDirection": "Buy",
+                  "quoteBasis": "RefCcyPerBaseCcy",
+                  "rate": 2,
+                  "referenceCurrencyAmount": 10000,
+                  "valueDate": "{{TODAY}}"
+                },
+                "referenceCurrency": "USD"
+              },
+              "productType": "FxSpot",
+              "tradeDate": "{{TODAY}}",
+              "transactionType": "Trade"
+            },
+            "partyDetail": [
+              {
+                "partyId": "BNKA-HK",
+                "partyRole": "Party",
+                "partyTradeId": "{{PARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKB-HK",
+                "partyRole": "Counterparty",
+                "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKA-HK",
+                "partyRole": "Submitter"
+              }
+            ],
+            "settlementDetail": {
+              "pvpFlag": "PVP",
+              "pvpRegistrationStatus": "Pre-Accepted",
+              "settlementStatus": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}

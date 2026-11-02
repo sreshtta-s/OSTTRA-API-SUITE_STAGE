@@ -1,0 +1,111 @@
+{
+  "scenario": {
+    "id": "TC001",
+    "traceabilityId": "TC_SM-28_002",
+    "tradeServComment": "Published",
+    "highLevelScenario": "Happypath - Trades with mandatory keys. -ACK",
+    "expectation": "ACK",
+    "isValid": true,
+    "settlementCurrency": "USD",
+    "direction": "Buy",
+    "against": "Base",
+    "ccpAlias": null,
+    "clearingBroker": null,
+    "counterpartyClearingBroker": null,
+    "partyCcp": "PVP",
+    "counterpartyCcp": "PVP",
+    "notes": [
+      "Mandatory keys only. Every column the sheet leaves blank is left off the payload rather than sent as null.",
+      "tradeReference, tradeReferenceSupplement and counterpartyReferenceNumber are free-text boxes in the sheet, so they are generated per run as tradeId, the party partyTradeId and the counterparty partyTradeId.",
+      "Party CCP and Cpty CCP are legal-entity reference data in Baton, not trade fields, so they are recorded here and the payload carries the ordinary PVP settlement flag.",
+      "settlementCcy has no field in the wrapper, so it is recorded here only.",
+      "rate is carried as the sheet states it (2) even though 1000/6740 implies 6.74. The existing fixtures in api/json_payload_trade_injection pair a rate of 2 with 6.74 amounts, so the environment accepts it."
+    ]
+  },
+  "trade": {
+    "wrapper": {
+      "metaData": {
+        "determinedCounterpartyId": "BNKB-HK",
+        "determinedPartyId": "BNKA-HK",
+        "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+        "osttraTradeId": "{{GUID1}}",
+        "partyPerspective": "BNKA-HK",
+        "positionStatus": "Active",
+        "processingStatus": "Confirmed",
+        "status": "New",
+        "version": 0
+      },
+      "sourcePlatform": [
+        {
+          "eventType": "Trade",
+          "matchId": "{{GUID2}}",
+          "messageId": "{{GUID2}}",
+          "name": "TradeServ",
+          "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+          "sequence": 1,
+          "submissionSource": "WEB",
+          "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+          "submissionUserId": "Stephen Toal",
+          "tradeId": "{{TRADE_ID}}",
+          "tradeSideId": "{{TRADE_SIDE_ID}}",
+          "tradeStatus": "CONFIRMED",
+          "type": "TradeCapture",
+          "uniqueTransactionId": "{{UTI}}",
+          "version": "-1"
+        }
+      ],
+      "tradeData": {
+        "assetClass": "FX",
+        "documentationDetail": {
+          "contractualDefinitions": [
+            "ISDA1998FX"
+          ]
+        },
+        "fx": {
+          "activeStatus": "Active",
+          "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+          "fxCash": {
+            "baseCurrency": "CNH",
+            "currencyPair": "CNHUSD",
+            "nearLeg": {
+              "baseCurrencyAmount": 6740,
+              "baseCurrencyBuyer": "BNKA-HK",
+              "baseCurrencySeller": "BNKB-HK",
+              "dealtCurrency": "CNH",
+              "partyDirection": "Buy",
+              "quoteBasis": "RefCcyPerBaseCcy",
+              "rate": 2,
+              "referenceCurrencyAmount": 1000,
+              "valueDate": "{{TODAY}}"
+            },
+            "referenceCurrency": "USD"
+          },
+          "productType": "FxSpot",
+          "tradeDate": "{{TODAY}}",
+          "transactionType": "Trade"
+        },
+        "partyDetail": [
+          {
+            "partyId": "BNKA-HK",
+            "partyRole": "Party",
+            "partyTradeId": "{{PARTY_TRADE_ID}}"
+          },
+          {
+            "partyId": "BNKB-HK",
+            "partyRole": "Counterparty",
+            "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+          },
+          {
+            "partyId": "BNKA-HK",
+            "partyRole": "Submitter"
+          }
+        ],
+        "settlementDetail": {
+          "pvpFlag": "PVP",
+          "pvpRegistrationStatus": "Pre-Accepted",
+          "settlementStatus": false
+        }
+      }
+    }
+  }
+}

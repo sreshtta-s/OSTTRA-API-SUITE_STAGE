@@ -1,0 +1,115 @@
+{
+  "scenario": {
+    "id": "TC029",
+    "traceabilityId": "TC_SM-66_029",
+    "tradeServComment": "Published",
+    "highLevelScenario": "TIME Based -settlement",
+    "expectation": null,
+    "isValid": true,
+    "settlementCurrency": null,
+    "direction": "Buy",
+    "against": "Base",
+    "ccpAlias": null,
+    "clearingBroker": null,
+    "counterpartyClearingBroker": null,
+    "partyCcp": "PVPSTM",
+    "counterpartyCcp": "PVPSTM",
+    "notes": [
+      "A single FX Forward trade settling on the run date, taken through the whole pipeline. No runUpTo and no expect, so every step from 01 to 15b must genuinely pass: injection, both ledgers, netting, close, proposal match (steps 10, 11 and 11b, run because the BNKA-NY / BNKB-NY FxForward rule in data/trade_scenarios.py is manual), confirmation, settlement on all three sides, MT910 funding call and both settlement ledgers.",
+      "The sheet states the trade as base USD 80005, reference CNH 539234. It is carried as CNHUSD, the order the rest of the pack, TradeServ and the netting rule use, with each amount kept on its own currency: 539234 CNH (baseCurrencyAmount) and 80005 USD (referenceCurrencyAmount).",
+      "Settlement is the current date and tradeDate is the run date, both resolved from the run clock.",
+      "tradeReference, tradeReferenceSupplement and counterpartyReferenceNumber are free-text boxes, so they are generated per run as tradeId, the party partyTradeId and the counterparty partyTradeId.",
+      "ccpAlias is N/A and clearingBroker and counterpartyClearingBroker are blank in the sheet; none has a wrapper field, so they are left out of the payload entirely.",
+      "Party CCP and Cpty CCP (PVPSTM) are legal-entity reference data in Baton, not trade fields, so they are recorded here and the payload carries the ordinary PVP settlement flag.",
+      "settlementCcy is blank in the sheet and has no field in the wrapper, so it is recorded here as null.",
+      "direction and Against are not given in the sheet. Buy and Base are used, matching the rest of the pack: BNKA-NY is the base currency buyer, partyDirection Buy.",
+      "rate is carried as the sheet states it (2) even though 539234/80005 implies 6.74."
+    ]
+  },
+  "trade": {
+    "wrapper": {
+      "metaData": {
+        "determinedCounterpartyId": "BNKB-NY",
+        "determinedPartyId": "BNKA-NY",
+        "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+        "osttraTradeId": "{{GUID1}}",
+        "partyPerspective": "BNKA-NY",
+        "positionStatus": "Active",
+        "processingStatus": "Confirmed",
+        "status": "New",
+        "version": 0
+      },
+      "sourcePlatform": [
+        {
+          "eventType": "Trade",
+          "matchId": "{{GUID2}}",
+          "messageId": "{{GUID2}}",
+          "name": "TradeServ",
+          "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+          "sequence": 1,
+          "submissionSource": "WEB",
+          "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+          "submissionUserId": "Stephen Toal",
+          "tradeId": "{{TRADE_ID}}",
+          "tradeSideId": "{{TRADE_SIDE_ID}}",
+          "tradeStatus": "CONFIRMED",
+          "type": "TradeCapture",
+          "uniqueTransactionId": "{{UTI}}",
+          "version": "-1"
+        }
+      ],
+      "tradeData": {
+        "assetClass": "FX",
+        "documentationDetail": {
+          "contractualDefinitions": [
+            "ISDA1998FX"
+          ]
+        },
+        "fx": {
+          "activeStatus": "Active",
+          "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+          "fxCash": {
+            "baseCurrency": "CNH",
+            "currencyPair": "CNHUSD",
+            "nearLeg": {
+              "baseCurrencyAmount": 539234,
+              "baseCurrencyBuyer": "BNKA-NY",
+              "baseCurrencySeller": "BNKB-NY",
+              "dealtCurrency": "CNH",
+              "partyDirection": "Buy",
+              "quoteBasis": "RefCcyPerBaseCcy",
+              "rate": 2,
+              "referenceCurrencyAmount": 80005,
+              "valueDate": "{{TODAY}}"
+            },
+            "referenceCurrency": "USD"
+          },
+          "productType": "FxForward",
+          "tradeDate": "{{TODAY}}",
+          "transactionType": "Trade"
+        },
+        "partyDetail": [
+          {
+            "partyId": "BNKA-NY",
+            "partyRole": "Party",
+            "partyTradeId": "{{PARTY_TRADE_ID}}"
+          },
+          {
+            "partyId": "BNKB-NY",
+            "partyRole": "Counterparty",
+            "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+          },
+          {
+            "partyId": "BNKA-NY",
+            "partyRole": "Submitter"
+          }
+        ],
+        "settlementDetail": {
+          "pvpFlag": "PVP",
+          "pvpRegistrationStatus": "Pre-Accepted",
+          "settlementStatus": false
+        }
+      }
+    }
+  }
+}

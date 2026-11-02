@@ -1,0 +1,362 @@
+[
+  {
+    "step": "1",
+    "endpoint": "A keycloak/token",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:53:42.763247+05:30"
+  },
+  {
+    "step": "1",
+    "endpoint": "B keycloak/token",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:53:43.090464+05:30"
+  },
+  {
+    "step": "1",
+    "endpoint": "GLOBAL keycloak/token",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:53:43.431462+05:30"
+  },
+  {
+    "step": "4",
+    "endpoint": "SIM /api/cashflow/osttra/trade/previewPump",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:53:45.479822+05:30"
+  },
+  {
+    "step": "5",
+    "endpoint": "A /access-gateway/api/trade-management/api/v1/transactions/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:53:56.733299+05:30"
+  },
+  {
+    "step": "5",
+    "endpoint": "A /access-gateway/api/trade-management/api/v1/transactions/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:06.476186+05:30"
+  },
+  {
+    "step": "5b",
+    "endpoint": "B /access-gateway/api/trade-management/api/v1/transactions/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:15.454595+05:30"
+  },
+  {
+    "step": "6",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/netting/nettingGroup/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:17.797670+05:30"
+  },
+  {
+    "step": "6b",
+    "endpoint": "B /access-gateway/api/settlement-candidate-suite/netting/nettingGroup/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:20.097400+05:30"
+  },
+  {
+    "step": "7",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/netting/underlying/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:22.556444+05:30"
+  },
+  {
+    "step": "7b",
+    "endpoint": "B /access-gateway/api/settlement-candidate-suite/netting/underlying/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:25.009359+05:30"
+  },
+  {
+    "step": "8",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/netting/nettingGroup/close",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:27.030666+05:30"
+  },
+  {
+    "step": "8b",
+    "endpoint": "B /access-gateway/api/settlement-candidate-suite/netting/nettingGroup/close",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:29.105769+05:30"
+  },
+  {
+    "step": "9",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/netting/nettingGroup/getDetails",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:32.174664+05:30"
+  },
+  {
+    "step": "9b",
+    "endpoint": "B /access-gateway/api/settlement-candidate-suite/netting/nettingGroup/getDetails",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:35.246567+05:30"
+  },
+  {
+    "step": "10",
+    "endpoint": "A /access-gateway/api/affirmation-service/proposal/fetch",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:37.298929+05:30"
+  },
+  {
+    "step": "11",
+    "endpoint": "A /access-gateway/api/affirmation-service/proposal/actions/match",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:39.546121+05:30"
+  },
+  {
+    "step": "11b",
+    "endpoint": "B /access-gateway/api/affirmation-service/proposal/actions/match",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:42.108017+05:30"
+  },
+  {
+    "step": "12",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/netting/nettingGroup/getDetails",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:45.077028+05:30"
+  },
+  {
+    "step": "12",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:45.486416+05:30"
+  },
+  {
+    "step": "12b",
+    "endpoint": "B /access-gateway/api/settlement-candidate-suite/netting/nettingGroup/getDetails",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:49.481670+05:30"
+  },
+  {
+    "step": "12b",
+    "endpoint": "B /access-gateway/api/settlement-candidate-suite/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:49.786913+05:30"
+  },
+  {
+    "step": "13",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/initiate",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:52.261528+05:30"
+  },
+  {
+    "step": "13b",
+    "endpoint": "B /access-gateway/api/settlement-candidate-suite/settlement/initiate",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:54:54.395811+05:30"
+  },
+  {
+    "step": "13c",
+    "endpoint": "GLOBAL /access-gateway/api/settlement-candidate-suite/settlement/initiate",
+    "method": "POST",
+    "status": 401,
+    "ok": 0,
+    "at": "2026-10-05T16:54:57.698745+05:30"
+  },
+  {
+    "step": "14",
+    "endpoint": "SIM /api/cashflow/osttra/tasks/fundingCalls/list",
+    "method": "GET",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:02.127646+05:30"
+  },
+  {
+    "step": "14",
+    "endpoint": "SIM /api/cashflow/osttra/tasks/fundingCalls/list",
+    "method": "GET",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:04.805230+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:09.243689+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:11.808052+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:14.363703+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:17.333385+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:20.302776+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:24.402246+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:27.061496+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:29.621337+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:32.386901+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:35.319397+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:38.325604+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:41.397465+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:44.371392+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:47.751267+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:50.313670+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:53.381951+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:56.349339+05:30"
+  },
+  {
+    "step": "15",
+    "endpoint": "A /access-gateway/api/settlement-candidate-suite/settlement/getAll",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T16:55:59.317718+05:30"
+  }
+]

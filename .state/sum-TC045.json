@@ -1,0 +1,23 @@
+{
+  "scenario": "TC045",
+  "recordedAt": "2026-10-22 11:31:22",
+  "trades": [],
+  "problems": [],
+  "gross": {
+    "CNH": "0",
+    "USD": "0"
+  },
+  "net": {
+    "BNKA-NY": {
+      "CNH": "0",
+      "USD": "0"
+    },
+    "BNKB-NY": {
+      "CNH": "0",
+      "USD": "0"
+    }
+  },
+  "cancelled": [
+    "MSERV20261022.031695390510"
+  ]
+}

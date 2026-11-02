@@ -1,0 +1,131 @@
+{
+  "scenario": {
+    "id": "TC032",
+    "traceabilityId": "TC_SM-214_013",
+    "tradeServComment": "Published",
+    "highLevelScenario": "Submits cancellation instruction as a single dual-sided message, referencing the original trade identifier.",
+    "expectation": null,
+    "isValid": true,
+    "settlementCurrency": "USD",
+    "direction": "Buy",
+    "against": "Base",
+    "ccpAlias": null,
+    "clearingBroker": null,
+    "counterpartyClearingBroker": null,
+    "partyCcp": "PVP",
+    "counterpartyCcp": "PVP",
+    "notes": [
+      "The trade is booked confirmed (AC4) by step 04, checked live on both ledgers by 05 and 05b, then cancelled: \"cancel\": true makes the runner run step 04 cancel straight after step 05b, resending the same trade (step 04's tradeId, tradeSideId, UTI and party trade ids) as one dual-sided message with metaData.status \"Cancelled\".",
+      "The row runs to step 05b and no further: \"runUpTo\": \"5b\" stops it once both ledgers are checked, so the order is 01, 04, 05, 05b, 04 cancel, 05ct_a, 05ct_b. Steps 04 cancel, 05ct_a and 05ct_b run after 05b, before the stop, and 05ct_a and 05ct_b check the Domain A and B ledgers show the trade CANCELLED, still as one record.",
+      "05ct_b starts 20s after 05ct_a. Each of 05ct_a and 05ct_b polls its ledger every 3s for up to 15s until the trade shows CANCELLED.",
+      "Steps 05 and 05b run before the cancel, so they check the live trade in full, its status (NEW, AFFIRMED or CONFIRMED) included.",
+      "The cancelled status is checked in 05ct_a and 05ct_b, which also repeat the existence and single-record checks on the cancelled trade.",
+      "Steps 04, 05, 05b, 04 cancel, 05ct_a and 05ct_b must genuinely pass.",
+      "It is written as a one-entry trades list rather than a bare trade, because only a trades entry carries runUpTo, expect and cancel through to the runner.",
+      "The sheet states the trade as base USD, reference CNH. It is carried as CNHUSD, the order the rest of the pack and TradeServ use, with each amount kept on its own currency. The sheet gives no amounts, so the pack's standard 6740 CNH (baseCurrencyAmount) and 1000 USD (referenceCurrencyAmount) are used.",
+      "Settlement is the current date and tradeDate is the run date, both resolved from the run clock.",
+      "tradeReference, tradeReferenceSupplement and counterpartyReferenceNumber are free-text boxes, so they are generated per run as tradeId, the party partyTradeId and the counterparty partyTradeId.",
+      "ccpAlias, clearingBroker and counterpartyClearingBroker are blank in the sheet and have no wrapper field, so they are left out of the payload entirely.",
+      "The CRDS relationship is PVP. Party CCP and Cpty CCP are legal-entity reference data in Baton, not trade fields, so they are recorded here and the payload carries the ordinary PVP settlement flag.",
+      "settlementCcy has no field in the wrapper, so it is recorded here only.",
+      "direction and Against are not given in the sheet. Buy and Base are used, matching the rest of the pack: BNKA-NY is the base currency buyer, partyDirection Buy.",
+      "rate is carried as 2, as the rest of the pack carries it for 1000/6740."
+    ]
+  },
+  "trades": [
+    {
+      "label": "cancelled trade",
+      "runUpTo": "5b",
+      "cancel": true,
+      "expect": {
+        "4": "pass"
+      },
+      "trade": {
+        "wrapper": {
+          "metaData": {
+            "determinedCounterpartyId": "BNKB-NY",
+            "determinedPartyId": "BNKA-NY",
+            "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+            "osttraTradeId": "{{GUID1}}",
+            "partyPerspective": "BNKA-NY",
+            "positionStatus": "Active",
+            "processingStatus": "Confirmed",
+            "status": "New",
+            "version": 0
+          },
+          "sourcePlatform": [
+            {
+              "eventType": "Trade",
+              "matchId": "{{GUID2}}",
+              "messageId": "{{GUID2}}",
+              "name": "TradeServ",
+              "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+              "sequence": 1,
+              "submissionSource": "WEB",
+              "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+              "submissionUserId": "Stephen Toal",
+              "tradeId": "{{TRADE_ID}}",
+              "tradeSideId": "{{TRADE_SIDE_ID}}",
+              "tradeStatus": "CONFIRMED",
+              "type": "TradeCapture",
+              "uniqueTransactionId": "{{UTI}}",
+              "version": "-1"
+            }
+          ],
+          "tradeData": {
+            "assetClass": "FX",
+            "documentationDetail": {
+              "contractualDefinitions": [
+                "ISDA1998FX"
+              ]
+            },
+            "fx": {
+              "activeStatus": "Active",
+              "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+              "fxCash": {
+                "baseCurrency": "CNH",
+                "currencyPair": "CNHUSD",
+                "nearLeg": {
+                  "baseCurrencyAmount": 6740,
+                  "baseCurrencyBuyer": "BNKA-NY",
+                  "baseCurrencySeller": "BNKB-NY",
+                  "dealtCurrency": "CNH",
+                  "partyDirection": "Buy",
+                  "quoteBasis": "RefCcyPerBaseCcy",
+                  "rate": 2,
+                  "referenceCurrencyAmount": 1000,
+                  "valueDate": "{{TODAY}}"
+                },
+                "referenceCurrency": "USD"
+              },
+              "productType": "FxSpot",
+              "tradeDate": "{{TODAY}}",
+              "transactionType": "Trade"
+            },
+            "partyDetail": [
+              {
+                "partyId": "BNKA-NY",
+                "partyRole": "Party",
+                "partyTradeId": "{{PARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKB-NY",
+                "partyRole": "Counterparty",
+                "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKA-NY",
+                "partyRole": "Submitter"
+              }
+            ],
+            "settlementDetail": {
+              "pvpFlag": "PVP",
+              "pvpRegistrationStatus": "Pre-Accepted",
+              "settlementStatus": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}

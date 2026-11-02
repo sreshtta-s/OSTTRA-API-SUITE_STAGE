@@ -1,0 +1,34 @@
+[
+  {
+    "step": "1",
+    "endpoint": "A keycloak/token",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T17:13:26.576165+05:30"
+  },
+  {
+    "step": "1",
+    "endpoint": "B keycloak/token",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T17:13:26.906175+05:30"
+  },
+  {
+    "step": "1",
+    "endpoint": "GLOBAL keycloak/token",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T17:13:27.231385+05:30"
+  },
+  {
+    "step": "4",
+    "endpoint": "SIM /api/cashflow/osttra/trade/previewPump",
+    "method": "POST",
+    "status": 200,
+    "ok": 1,
+    "at": "2026-10-05T17:13:34.847819+05:30"
+  }
+]

@@ -1,0 +1,151 @@
+{
+  "scenario": {
+    "id": "TC037",
+    "traceabilityId": "TC_SM-214_007",
+    "tradeServComment": "Published",
+    "highLevelScenario": "Gross Settlement Initiated - Trade on Settlement Only rule with one or both legs at Settlement Initiated or beyond. Cancellation instruction received. Expected: NACK (settlement already initiated error code), no state change.",
+    "expectation": "NACK",
+    "isValid": true,
+    "settlementCurrency": "USD",
+    "direction": "Buy",
+    "against": "Base",
+    "ccpAlias": null,
+    "clearingBroker": null,
+    "counterpartyClearingBroker": null,
+    "partyCcp": null,
+    "counterpartyCcp": null,
+    "notes": [
+      "Event: the netting group's settlement is initiated, with its legs at Settlement Initiated or beyond, and a cancellation instruction is then received for it. Expected: NACK with the settlement already initiated error code, and no state change.",
+      "Three FX Spot trades with the same economics are booked one at a time (\"repeat\": 3), each a distinct trade with its own ids. Each runs steps 01, 04, 05 and 05b (\"runUpTo\": \"5b\"), and all of them must pass. No trade is cancelled: no 04 cancel, 05ct_a or 05ct_b.",
+      "Then the netting group's steps run once for all three: 06 / 06b and 07 / 07b find the group from the first trade, and the netting total (07c) requires that group to net to their stored sum (3 x 6740 = 20220 CNH, 3 x 1000 = 3000 USD) on both domains. Close (08 / 08b), status (09 / 09b, which save the settlement ids settlementId and settlementIdB), confirmation (12 / 12b), settlement on all three sides (13, 13b, 13c) and the MT910 funding call (14) follow, and must pass. \"runUpTo\": \"14\" stops the group there: steps 15 and 15b are not run.",
+      "Steps 10, 11 and 11b follow the netting rule: the BNKA-NY / BNKB-NY FxSpot rule in data/trade_scenarios.py is auto, so they are skipped and reported as not run. Were it manual, they would run.",
+      "\"cancelSettlement\" with \"after\": \"14\" sends the cancel once the settlement is initiated and funded, not straight after 13c, so no cancel step runs between 13c and 14. Its \"delayBefore\" holds step 13cs_a 30 seconds after step 14 before it starts; 13cs_b follows it straight away. They POST .../settlement/<settlementId>/cancel on Domain A and .../<settlementIdB>/cancel on Domain B.",
+      "Its \"expect\" declares both fail: the cancel must be refused (the NACK), so each returns a non-2xx status and its test_cancel_returns_2xx fails. Those declared failures are written into the HTML report as passed and do not count against the exit code. If either step PASSES, the runner turns it into a failure, because an initiated settlement was cancelled.",
+      "expect is per step, not per check, so a 13cs step that fails its pre-flight (no token or settlement id in state) is recorded as passed as well; steps 09 to 14 would then have failed, so the run still fails.",
+      "The cancel is declared refused, so steps 15cs_a and 15cs_b, which wait for the settlement to show CANCELLED, are not run.",
+      "Not checked: the NACK's error code (13cs_a / 13cs_b check only that the status is not 2xx), and that the settlement's state is unchanged after the refused cancel (no step reads the ledger again after it).",
+      "Order in the run and the report: each trade 01, 04, 05, 05b; then the group 06, 06b, 07, 07b, 07c, 08, 08b, 09, 09b, 10 (not run), 11 (not run), 11b (not run), 12, 12b, 13, 13b, 13c, 14, then 30 seconds, 13cs_a, 13cs_b.",
+      "The sheet puts the trade on a Settlement Only rule. data/trade_scenarios.py holds one rule per party pair, currency pair and product, so the trades net under the BNKA-NY / BNKB-NY FxSpot rule (auto) TC035 and TC038 use. If a separate settlement-only rule must be used, it needs its own entry there, which would also move TC032, TC035 and TC038 onto it.",
+      "The group's steps get one Excel row of their own after the three trade rows. The cancel steps and 07c are in the HTML report only: they have no Excel column.",
+      "The sheet states the trade as base USD, reference CNH. It is carried as CNHUSD, the order the rest of the pack, TradeServ and the netting rule use, with each amount kept on its own currency. The sheet gives no amounts, so the pack's standard 6740 CNH (baseCurrencyAmount), 1000 USD (referenceCurrencyAmount) and rate 2 are used.",
+      "Settlement / valuation is the current date. The sheet's trade date is a date picker, so the run date is used. Both resolve from the run clock.",
+      "direction and Against list both options in the sheet (Buy/Sell, Base/Reference). The first of each, Buy and Base, is used, matching the rest of the pack: BNKA-NY is the base currency buyer, partyDirection Buy.",
+      "tradeReference, tradeReferenceSupplement and counterpartyReferenceNumber are free-text boxes, so they are generated per run as tradeId, the party partyTradeId and the counterparty partyTradeId.",
+      "ccpAlias, clearingBroker and counterpartyClearingBroker have no wrapper field, so they are left out of the payload entirely. Party CCP and Cpty CCP are not given in the sheet; the payload carries the ordinary PVP settlement flag.",
+      "settlementCcy (USD) has no field in the wrapper, so it is recorded here only."
+    ]
+  },
+  "runUpTo": "14",
+  "cancelSettlement": {
+    "after": "14",
+    "delayBefore": {
+      "13cs_a": 30
+    },
+    "expect": {
+      "13cs_a": "fail",
+      "13cs_b": "fail"
+    }
+  },
+  "nettingTotal": {
+    "tradeCount": 3,
+    "party": "BNKA-NY",
+    "counterParty": "BNKB-NY",
+    "tradeCurrencyPair": "CNHUSD",
+    "productType": "FxSpot",
+    "baseCurrency": "CNH",
+    "referenceCurrency": "USD"
+  },
+  "trades": [
+    {
+      "label": "initiated settlement",
+      "repeat": 3,
+      "runUpTo": "5b",
+      "trade": {
+        "wrapper": {
+          "metaData": {
+            "determinedCounterpartyId": "BNKB-NY",
+            "determinedPartyId": "BNKA-NY",
+            "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+            "osttraTradeId": "{{GUID1}}",
+            "partyPerspective": "BNKA-NY",
+            "positionStatus": "Active",
+            "processingStatus": "Confirmed",
+            "status": "New",
+            "version": 0
+          },
+          "sourcePlatform": [
+            {
+              "eventType": "Trade",
+              "matchId": "{{GUID2}}",
+              "messageId": "{{GUID2}}",
+              "name": "TradeServ",
+              "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+              "sequence": 1,
+              "submissionSource": "WEB",
+              "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+              "submissionUserId": "Stephen Toal",
+              "tradeId": "{{TRADE_ID}}",
+              "tradeSideId": "{{TRADE_SIDE_ID}}",
+              "tradeStatus": "CONFIRMED",
+              "type": "TradeCapture",
+              "uniqueTransactionId": "{{UTI}}",
+              "version": "-1"
+            }
+          ],
+          "tradeData": {
+            "assetClass": "FX",
+            "documentationDetail": {
+              "contractualDefinitions": [
+                "ISDA1998FX"
+              ]
+            },
+            "fx": {
+              "activeStatus": "Active",
+              "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+              "fxCash": {
+                "baseCurrency": "CNH",
+                "currencyPair": "CNHUSD",
+                "nearLeg": {
+                  "baseCurrencyAmount": 6740,
+                  "baseCurrencyBuyer": "BNKA-NY",
+                  "baseCurrencySeller": "BNKB-NY",
+                  "dealtCurrency": "CNH",
+                  "partyDirection": "Buy",
+                  "quoteBasis": "RefCcyPerBaseCcy",
+                  "rate": 2,
+                  "referenceCurrencyAmount": 1000,
+                  "valueDate": "{{TODAY}}"
+                },
+                "referenceCurrency": "USD"
+              },
+              "productType": "FxSpot",
+              "tradeDate": "{{TODAY}}",
+              "transactionType": "Trade"
+            },
+            "partyDetail": [
+              {
+                "partyId": "BNKA-NY",
+                "partyRole": "Party",
+                "partyTradeId": "{{PARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKB-NY",
+                "partyRole": "Counterparty",
+                "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKA-NY",
+                "partyRole": "Submitter"
+              }
+            ],
+            "settlementDetail": {
+              "pvpFlag": "PVP",
+              "pvpRegistrationStatus": "Pre-Accepted",
+              "settlementStatus": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}

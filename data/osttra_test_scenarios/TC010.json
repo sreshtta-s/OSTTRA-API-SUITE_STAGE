@@ -1,0 +1,140 @@
+{
+  "scenario": {
+    "id": "TC010",
+    "traceabilityId": "TC_SM-28_036",
+    "tradeServComment": "Published",
+    "highLevelScenario": "Netting -10 trades with same trade economics -ACK",
+    "expectation": "ACK",
+    "isValid": true,
+    "settlementCurrency": "USD",
+    "direction": "Buy",
+    "against": "Base",
+    "ccpAlias": null,
+    "clearingBroker": null,
+    "counterpartyClearingBroker": null,
+    "partyCcp": "PVPNONSTM",
+    "counterpartyCcp": "NONPVPSTM",
+    "notes": [
+      "Ten trades with exactly the same economics - 6746.74 CNH against 1001 USD at rate 2 - injected one at a time, so the simulator is called ten times.",
+      "They are ten distinct trades, not duplicates: \"repeat\": 10 makes ten copies of the entry and each generates its own tradeId, tradeSideId, uniqueTransactionId and party references. That is the difference from TC005, whose copies share one identity on purpose.",
+      "Each trade runs to step 05b, not 05: the step order is 4, 5, 5b, so stopping at 5 would skip the Domain B check. Steps 04, 05 and 05b must genuinely pass for every trade, so one run validates both ledgers ten times.",
+      "Once all ten have run, the top-level nettingTotal checks them as one netting group: steps 06 to 07b find the group from the first trade, then the netting total check (07c) reads the group 07 / 07b found and checks what it nets to on both domains.",
+      "The amounts the group must hold are not typed here. utils/sum_storer.py adds each trade to the row's sum as it is booked, reading every amount with its own currency straight from the injected payload: 10 x 6746.74 = 67467.40 CNH and 10 x 1001 = 10010 USD, which BNKA-HK receives and pays respectively. Steps 07c, 12 and 12b check the group's legs and settlement candidates against that stored sum, signed by direction, on both domains.",
+      "\"runUpTo\": \"15b\" then takes that group to settlement: close, status, proposal match (steps 10, 11 and 11b, run because the BNKA-HK / BNKB-HK spot rule in data/trade_scenarios.py is manual; any other mode skips them), confirmation, settlement on all three sides, MT910 funding call and both ledgers. No expect, so every step must pass. If any trade failed one of its own steps, the group is checked but not closed or settled, and the row fails.",
+      "The group's steps run once for all ten trades, after them, headed \"TC010 netting group\". They get one Excel row of their own, after the ten trade rows, carrying the netting group and settlement ids.",
+      "The run records the ten trades to .state/last-run-TC010.json and their sum to .state/sum-TC010.json.",
+      "All ten trades and the netting group land in one merged HTML report for TC010, each trade step headed with its trade (\"same economics 3 of 10\").",
+      "Settlement is the current date and tradeDate is the run date, both resolved from the run clock.",
+      "tradeReference, tradeReferenceSupplement and counterpartyReferenceNumber are free-text boxes, so they are generated per run as tradeId, the party partyTradeId and the counterparty partyTradeId.",
+      "ccpAlias, clearingBroker and counterpartyClearingBroker are blank in the sheet and have no wrapper field, so they are left out of the payload entirely.",
+      "Party CCP (PVPNONSTM) and Cpty CCP (NONPVPSTM) are legal-entity reference data in Baton, not trade fields, so they are recorded here and the payload carries the ordinary PVP settlement flag.",
+      "settlementCcy has no field in the wrapper, so it is recorded here only.",
+      "direction and Against list both options in the sheet. The first of each, Buy and Base, is used, matching the rest of the pack.",
+      "rate is carried as the sheet states it (2) even though 6746.74/1001 implies 6.74."
+    ]
+  },
+  "runUpTo": "15b",
+  "nettingTotal": {
+    "tradeCount": 10,
+    "party": "BNKA-HK",
+    "counterParty": "BNKB-HK",
+    "tradeCurrencyPair": "CNHUSD",
+    "productType": "FxSpot",
+    "baseCurrency": "CNH",
+    "referenceCurrency": "USD"
+  },
+  "trades": [
+    {
+      "label": "same economics",
+      "repeat": 10,
+      "runUpTo": "5b",
+      "expect": {},
+      "trade": {
+        "wrapper": {
+          "metaData": {
+            "determinedCounterpartyId": "BNKB-HK",
+            "determinedPartyId": "BNKA-HK",
+            "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+            "osttraTradeId": "{{GUID1}}",
+            "partyPerspective": "BNKA-HK",
+            "positionStatus": "Active",
+            "processingStatus": "Confirmed",
+            "status": "New",
+            "version": 0
+          },
+          "sourcePlatform": [
+            {
+              "eventType": "Trade",
+              "matchId": "{{GUID2}}",
+              "messageId": "{{GUID2}}",
+              "name": "TradeServ",
+              "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+              "sequence": 1,
+              "submissionSource": "WEB",
+              "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+              "submissionUserId": "Stephen Toal",
+              "tradeId": "{{TRADE_ID}}",
+              "tradeSideId": "{{TRADE_SIDE_ID}}",
+              "tradeStatus": "CONFIRMED",
+              "type": "TradeCapture",
+              "uniqueTransactionId": "{{UTI}}",
+              "version": "-1"
+            }
+          ],
+          "tradeData": {
+            "assetClass": "FX",
+            "documentationDetail": {
+              "contractualDefinitions": [
+                "ISDA1998FX"
+              ]
+            },
+            "fx": {
+              "activeStatus": "Active",
+              "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+              "fxCash": {
+                "baseCurrency": "CNH",
+                "currencyPair": "CNHUSD",
+                "nearLeg": {
+                  "baseCurrencyAmount": 6746.74,
+                  "baseCurrencyBuyer": "BNKA-HK",
+                  "baseCurrencySeller": "BNKB-HK",
+                  "dealtCurrency": "CNH",
+                  "partyDirection": "Buy",
+                  "quoteBasis": "RefCcyPerBaseCcy",
+                  "rate": 2,
+                  "referenceCurrencyAmount": 1001,
+                  "valueDate": "{{TODAY}}"
+                },
+                "referenceCurrency": "USD"
+              },
+              "productType": "FxSpot",
+              "tradeDate": "{{TODAY}}",
+              "transactionType": "Trade"
+            },
+            "partyDetail": [
+              {
+                "partyId": "BNKA-HK",
+                "partyRole": "Party",
+                "partyTradeId": "{{PARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKB-HK",
+                "partyRole": "Counterparty",
+                "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKA-NY",
+                "partyRole": "Submitter"
+              }
+            ],
+            "settlementDetail": {
+              "pvpFlag": "PVP",
+              "pvpRegistrationStatus": "Pre-Accepted",
+              "settlementStatus": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}

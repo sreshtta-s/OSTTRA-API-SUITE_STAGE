@@ -1,0 +1,114 @@
+{
+  "scenario": {
+    "id": "TC004",
+    "traceabilityId": "TC_SM-28_006",
+    "tradeServComment": "Published",
+    "highLevelScenario": "min value",
+    "expectation": "ACK",
+    "isValid": true,
+    "settlementCurrency": "USD",
+    "direction": "Buy",
+    "against": "Base",
+    "ccpAlias": null,
+    "clearingBroker": null,
+    "counterpartyClearingBroker": null,
+    "partyCcp": "PVP",
+    "counterpartyCcp": "PVP",
+    "notes": [
+      "Smallest amount in the pack: 0.0001 USD, the reference amount, four decimal places, below the minor unit of the currency. The point of the row is that the amount survives the round trip unrounded.",
+      "No runUpTo and no expect, so every step must genuinely pass. Steps 05 and 05b compare the ledger's leg amounts against these two numbers, so a ledger that rounded 0.0001 away would fail there rather than pass quietly.",
+      "Settlement is the current date and tradeDate is the run date, both resolved from the run clock.",
+      "tradeReference, tradeReferenceSupplement and counterpartyReferenceNumber are free-text boxes, so they are generated per run as tradeId, the party partyTradeId and the counterparty partyTradeId.",
+      "ccpAlias, clearingBroker and counterpartyClearingBroker are blank in the sheet and have no wrapper field, so they are left out of the payload entirely.",
+      "Party CCP and Cpty CCP are legal-entity reference data in Baton, not trade fields, so they are recorded here and the payload carries the ordinary PVP settlement flag.",
+      "settlementCcy has no field in the wrapper, so it is recorded here only.",
+      "rate is carried as the sheet states it (2) even though 0.0001/6.74 does not imply it."
+    ]
+  },
+  "trade": {
+    "wrapper": {
+      "metaData": {
+        "determinedCounterpartyId": "BNKB-HK",
+        "determinedPartyId": "BNKA-HK",
+        "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+        "osttraTradeId": "{{GUID1}}",
+        "partyPerspective": "BNKA-HK",
+        "positionStatus": "Active",
+        "processingStatus": "Confirmed",
+        "status": "New",
+        "version": 0
+      },
+      "sourcePlatform": [
+        {
+          "eventType": "Trade",
+          "matchId": "{{GUID2}}",
+          "messageId": "{{GUID2}}",
+          "name": "TradeServ",
+          "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+          "sequence": 1,
+          "submissionSource": "WEB",
+          "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+          "submissionUserId": "Stephen Toal",
+          "tradeId": "{{TRADE_ID}}",
+          "tradeSideId": "{{TRADE_SIDE_ID}}",
+          "tradeStatus": "CONFIRMED",
+          "type": "TradeCapture",
+          "uniqueTransactionId": "{{UTI}}",
+          "version": "-1"
+        }
+      ],
+      "tradeData": {
+        "assetClass": "FX",
+        "documentationDetail": {
+          "contractualDefinitions": [
+            "ISDA1998FX"
+          ]
+        },
+        "fx": {
+          "activeStatus": "Active",
+          "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+          "fxCash": {
+            "baseCurrency": "CNH",
+            "currencyPair": "CNHUSD",
+            "nearLeg": {
+              "baseCurrencyAmount": 6.74,
+              "baseCurrencyBuyer": "BNKA-HK",
+              "baseCurrencySeller": "BNKB-HK",
+              "dealtCurrency": "CNH",
+              "partyDirection": "Buy",
+              "quoteBasis": "RefCcyPerBaseCcy",
+              "rate": 2,
+              "referenceCurrencyAmount": 0.0001,
+              "valueDate": "{{TODAY}}"
+            },
+            "referenceCurrency": "USD"
+          },
+          "productType": "FxForward",
+          "tradeDate": "{{TODAY}}",
+          "transactionType": "Trade"
+        },
+        "partyDetail": [
+          {
+            "partyId": "BNKA-HK",
+            "partyRole": "Party",
+            "partyTradeId": "{{PARTY_TRADE_ID}}"
+          },
+          {
+            "partyId": "BNKB-HK",
+            "partyRole": "Counterparty",
+            "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+          },
+          {
+            "partyId": "BNKA-HK",
+            "partyRole": "Submitter"
+          }
+        ],
+        "settlementDetail": {
+          "pvpFlag": "PVP",
+          "pvpRegistrationStatus": "Pre-Accepted",
+          "settlementStatus": false
+        }
+      }
+    }
+  }
+}

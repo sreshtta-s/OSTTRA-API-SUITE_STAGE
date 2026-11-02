@@ -1,0 +1,159 @@
+OSTTRA API Suite Report - TC025 - run of 2026-10-12
+Source: reports/excel/osttra-api-suite-report.xlsx, sheet "2026-10-12", row 2
+Fields: 67
+================================================================================
+Sl No                            : 1
+Date of Reporting                : 2026-10-12 17:33:29
+Trade ID                         : MSERV-5063605285
+Test Case                        : TC025
+Product Type                     : FxForward
+Trade Date                       : 2026-10-12
+Value Date                       : 2026-10-19
+Mode                             : SCENARIO
+Currency Pair                    : CNHUSD
+Party                            : BNKA-NY
+Counterparty                     : BNKB-HK
+Netting Group (A)                : NG-20261012-GFBPVTK
+Netting Grp State (A)            : CONFIRMED
+Netting Group (B)                : NG-20261012-65LYKZH
+Netting Grp State (B)            : CONFIRMED
+Settlement ID                    : bilateralbnkanybnkbhkfcff0e1952244XSRS1
+Settlement State                 : SETTLEMENT_COMPLETE
+Overall Result                   : PASS
+HTML Report                      : 2026-10-12__TC025
+1 Auth (A, B, Global)            : (empty)
+1 err                            : (empty)
+4 Inject trade                   : 1/1 ok
+4 err                            : (empty)
+5 Validate trade (A)             : 1/1 ok
+5 err                            : (empty)
+5b Validate trade (B)            : 1/1 ok
+5b err                           : (empty)
+6 Netting group (A)              : 1/1 ok
+6 err                            : (empty)
+6b Netting group (B)             : 1/1 ok
+6b err                           : (empty)
+7 Netting underlying (A)         : 5/5 ok
+7 err                            : (empty)
+7b Netting underlying (B)        : 5/5 ok
+7b err                           : (empty)
+8 Close netting group (A)        : 1/1 ok
+8 err                            : (empty)
+8b Close netting group (B)       : 1/1 ok
+8b err                           : (empty)
+9 Netting group status (A)       : 1/1 ok
+9 err                            : (empty)
+9b Netting group status (B)      : 1/1 ok
+9b err                           : (empty)
+10 Netting proposal (A)          : (empty)
+10 err                           : (empty)
+11 Match netting proposal (A)    : (empty)
+11 err                           : (empty)
+11b Match netting proposal (B)   : (empty)
+11b err                          : (empty)
+12 Netting group confirmed (A)   : 2/2 ok
+12 err                           : (empty)
+12b Netting group confirmed (B)  : 2/2 ok
+12b err                          : (empty)
+13 Initiate settlement (A)       : 1/1 ok
+13 err                           : (empty)
+13b Initiate settlement (B)      : 1/1 ok
+13b err                          : (empty)
+13c Initiate settlement (Global) : 1/1 ok
+13c err                          : (empty)
+14 Generate MT910 funding call   : 3/3 ok
+14 err                           : (empty)
+15 Validate ledger (A)           : 17/17 ok
+15 err                           : (empty)
+15b Validate ledger (B)          : 1/1 ok
+15b err                          : (empty)
+Raw Payload (unparsed)           : (empty)
+Injected Payload                 :
+    [
+      {
+        "wrapper": {
+          "metaData": {
+            "determinedCounterpartyId": "BNKB-HK",
+            "determinedPartyId": "BNKA-NY",
+            "ingestionTimeStamp": "2026-10-12T12:00:38.577Z",
+            "osttraTradeId": "d49776cc-4f35-47e7-a92c-1c6ef3664c75",
+            "partyPerspective": "BNKA-NY",
+            "positionStatus": "Active",
+            "processingStatus": "Confirmed",
+            "status": "New",
+            "version": 0
+          },
+          "sourcePlatform": [
+            {
+              "eventType": "Trade",
+              "matchId": "38777021-ec39-4aa5-859b-2b3b03a7bb6f",
+              "messageId": "38777021-ec39-4aa5-859b-2b3b03a7bb6f",
+              "name": "TradeServ",
+              "receiptTimeStamp": "2026-10-12T12:00:38.577Z",
+              "sequence": 1,
+              "submissionSource": "WEB",
+              "submissionTimeStamp": "2026-10-12T12:00:38.577Z",
+              "submissionUserId": "Stephen Toal",
+              "tradeId": "MSERV-5063605285",
+              "tradeSideId": "10309002",
+              "tradeStatus": "CONFIRMED",
+              "type": "TradeCapture",
+              "uniqueTransactionId": "549300CWK6F65W566G32MSFX2026101221369572631527134815",
+              "version": "-1"
+            }
+          ],
+          "tradeData": {
+            "assetClass": "FX",
+            "documentationDetail": {
+              "contractualDefinitions": [
+                "ISDA1998FX"
+              ]
+            },
+            "fx": {
+              "activeStatus": "Active",
+              "confirmationTimeStamp": "2026-10-12T12:00:38.577Z",
+              "fxCash": {
+                "baseCurrency": "CNH",
+                "currencyPair": "CNHUSD",
+                "nearLeg": {
+                  "baseCurrencyAmount": 67400,
+                  "baseCurrencyBuyer": "BNKA-NY",
+                  "baseCurrencySeller": "BNKB-HK",
+                  "dealtCurrency": "CNH",
+                  "partyDirection": "Buy",
+                  "quoteBasis": "RefCcyPerBaseCcy",
+                  "rate": 2,
+                  "referenceCurrencyAmount": 10000,
+                  "valueDate": "2026-10-19"
+                },
+                "referenceCurrency": "USD"
+              },
+              "productType": "FxForward",
+              "tradeDate": "2026-10-12",
+              "transactionType": "Trade"
+            },
+            "partyDetail": [
+              {
+                "partyId": "BNKA-NY",
+                "partyRole": "Party",
+                "partyTradeId": "FXFPVP121026B-10309002"
+              },
+              {
+                "partyId": "BNKB-HK",
+                "partyRole": "Counterparty",
+                "partyTradeId": "FXFPVP121026BCP-10309002"
+              },
+              {
+                "partyId": "BNKA-NY",
+                "partyRole": "Submitter"
+              }
+            ],
+            "settlementDetail": {
+              "pvpFlag": "PVP",
+              "pvpRegistrationStatus": "Pre-Accepted",
+              "settlementStatus": false
+            }
+          }
+        }
+      }
+    ]

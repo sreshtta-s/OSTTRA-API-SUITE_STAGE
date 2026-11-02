@@ -1,0 +1,127 @@
+{
+  "scenario": {
+    "id": "TC026",
+    "traceabilityId": "Int_29",
+    "tradeServComment": "Published",
+    "highLevelScenario": "Delay in MT900",
+    "expectation": null,
+    "isValid": true,
+    "settlementCurrency": "USD",
+    "direction": "Buy",
+    "against": "Base",
+    "ccpAlias": null,
+    "clearingBroker": null,
+    "counterpartyClearingBroker": null,
+    "partyCcp": "PVPSTM",
+    "counterpartyCcp": "NONE",
+    "notes": [
+      "The point of the row is a funding message that arrives late. The trade entry declares delayBefore {\"14\": 60}: once settlement has been initiated on all three sides (steps 13, 13b and 13c), the runner holds for 60 seconds before step 14 pumps the funding call, and the settlement must still reach SETTLEMENT_COMPLETE in steps 15 and 15b.",
+      "The delay is written against step 14 rather than as a pause after 13c because the runner applies it immediately before the step it names, so it cannot drift if a step is ever added between them. Step 14's heading in the HTML report records the hold.",
+      "No runUpTo and no expect, so every step must genuinely pass, 01 through 15b.",
+      "It is written as a one-entry trades list rather than a bare trade, because only a trades entry carries delayBefore, runUpTo and expect through to the runner.",
+      "Settlement is a future date. {{T+7}} resolves to seven calendar days after the run date, so the trade never targets a date that has gone stale; tradeDate is the run date. Steps 06 to 15b read the value date back from state, so netting, closing, funding and the ledger check all use the T+7 date.",
+      "tradeReference, tradeReferenceSupplement and counterpartyReferenceNumber are free-text boxes, so they are generated per run as tradeId, the party partyTradeId and the counterparty partyTradeId.",
+      "ccpAlias, clearingBroker and counterpartyClearingBroker are blank in the sheet and have no wrapper field, so they are left out of the payload entirely.",
+      "Party CCP (PVPSTM) and Cpty CCP (NONE) are legal-entity reference data in Baton, not trade fields, so they are recorded here and the payload carries the ordinary PVP settlement flag.",
+      "settlementCcy has no field in the wrapper, so it is recorded here only.",
+      "direction and Against list both options in the sheet. The first of each, Buy and Base, is used, matching the rest of the pack.",
+      "rate is carried as the sheet states it (2) even though 10000/67400 implies 6.74.",
+      "The sheet does not state an ACK/NACK expectation, so expectation is left null; the expected outcome is the full pipeline passing."
+    ]
+  },
+  "trades": [
+    {
+      "label": "delayed funding call",
+      "delayBefore": {
+        "14": 60
+      },
+      "expect": {},
+      "trade": {
+        "wrapper": {
+          "metaData": {
+            "determinedCounterpartyId": "BNKB-HK",
+            "determinedPartyId": "BNKA-NY",
+            "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+            "osttraTradeId": "{{GUID1}}",
+            "partyPerspective": "BNKA-NY",
+            "positionStatus": "Active",
+            "processingStatus": "Confirmed",
+            "status": "New",
+            "version": 0
+          },
+          "sourcePlatform": [
+            {
+              "eventType": "Trade",
+              "matchId": "{{GUID2}}",
+              "messageId": "{{GUID2}}",
+              "name": "TradeServ",
+              "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+              "sequence": 1,
+              "submissionSource": "WEB",
+              "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+              "submissionUserId": "Stephen Toal",
+              "tradeId": "{{TRADE_ID}}",
+              "tradeSideId": "{{TRADE_SIDE_ID}}",
+              "tradeStatus": "CONFIRMED",
+              "type": "TradeCapture",
+              "uniqueTransactionId": "{{UTI}}",
+              "version": "-1"
+            }
+          ],
+          "tradeData": {
+            "assetClass": "FX",
+            "documentationDetail": {
+              "contractualDefinitions": [
+                "ISDA1998FX"
+              ]
+            },
+            "fx": {
+              "activeStatus": "Active",
+              "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+              "fxCash": {
+                "baseCurrency": "CNH",
+                "currencyPair": "CNHUSD",
+                "nearLeg": {
+                  "baseCurrencyAmount": 67400,
+                  "baseCurrencyBuyer": "BNKA-NY",
+                  "baseCurrencySeller": "BNKB-HK",
+                  "dealtCurrency": "CNH",
+                  "partyDirection": "Buy",
+                  "quoteBasis": "RefCcyPerBaseCcy",
+                  "rate": 2,
+                  "referenceCurrencyAmount": 10000,
+                  "valueDate": "{{T+7}}"
+                },
+                "referenceCurrency": "USD"
+              },
+              "productType": "FxForward",
+              "tradeDate": "{{TODAY}}",
+              "transactionType": "Trade"
+            },
+            "partyDetail": [
+              {
+                "partyId": "BNKA-NY",
+                "partyRole": "Party",
+                "partyTradeId": "{{PARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKB-HK",
+                "partyRole": "Counterparty",
+                "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKA-NY",
+                "partyRole": "Submitter"
+              }
+            ],
+            "settlementDetail": {
+              "pvpFlag": "PVP",
+              "pvpRegistrationStatus": "Pre-Accepted",
+              "settlementStatus": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}

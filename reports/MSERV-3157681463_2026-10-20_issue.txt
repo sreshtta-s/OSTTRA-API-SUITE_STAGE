@@ -1,0 +1,194 @@
+ISSUE: PvP settlement does not reach SETTLEMENT_COMPLETE after the MT910 funding call
+Trade MSERV-3157681463 - DYNAMIC run of 2026-10-20 (OSTTRA API Suite, project A)
+================================================================================
+
+SUMMARY
+--------------------------------------------------------------------------------
+An FxSpot CNHUSD trade between BNKA-NY and BNKB-NY was booked, netted and
+confirmed on both domains. Settlement was initiated on Domain A, Domain B and
+the Global Operator (all 2xx), and the MT910 funding call was generated and
+pumped (2xx). The settlement never reached SETTLEMENT_COMPLETE. After polling
+the ledger for about 2 minutes, Domain A still showed FUNDING_CONFIRMATION and
+Domain B still showed FUNDING_CALL. The two domains also disagree with each
+other on the status of the same settlement.
+
+EXPECTED vs ACTUAL
+--------------------------------------------------------------------------------
+Expected (both domains)           : settlementStatus = SETTLEMENT_COMPLETE
+Actual, Domain A                  : settlementStatus = FUNDING_CONFIRMATION
+Actual, Domain B                  : settlementStatus = FUNDING_CALL
+
+RUN
+--------------------------------------------------------------------------------
+Run started                       : 2026-10-20 16:32:32 (local time)
+Run finished                      : 2026-10-20 16:38:07 (local time)
+Mode                              : DYNAMIC
+Overall result                    : FAIL (2 steps: 15 and 15b)
+HTML report                       : reports/html/2026-10-20__DYNAMIC/index.html
+
+TRADE
+--------------------------------------------------------------------------------
+Trade ID                          : MSERV-3157681463
+UTI                               : 549300CWK6F65W566G32MSFX2026102015522436014882374825
+OSTTRA trade ID                   : 7de30a68-0c0c-43c6-91af-390c61c40f23
+Match ID / message ID             : 31cb672b-2131-4dcd-b597-bc5f5dd24ab9
+Product type                      : FxSpot
+Currency pair                     : CNHUSD
+Party                             : BNKA-NY
+Counterparty                      : BNKB-NY
+Base currency amount              : 689 USD (buyer BNKA-NY, seller BNKB-NY)
+Reference currency amount         : 95 CNH
+Rate                              : 1.1
+Trade date                        : 2026-10-20
+Value date                        : 2026-10-20
+
+NETTING AND SETTLEMENT
+--------------------------------------------------------------------------------
+Netting group (Domain A)          : NG-20261020-GQ9Z28Q  [CONFIRMED]
+Netting group (Domain B)          : NG-20261020-U54SMG3  [CONFIRMED]
+Netting rule mode                 : auto (proposal steps 10, 11, 11b not needed)
+Settlement ID                     : bilateralbnkanybnkbny0a16b7f71fbc4XV87X
+Settlement state at end of run    : FUNDING_CONFIRMATION (Domain A), FUNDING_CALL (Domain B)
+
+STEP RESULTS
+--------------------------------------------------------------------------------
+1   Auth (A, B, Global)               3 passed
+4   Inject trade                      7 passed
+5   Validate trade (A)                34 passed
+5b  Validate trade (B)                32 passed
+6   Netting group (A)                 14 passed
+6b  Netting group (B)                 14 passed
+7   Netting underlying (A)            24 passed
+7b  Netting underlying (B)            24 passed
+8   Close netting group (A)           3 passed
+8b  Close netting group (B)           3 passed
+9   Netting group status (A)          5 passed
+9b  Netting group status (B)          5 passed
+10  Netting proposal (A)              1 skipped
+11  Match netting proposal (A)        1 skipped
+11b Match netting proposal (B)        1 skipped
+12  Netting group confirmed (A)       7 passed
+12b Netting group confirmed (B)       7 passed
+13  Initiate settlement (A)           3 passed
+13b Initiate settlement (B)           3 passed
+13c Initiate settlement (Global)      3 passed
+14  Generate MT910 funding call       3 passed
+15  Validate ledger (A)               6 passed · 1 failed
+15b Validate ledger (B)               6 passed · 1 failed
+
+FAILURE DETAILS (verbatim from the test report)
+--------------------------------------------------------------------------------
+../../osttra-api-suite_v1_python/project A/tests/test_15_validate_ledger.py:140: in test_settlement_status_complete
+assert status == COMPLETE, \
+E   AssertionError: Domain A settlement [bilateralbnkanybnkbny0a16b7f71fbc4XV87X] (netting group [NG-20261020-GQ9Z28Q]): settlementStatus should be SETTLEMENT_COMPLETE, but is [FUNDING_CONFIRMATION].
+E     Trade MSERV-3157681463 | UTI 549300CWK6F65W566G32MSFX2026102015522436014882374825 | party BNKA-NY, counterparty BNKB-NY | FxSpot CNHUSD | amounts 689 USD / 95 CNH | BNKA-NY buys USD, BNKB-NY buys CNH | trade date 2026-10-20 | value date 2026-10-20
+E   assert 'FUNDING_CONFIRMATION' == 'SETTLEMENT_COMPLETE'
+E
+E     - SETTLEMENT_COMPLETE
+E     + FUNDING_CONFIRMATION
+
+../../osttra-api-suite_v1_python/project A/tests/test_15b_validate_ledger_domain_b.py:136: in test_settlement_status_complete
+assert status == COMPLETE, \
+E   AssertionError: Domain B settlement [bilateralbnkanybnkbny0a16b7f71fbc4XV87X] (netting group [NG-20261020-U54SMG3]): settlementStatus should be SETTLEMENT_COMPLETE, but is [FUNDING_CALL].
+E     Trade MSERV-3157681463 | UTI 549300CWK6F65W566G32MSFX2026102015522436014882374825 | party BNKA-NY, counterparty BNKB-NY | FxSpot CNHUSD | amounts 689 USD / 95 CNH | BNKA-NY buys USD, BNKB-NY buys CNH | trade date 2026-10-20 | value date 2026-10-20
+E   assert 'FUNDING_CALL' == 'SETTLEMENT_COMPLETE'
+E
+E     - SETTLEMENT_COMPLETE
+E     + FUNDING_CALL
+
+ALSO SEEN
+--------------------------------------------------------------------------------
+The run just before this one, at 2026-10-20 16:26:03 (trade MSERV-1866969855,
+settlement bilateralbnkanybnkbny0a16b7f71fbc4XV84L), also ended with settlement
+state FUNDING_CONFIRMATION and result FAIL (4 steps).
+
+INJECTED PAYLOAD
+--------------------------------------------------------------------------------
+[
+  {
+    "wrapper": {
+      "metaData": {
+        "determinedCounterpartyId": "BNKB-NY",
+        "determinedPartyId": "BNKA-NY",
+        "ingestionTimeStamp": "2026-10-20T11:02:36.800Z",
+        "osttraTradeId": "7de30a68-0c0c-43c6-91af-390c61c40f23",
+        "partyPerspective": "BNKA-NY",
+        "positionStatus": "Active",
+        "processingStatus": "Confirmed",
+        "status": "New",
+        "version": 0
+      },
+      "sourcePlatform": [
+        {
+          "eventType": "Trade",
+          "matchId": "31cb672b-2131-4dcd-b597-bc5f5dd24ab9",
+          "messageId": "31cb672b-2131-4dcd-b597-bc5f5dd24ab9",
+          "name": "TradeServ",
+          "receiptTimeStamp": "2026-10-20T11:02:36.800Z",
+          "sequence": 1,
+          "submissionSource": "WEB",
+          "submissionTimeStamp": "2026-10-20T11:02:36.800Z",
+          "submissionUserId": "Stephen Toal",
+          "tradeId": "MSERV-3157681463",
+          "tradeSideId": "30672900",
+          "tradeStatus": "CONFIRMED",
+          "type": "TradeCapture",
+          "uniqueTransactionId": "549300CWK6F65W566G32MSFX2026102015522436014882374825",
+          "version": "-1"
+        }
+      ],
+      "tradeData": {
+        "assetClass": "FX",
+        "documentationDetail": {
+          "contractualDefinitions": [
+            "ISDA1998FX"
+          ]
+        },
+        "fx": {
+          "activeStatus": "Active",
+          "confirmationTimeStamp": "2026-10-20T11:02:36.800Z",
+          "fxCash": {
+            "baseCurrency": "USD",
+            "currencyPair": "CNHUSD",
+            "nearLeg": {
+              "baseCurrencyAmount": 689,
+              "baseCurrencyBuyer": "BNKA-NY",
+              "baseCurrencySeller": "BNKB-NY",
+              "dealtCurrency": "USD",
+              "partyDirection": "Buy",
+              "quoteBasis": "RefCcyPerBaseCcy",
+              "rate": 1.1,
+              "referenceCurrencyAmount": 95,
+              "valueDate": "2026-10-20"
+            },
+            "referenceCurrency": "CNH"
+          },
+          "productType": "FxSpot",
+          "tradeDate": "2026-10-20",
+          "transactionType": "Trade"
+        },
+        "partyDetail": [
+          {
+            "partyId": "BNKA-NY",
+            "partyRole": "Party",
+            "partyTradeId": "FXFPVP201026B-30672900"
+          },
+          {
+            "partyId": "BNKB-NY",
+            "partyRole": "Counterparty",
+            "partyTradeId": "FXFPVP201026BCP-30672900"
+          },
+          {
+            "partyId": "BNKA-NY",
+            "partyRole": "Submitter"
+          }
+        ],
+        "settlementDetail": {
+          "pvpFlag": "PVP",
+          "pvpRegistrationStatus": "Pre-Accepted",
+          "settlementStatus": false
+        }
+      }
+    }
+  }
+]

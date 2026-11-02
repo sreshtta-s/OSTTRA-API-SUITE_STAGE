@@ -1,0 +1,1574 @@
+{
+  "scenario": "TC036",
+  "recordedAt": "2026-10-22 11:31:22",
+  "trades": [
+    {
+      "label": "MSERV20261022.031695386310 (1 of 3)",
+      "tradeId": "MSERV20261022.031695386310",
+      "uniqueTransactionId": "102777777812345678901234567890123456789013",
+      "reqPartyId": "BNKA-NY",
+      "counterPartyId": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxForward",
+      "dealtCurrency": "CNH",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": 67404.04,
+      "referenceCurrencyAmount": 10000.6,
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY",
+      "tradeDate": "2026-10-22",
+      "valueDate": "2026-10-22",
+      "injectedTradeIds": {
+        "tradeId": "MSERV20261022.031695386310",
+        "tradeSideId": "57754742",
+        "uniqueTransactionId": "102777777812345678901234567890123456789013",
+        "partyTradeId": "7FBDD19374A5402CA82EDAC25D89345501",
+        "counterpartyTradeId": "7FBDD19374A5402CA82EDAC25D89345502"
+      },
+      "failedSteps": 0,
+      "env": {
+        "SCENARIO_TRADE_INDEX": "0",
+        "TRADE_INDEX": "21"
+      }
+    },
+    {
+      "label": "MSERV20261022.031695386910 (2 of 3)",
+      "tradeId": "MSERV20261022.031695386910",
+      "uniqueTransactionId": "102777777812345678901234567890123456789013",
+      "reqPartyId": "BNKA-NY",
+      "counterPartyId": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxForward",
+      "dealtCurrency": "CNH",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": 67404.04,
+      "referenceCurrencyAmount": 10000.6,
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY",
+      "tradeDate": "2026-10-22",
+      "valueDate": "2026-10-22",
+      "injectedTradeIds": {
+        "tradeId": "MSERV20261022.031695386910",
+        "tradeSideId": "57754745",
+        "uniqueTransactionId": "102777777812345678901234567890123456789013",
+        "partyTradeId": "B5C2BEBB1643429E8B173CD8A23B4B3F03",
+        "counterpartyTradeId": "B5C2BEBB1643429E8B173CD8A23B4B3F04"
+      },
+      "failedSteps": 0,
+      "env": {
+        "SCENARIO_TRADE_INDEX": "1",
+        "TRADE_INDEX": "22"
+      }
+    },
+    {
+      "label": "MSERV20261022.031695387510 (3 of 3)",
+      "tradeId": "MSERV20261022.031695387510",
+      "uniqueTransactionId": "102777777812345678901234567890123456789013",
+      "reqPartyId": "BNKA-NY",
+      "counterPartyId": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxForward",
+      "dealtCurrency": "CNH",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": 67404.04,
+      "referenceCurrencyAmount": 10000.6,
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY",
+      "tradeDate": "2026-10-22",
+      "valueDate": "2026-10-22",
+      "injectedTradeIds": {
+        "tradeId": "MSERV20261022.031695387510",
+        "tradeSideId": "57754746",
+        "uniqueTransactionId": "102777777812345678901234567890123456789013",
+        "partyTradeId": "7085ACE447224E59BC740332EFDD449105",
+        "counterpartyTradeId": "7085ACE447224E59BC740332EFDD449106"
+      },
+      "failedSteps": 0,
+      "env": {
+        "SCENARIO_TRADE_INDEX": "2",
+        "TRADE_INDEX": "23"
+      }
+    }
+  ],
+  "blobs": {
+    "t01-01-1.json": {
+      "step": "1",
+      "label": "Auth (A, B, Global) - MSERV20261022.031695386310 (1 of 3)",
+      "file": "tests/test_01_auth.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Generate token and save to state [A]",
+          "outcome": "passed",
+          "duration": 1.4212188260007679,
+          "message": null
+        },
+        {
+          "name": "Generate token and save to state [B]",
+          "outcome": "passed",
+          "duration": 0.3051351579997572,
+          "message": null
+        },
+        {
+          "name": "Generate token and save to state [GLOBAL]",
+          "outcome": "passed",
+          "duration": 0.3057978950000688,
+          "message": null
+        }
+      ],
+      "tradeLabel": "MSERV20261022.031695386310 (1 of 3)"
+    },
+    "t01-02-4.json": {
+      "step": "4",
+      "label": "Inject trade - MSERV20261022.031695386310 (1 of 3)",
+      "file": "tests/test_04_inject_trade.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "API: Endpoint returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 1.482159804996627,
+          "message": null
+        },
+        {
+          "name": "Verify trade injection status matches expected status",
+          "outcome": "passed",
+          "duration": 0.000612020001426572,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID exists in the generated payload mapping",
+          "outcome": "passed",
+          "duration": 0.0005121710000821622,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID adheres to MSERV- nomenclature",
+          "outcome": "passed",
+          "duration": 0.0007558639990747906,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID meets minimum ledger character limits (>10)",
+          "outcome": "passed",
+          "duration": 0.0007271120011864696,
+          "message": null
+        },
+        {
+          "name": "Verify product type matches the configured product type",
+          "outcome": "passed",
+          "duration": 0.0011310429999866756,
+          "message": null
+        },
+        {
+          "name": "Verify the payload's base currency buyer, seller and partyDirection agree on who buys which currency",
+          "outcome": "passed",
+          "duration": 0.0014199450033629546,
+          "message": null
+        }
+      ],
+      "tradeLabel": "MSERV20261022.031695386310 (1 of 3)"
+    },
+    "t01-03-5.json": {
+      "step": "5",
+      "label": "Validate trade (A) - MSERV20261022.031695386310 (1 of 3)",
+      "file": "tests/test_05_validate_trade.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Verify auth token is present in state",
+          "outcome": "passed",
+          "duration": 5.388081417000649,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0007767379993310897,
+          "message": null
+        },
+        {
+          "name": "Verify unique transaction ID (UTI) is present in state",
+          "outcome": "passed",
+          "duration": 0.0006103790019551525,
+          "message": null
+        },
+        {
+          "name": "Verify request returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.000599972001509741,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is found on the ledger",
+          "outcome": "passed",
+          "duration": 0.0006179470001370646,
+          "message": null
+        },
+        {
+          "name": "Verify exactly one ledger record carries the injected Trade ID",
+          "outcome": "passed",
+          "duration": 0.0006610300006286707,
+          "message": null
+        },
+        {
+          "name": "Verify response contains a valid trades array",
+          "outcome": "passed",
+          "duration": 0.0004889549982181052,
+          "message": null
+        },
+        {
+          "name": "Verify pagination totalCount is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.00047628300126234535,
+          "message": null
+        },
+        {
+          "name": "Verify pagination pageSize is a valid number > 0",
+          "outcome": "passed",
+          "duration": 0.0005951909988652915,
+          "message": null
+        },
+        {
+          "name": "Verify pagination currentPage is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0006543029994645622,
+          "message": null
+        },
+        {
+          "name": "Verify pagination hasMore is a boolean flag",
+          "outcome": "passed",
+          "duration": 0.000666336001813761,
+          "message": null
+        },
+        {
+          "name": "Verify tradeRecordId is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0007492599997931393,
+          "message": null
+        },
+        {
+          "name": "Verify transactionId is a populated string",
+          "outcome": "passed",
+          "duration": 0.0006738960000802763,
+          "message": null
+        },
+        {
+          "name": "Verify leg1Id is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0005848070013598772,
+          "message": null
+        },
+        {
+          "name": "Verify createdAt strictly follows ISO-8601 format",
+          "outcome": "passed",
+          "duration": 0.0005236570013948949,
+          "message": null
+        },
+        {
+          "name": "Verify sourceReferenceId matches injected UTI",
+          "outcome": "passed",
+          "duration": 0.0005838200013386086,
+          "message": null
+        },
+        {
+          "name": "Verify tradingParty reflects the Domain A perspective",
+          "outcome": "passed",
+          "duration": 0.0008239729995693779,
+          "message": null
+        },
+        {
+          "name": "Verify source platform is identified as TradeServ",
+          "outcome": "passed",
+          "duration": 0.0006342049982777098,
+          "message": null
+        },
+        {
+          "name": "Verify productType is strictly mapped as FX",
+          "outcome": "passed",
+          "duration": 0.0005082799998490373,
+          "message": null
+        },
+        {
+          "name": "Verify productSubType reflects the injected product type",
+          "outcome": "passed",
+          "duration": 0.0005668519988830667,
+          "message": null
+        },
+        {
+          "name": "Verify primary transaction type is TRADE",
+          "outcome": "passed",
+          "duration": 0.000572216998989461,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetClass maps to CASH",
+          "outcome": "passed",
+          "duration": 0.0005994920011289651,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetType maps to FIAT",
+          "outcome": "passed",
+          "duration": 0.0006855600004200824,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is a populated string",
+          "outcome": "passed",
+          "duration": 0.0007144330011215061,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetId is the base currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0007915220012364443,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetId is the reference currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0007728319978923537,
+          "message": null
+        },
+        {
+          "name": "Verify the two leg assets together are the injected currency pair",
+          "outcome": "passed",
+          "duration": 0.0008774440011620754,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is the injected base currency amount",
+          "outcome": "passed",
+          "duration": 0.0009153659975709161,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetValue is the injected reference currency amount",
+          "outcome": "passed",
+          "duration": 0.0008653230015625013,
+          "message": null
+        },
+        {
+          "name": "Verify tradeDate is the trade date that was injected",
+          "outcome": "passed",
+          "duration": 0.000601056000959943,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryDirection is the party's side (BUY or SELL) of that currency",
+          "outcome": "passed",
+          "duration": 0.0006170060005388223,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryDirection is the party's side (BUY or SELL) of that currency",
+          "outcome": "passed",
+          "duration": 0.0009412019990122644,
+          "message": null
+        },
+        {
+          "name": "Verify affirmation status is NEW, AFFIRMED, or CONFIRMED",
+          "outcome": "passed",
+          "duration": 0.0010566939981799806,
+          "message": null
+        },
+        {
+          "name": "Verify settlement status is properly sequenced",
+          "outcome": "passed",
+          "duration": 0.0022989130011410452,
+          "message": null
+        }
+      ],
+      "tradeLabel": "MSERV20261022.031695386310 (1 of 3)"
+    },
+    "t01-04-5b.json": {
+      "step": "5b",
+      "label": "Validate trade (B) - MSERV20261022.031695386310 (1 of 3)",
+      "file": "tests/test_05b_validate_trade_domain_b.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Verify Domain B auth token is present in state",
+          "outcome": "passed",
+          "duration": 1.4603323400006047,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0007395150023512542,
+          "message": null
+        },
+        {
+          "name": "Verify request returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.0006536660002893768,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is found on the ledger",
+          "outcome": "passed",
+          "duration": 0.0005819800026074518,
+          "message": null
+        },
+        {
+          "name": "Verify exactly one ledger record carries the injected Trade ID",
+          "outcome": "passed",
+          "duration": 0.0006975320011406438,
+          "message": null
+        },
+        {
+          "name": "Verify response contains a valid trades array",
+          "outcome": "passed",
+          "duration": 0.0007434800008923048,
+          "message": null
+        },
+        {
+          "name": "Verify pagination totalCount is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0005486570007633418,
+          "message": null
+        },
+        {
+          "name": "Verify pagination pageSize is a valid number > 0",
+          "outcome": "passed",
+          "duration": 0.0005199700008233776,
+          "message": null
+        },
+        {
+          "name": "Verify pagination currentPage is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0007388250014628284,
+          "message": null
+        },
+        {
+          "name": "Verify pagination hasMore is a boolean flag",
+          "outcome": "passed",
+          "duration": 0.0006715010003972566,
+          "message": null
+        },
+        {
+          "name": "Verify tradeRecordId is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0007229429993458325,
+          "message": null
+        },
+        {
+          "name": "Verify transactionId is a populated string",
+          "outcome": "passed",
+          "duration": 0.0006522849980683532,
+          "message": null
+        },
+        {
+          "name": "Verify leg1Id is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0009521679985482479,
+          "message": null
+        },
+        {
+          "name": "Verify createdAt strictly follows ISO-8601 format",
+          "outcome": "passed",
+          "duration": 0.0006685740008833818,
+          "message": null
+        },
+        {
+          "name": "Verify tradingParty reflects the Domain B perspective (flipped - counterPartyId)",
+          "outcome": "passed",
+          "duration": 0.0006261470007302705,
+          "message": null
+        },
+        {
+          "name": "Verify source platform is identified as TradeServ",
+          "outcome": "passed",
+          "duration": 0.0006040779990144074,
+          "message": null
+        },
+        {
+          "name": "Verify productType is strictly mapped as FX",
+          "outcome": "passed",
+          "duration": 0.000708527000824688,
+          "message": null
+        },
+        {
+          "name": "Verify productSubType reflects the injected product type",
+          "outcome": "passed",
+          "duration": 0.0008130559999699472,
+          "message": null
+        },
+        {
+          "name": "Verify primary transaction type is TRADE",
+          "outcome": "passed",
+          "duration": 0.0005705290004698327,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetClass maps to CASH",
+          "outcome": "passed",
+          "duration": 0.0006130879992269911,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetType maps to FIAT",
+          "outcome": "passed",
+          "duration": 0.000494333000460756,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is a populated string",
+          "outcome": "passed",
+          "duration": 0.0006956470006116433,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetId is the base currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0007099869999365183,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetId is the reference currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0006504549983219476,
+          "message": null
+        },
+        {
+          "name": "Verify the two leg assets together are the injected currency pair",
+          "outcome": "passed",
+          "duration": 0.0006378019988915185,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is the injected base currency amount",
+          "outcome": "passed",
+          "duration": 0.0005993889972160105,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetValue is the injected reference currency amount",
+          "outcome": "passed",
+          "duration": 0.0009337960000266321,
+          "message": null
+        },
+        {
+          "name": "Verify tradeDate is the trade date that was injected",
+          "outcome": "passed",
+          "duration": 0.0008326179977302672,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryDirection is the counterparty's side (BUY or SELL) of that currency",
+          "outcome": "passed",
+          "duration": 0.0006448629992519272,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryDirection is the counterparty's side (BUY or SELL) of that currency",
+          "outcome": "passed",
+          "duration": 0.0005760870008089114,
+          "message": null
+        },
+        {
+          "name": "Verify affirmation status is NEW, AFFIRMED, or CONFIRMED",
+          "outcome": "passed",
+          "duration": 0.000758324000344146,
+          "message": null
+        },
+        {
+          "name": "Verify settlement status is properly sequenced",
+          "outcome": "passed",
+          "duration": 0.0018728139984887093,
+          "message": null
+        }
+      ],
+      "tradeLabel": "MSERV20261022.031695386310 (1 of 3)"
+    },
+    "t02-01-1.json": {
+      "step": "1",
+      "label": "Auth (A, B, Global) - MSERV20261022.031695386910 (2 of 3)",
+      "file": "tests/test_01_auth.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Generate token and save to state [A]",
+          "outcome": "passed",
+          "duration": 1.1165332889995625,
+          "message": null
+        },
+        {
+          "name": "Generate token and save to state [B]",
+          "outcome": "passed",
+          "duration": 0.30306088300130796,
+          "message": null
+        },
+        {
+          "name": "Generate token and save to state [GLOBAL]",
+          "outcome": "passed",
+          "duration": 0.3031635749994166,
+          "message": null
+        }
+      ],
+      "tradeLabel": "MSERV20261022.031695386910 (2 of 3)"
+    },
+    "t02-02-4.json": {
+      "step": "4",
+      "label": "Inject trade - MSERV20261022.031695386910 (2 of 3)",
+      "file": "tests/test_04_inject_trade.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "API: Endpoint returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 1.1696631529994193,
+          "message": null
+        },
+        {
+          "name": "Verify trade injection status matches expected status",
+          "outcome": "passed",
+          "duration": 0.0005758370025432669,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID exists in the generated payload mapping",
+          "outcome": "passed",
+          "duration": 0.00046673799988639075,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID adheres to MSERV- nomenclature",
+          "outcome": "passed",
+          "duration": 0.0005829509973409586,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID meets minimum ledger character limits (>10)",
+          "outcome": "passed",
+          "duration": 0.0006226939985936042,
+          "message": null
+        },
+        {
+          "name": "Verify product type matches the configured product type",
+          "outcome": "passed",
+          "duration": 0.001081423999494291,
+          "message": null
+        },
+        {
+          "name": "Verify the payload's base currency buyer, seller and partyDirection agree on who buys which currency",
+          "outcome": "passed",
+          "duration": 0.0009517670005152468,
+          "message": null
+        }
+      ],
+      "tradeLabel": "MSERV20261022.031695386910 (2 of 3)"
+    },
+    "t02-03-5.json": {
+      "step": "5",
+      "label": "Validate trade (A) - MSERV20261022.031695386910 (2 of 3)",
+      "file": "tests/test_05_validate_trade.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Verify auth token is present in state",
+          "outcome": "passed",
+          "duration": 5.429029150000133,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0007259249996423023,
+          "message": null
+        },
+        {
+          "name": "Verify unique transaction ID (UTI) is present in state",
+          "outcome": "passed",
+          "duration": 0.0005222069994488265,
+          "message": null
+        },
+        {
+          "name": "Verify request returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.0006145549978100462,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is found on the ledger",
+          "outcome": "passed",
+          "duration": 0.0006014560003677616,
+          "message": null
+        },
+        {
+          "name": "Verify exactly one ledger record carries the injected Trade ID",
+          "outcome": "passed",
+          "duration": 0.0005965870004729368,
+          "message": null
+        },
+        {
+          "name": "Verify response contains a valid trades array",
+          "outcome": "passed",
+          "duration": 0.0005985370007692836,
+          "message": null
+        },
+        {
+          "name": "Verify pagination totalCount is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0005702809994545532,
+          "message": null
+        },
+        {
+          "name": "Verify pagination pageSize is a valid number > 0",
+          "outcome": "passed",
+          "duration": 0.0006785719997424167,
+          "message": null
+        },
+        {
+          "name": "Verify pagination currentPage is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0006084070009819698,
+          "message": null
+        },
+        {
+          "name": "Verify pagination hasMore is a boolean flag",
+          "outcome": "passed",
+          "duration": 0.0006476890011981595,
+          "message": null
+        },
+        {
+          "name": "Verify tradeRecordId is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0005507410005520796,
+          "message": null
+        },
+        {
+          "name": "Verify transactionId is a populated string",
+          "outcome": "passed",
+          "duration": 0.0007775190006213961,
+          "message": null
+        },
+        {
+          "name": "Verify leg1Id is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0006179839983815327,
+          "message": null
+        },
+        {
+          "name": "Verify createdAt strictly follows ISO-8601 format",
+          "outcome": "passed",
+          "duration": 0.0006283479997364338,
+          "message": null
+        },
+        {
+          "name": "Verify sourceReferenceId matches injected UTI",
+          "outcome": "passed",
+          "duration": 0.0005838460001541534,
+          "message": null
+        },
+        {
+          "name": "Verify tradingParty reflects the Domain A perspective",
+          "outcome": "passed",
+          "duration": 0.0006255430016608443,
+          "message": null
+        },
+        {
+          "name": "Verify source platform is identified as TradeServ",
+          "outcome": "passed",
+          "duration": 0.0005853290003869915,
+          "message": null
+        },
+        {
+          "name": "Verify productType is strictly mapped as FX",
+          "outcome": "passed",
+          "duration": 0.0004911119995085755,
+          "message": null
+        },
+        {
+          "name": "Verify productSubType reflects the injected product type",
+          "outcome": "passed",
+          "duration": 0.0005408600009104703,
+          "message": null
+        },
+        {
+          "name": "Verify primary transaction type is TRADE",
+          "outcome": "passed",
+          "duration": 0.00071774099887989,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetClass maps to CASH",
+          "outcome": "passed",
+          "duration": 0.0006355850018735509,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetType maps to FIAT",
+          "outcome": "passed",
+          "duration": 0.0007083229993440909,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is a populated string",
+          "outcome": "passed",
+          "duration": 0.0007958469996083295,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetId is the base currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0008322650010086363,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetId is the reference currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0005822109997097868,
+          "message": null
+        },
+        {
+          "name": "Verify the two leg assets together are the injected currency pair",
+          "outcome": "passed",
+          "duration": 0.0005290810004225932,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is the injected base currency amount",
+          "outcome": "passed",
+          "duration": 0.000495194999530213,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetValue is the injected reference currency amount",
+          "outcome": "passed",
+          "duration": 0.0006942129984963685,
+          "message": null
+        },
+        {
+          "name": "Verify tradeDate is the trade date that was injected",
+          "outcome": "passed",
+          "duration": 0.0005949259993940359,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryDirection is the party's side (BUY or SELL) of that currency",
+          "outcome": "passed",
+          "duration": 0.000500530000863364,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryDirection is the party's side (BUY or SELL) of that currency",
+          "outcome": "passed",
+          "duration": 0.0004752300028485479,
+          "message": null
+        },
+        {
+          "name": "Verify affirmation status is NEW, AFFIRMED, or CONFIRMED",
+          "outcome": "passed",
+          "duration": 0.0004227600002195686,
+          "message": null
+        },
+        {
+          "name": "Verify settlement status is properly sequenced",
+          "outcome": "passed",
+          "duration": 0.0012165440002718242,
+          "message": null
+        }
+      ],
+      "tradeLabel": "MSERV20261022.031695386910 (2 of 3)"
+    },
+    "t02-04-5b.json": {
+      "step": "5b",
+      "label": "Validate trade (B) - MSERV20261022.031695386910 (2 of 3)",
+      "file": "tests/test_05b_validate_trade_domain_b.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Verify Domain B auth token is present in state",
+          "outcome": "passed",
+          "duration": 1.2495959079988097,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0005259729987301398,
+          "message": null
+        },
+        {
+          "name": "Verify request returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.0005512589996214956,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is found on the ledger",
+          "outcome": "passed",
+          "duration": 0.0007949239989102352,
+          "message": null
+        },
+        {
+          "name": "Verify exactly one ledger record carries the injected Trade ID",
+          "outcome": "passed",
+          "duration": 0.0008311590008815983,
+          "message": null
+        },
+        {
+          "name": "Verify response contains a valid trades array",
+          "outcome": "passed",
+          "duration": 0.0008309070017276099,
+          "message": null
+        },
+        {
+          "name": "Verify pagination totalCount is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0009067449991562171,
+          "message": null
+        },
+        {
+          "name": "Verify pagination pageSize is a valid number > 0",
+          "outcome": "passed",
+          "duration": 0.0009498720010014949,
+          "message": null
+        },
+        {
+          "name": "Verify pagination currentPage is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0008889440014172578,
+          "message": null
+        },
+        {
+          "name": "Verify pagination hasMore is a boolean flag",
+          "outcome": "passed",
+          "duration": 0.0009804559995245654,
+          "message": null
+        },
+        {
+          "name": "Verify tradeRecordId is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0011003099989466136,
+          "message": null
+        },
+        {
+          "name": "Verify transactionId is a populated string",
+          "outcome": "passed",
+          "duration": 0.0008606530009274138,
+          "message": null
+        },
+        {
+          "name": "Verify leg1Id is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0008306569998239866,
+          "message": null
+        },
+        {
+          "name": "Verify createdAt strictly follows ISO-8601 format",
+          "outcome": "passed",
+          "duration": 0.000978928999757045,
+          "message": null
+        },
+        {
+          "name": "Verify tradingParty reflects the Domain B perspective (flipped - counterPartyId)",
+          "outcome": "passed",
+          "duration": 0.000950462999753654,
+          "message": null
+        },
+        {
+          "name": "Verify source platform is identified as TradeServ",
+          "outcome": "passed",
+          "duration": 0.0008794900004431838,
+          "message": null
+        },
+        {
+          "name": "Verify productType is strictly mapped as FX",
+          "outcome": "passed",
+          "duration": 0.0008953809992817696,
+          "message": null
+        },
+        {
+          "name": "Verify productSubType reflects the injected product type",
+          "outcome": "passed",
+          "duration": 0.0008342490000359248,
+          "message": null
+        },
+        {
+          "name": "Verify primary transaction type is TRADE",
+          "outcome": "passed",
+          "duration": 0.0008327599989570444,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetClass maps to CASH",
+          "outcome": "passed",
+          "duration": 0.0007875840019551106,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetType maps to FIAT",
+          "outcome": "passed",
+          "duration": 0.0005896730017411755,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is a populated string",
+          "outcome": "passed",
+          "duration": 0.0010862420003832085,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetId is the base currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0007110189981176518,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetId is the reference currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0006560719994013198,
+          "message": null
+        },
+        {
+          "name": "Verify the two leg assets together are the injected currency pair",
+          "outcome": "passed",
+          "duration": 0.0006598219988518395,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is the injected base currency amount",
+          "outcome": "passed",
+          "duration": 0.0006398369987437036,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetValue is the injected reference currency amount",
+          "outcome": "passed",
+          "duration": 0.0006714109986205585,
+          "message": null
+        },
+        {
+          "name": "Verify tradeDate is the trade date that was injected",
+          "outcome": "passed",
+          "duration": 0.0006316479993984103,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryDirection is the counterparty's side (BUY or SELL) of that currency",
+          "outcome": "passed",
+          "duration": 0.0006853469985799165,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryDirection is the counterparty's side (BUY or SELL) of that currency",
+          "outcome": "passed",
+          "duration": 0.0009615460003260523,
+          "message": null
+        },
+        {
+          "name": "Verify affirmation status is NEW, AFFIRMED, or CONFIRMED",
+          "outcome": "passed",
+          "duration": 0.0013024649997532833,
+          "message": null
+        },
+        {
+          "name": "Verify settlement status is properly sequenced",
+          "outcome": "passed",
+          "duration": 0.0025892759986163583,
+          "message": null
+        }
+      ],
+      "tradeLabel": "MSERV20261022.031695386910 (2 of 3)"
+    },
+    "t03-01-1.json": {
+      "step": "1",
+      "label": "Auth (A, B, Global) - MSERV20261022.031695387510 (3 of 3)",
+      "file": "tests/test_01_auth.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Generate token and save to state [A]",
+          "outcome": "passed",
+          "duration": 1.1846610909997253,
+          "message": null
+        },
+        {
+          "name": "Generate token and save to state [B]",
+          "outcome": "passed",
+          "duration": 0.29983823299880896,
+          "message": null
+        },
+        {
+          "name": "Generate token and save to state [GLOBAL]",
+          "outcome": "passed",
+          "duration": 0.3054725830006646,
+          "message": null
+        }
+      ],
+      "tradeLabel": "MSERV20261022.031695387510 (3 of 3)"
+    },
+    "t03-02-4.json": {
+      "step": "4",
+      "label": "Inject trade - MSERV20261022.031695387510 (3 of 3)",
+      "file": "tests/test_04_inject_trade.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "API: Endpoint returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 1.1510011489990575,
+          "message": null
+        },
+        {
+          "name": "Verify trade injection status matches expected status",
+          "outcome": "passed",
+          "duration": 0.0020813610026380047,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID exists in the generated payload mapping",
+          "outcome": "passed",
+          "duration": 0.0010669929997675354,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID adheres to MSERV- nomenclature",
+          "outcome": "passed",
+          "duration": 0.001534194998384919,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID meets minimum ledger character limits (>10)",
+          "outcome": "passed",
+          "duration": 0.0012282669995329343,
+          "message": null
+        },
+        {
+          "name": "Verify product type matches the configured product type",
+          "outcome": "passed",
+          "duration": 0.0016190950009331573,
+          "message": null
+        },
+        {
+          "name": "Verify the payload's base currency buyer, seller and partyDirection agree on who buys which currency",
+          "outcome": "passed",
+          "duration": 0.0022381529979611514,
+          "message": null
+        }
+      ],
+      "tradeLabel": "MSERV20261022.031695387510 (3 of 3)"
+    },
+    "t03-03-5.json": {
+      "step": "5",
+      "label": "Validate trade (A) - MSERV20261022.031695387510 (3 of 3)",
+      "file": "tests/test_05_validate_trade.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Verify auth token is present in state",
+          "outcome": "passed",
+          "duration": 1.1685009859993443,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0006562039998243563,
+          "message": null
+        },
+        {
+          "name": "Verify unique transaction ID (UTI) is present in state",
+          "outcome": "passed",
+          "duration": 0.0006105969987402204,
+          "message": null
+        },
+        {
+          "name": "Verify request returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.0007758639985695481,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is found on the ledger",
+          "outcome": "passed",
+          "duration": 0.0008729770015634131,
+          "message": null
+        },
+        {
+          "name": "Verify exactly one ledger record carries the injected Trade ID",
+          "outcome": "passed",
+          "duration": 0.000605405000897008,
+          "message": null
+        },
+        {
+          "name": "Verify response contains a valid trades array",
+          "outcome": "passed",
+          "duration": 0.0005954329990345286,
+          "message": null
+        },
+        {
+          "name": "Verify pagination totalCount is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0006022540001140442,
+          "message": null
+        },
+        {
+          "name": "Verify pagination pageSize is a valid number > 0",
+          "outcome": "passed",
+          "duration": 0.0007243160016514594,
+          "message": null
+        },
+        {
+          "name": "Verify pagination currentPage is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.001101243002267438,
+          "message": null
+        },
+        {
+          "name": "Verify pagination hasMore is a boolean flag",
+          "outcome": "passed",
+          "duration": 0.0007889460011938354,
+          "message": null
+        },
+        {
+          "name": "Verify tradeRecordId is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0009378249997098465,
+          "message": null
+        },
+        {
+          "name": "Verify transactionId is a populated string",
+          "outcome": "passed",
+          "duration": 0.0011039109995181207,
+          "message": null
+        },
+        {
+          "name": "Verify leg1Id is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.001061045997630572,
+          "message": null
+        },
+        {
+          "name": "Verify createdAt strictly follows ISO-8601 format",
+          "outcome": "passed",
+          "duration": 0.001270332002604846,
+          "message": null
+        },
+        {
+          "name": "Verify sourceReferenceId matches injected UTI",
+          "outcome": "passed",
+          "duration": 0.0006243879997782642,
+          "message": null
+        },
+        {
+          "name": "Verify tradingParty reflects the Domain A perspective",
+          "outcome": "passed",
+          "duration": 0.0007231319996208185,
+          "message": null
+        },
+        {
+          "name": "Verify source platform is identified as TradeServ",
+          "outcome": "passed",
+          "duration": 0.0005919010000070557,
+          "message": null
+        },
+        {
+          "name": "Verify productType is strictly mapped as FX",
+          "outcome": "passed",
+          "duration": 0.0008092610023595626,
+          "message": null
+        },
+        {
+          "name": "Verify productSubType reflects the injected product type",
+          "outcome": "passed",
+          "duration": 0.0006147009989945218,
+          "message": null
+        },
+        {
+          "name": "Verify primary transaction type is TRADE",
+          "outcome": "passed",
+          "duration": 0.0005957850007689558,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetClass maps to CASH",
+          "outcome": "passed",
+          "duration": 0.0004989879980712431,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetType maps to FIAT",
+          "outcome": "passed",
+          "duration": 0.000694230999215506,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is a populated string",
+          "outcome": "passed",
+          "duration": 0.0006637770020461176,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetId is the base currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0005270530000416329,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetId is the reference currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0005765519963460974,
+          "message": null
+        },
+        {
+          "name": "Verify the two leg assets together are the injected currency pair",
+          "outcome": "passed",
+          "duration": 0.0006238810001377715,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is the injected base currency amount",
+          "outcome": "passed",
+          "duration": 0.0005010829991078936,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetValue is the injected reference currency amount",
+          "outcome": "passed",
+          "duration": 0.0006760769992979476,
+          "message": null
+        },
+        {
+          "name": "Verify tradeDate is the trade date that was injected",
+          "outcome": "passed",
+          "duration": 0.0005538789991987869,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryDirection is the party's side (BUY or SELL) of that currency",
+          "outcome": "passed",
+          "duration": 0.0007344139976339648,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryDirection is the party's side (BUY or SELL) of that currency",
+          "outcome": "passed",
+          "duration": 0.0005782709995401092,
+          "message": null
+        },
+        {
+          "name": "Verify affirmation status is NEW, AFFIRMED, or CONFIRMED",
+          "outcome": "passed",
+          "duration": 0.0005795119996037101,
+          "message": null
+        },
+        {
+          "name": "Verify settlement status is properly sequenced",
+          "outcome": "passed",
+          "duration": 0.0016008710008463822,
+          "message": null
+        }
+      ],
+      "tradeLabel": "MSERV20261022.031695387510 (3 of 3)"
+    },
+    "t03-04-5b.json": {
+      "step": "5b",
+      "label": "Validate trade (B) - MSERV20261022.031695387510 (3 of 3)",
+      "file": "tests/test_05b_validate_trade_domain_b.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Verify Domain B auth token is present in state",
+          "outcome": "passed",
+          "duration": 1.1422421779989236,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0008064670000749175,
+          "message": null
+        },
+        {
+          "name": "Verify request returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.000865949999933946,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is found on the ledger",
+          "outcome": "passed",
+          "duration": 0.001316374002271914,
+          "message": null
+        },
+        {
+          "name": "Verify exactly one ledger record carries the injected Trade ID",
+          "outcome": "passed",
+          "duration": 0.000903027001186274,
+          "message": null
+        },
+        {
+          "name": "Verify response contains a valid trades array",
+          "outcome": "passed",
+          "duration": 0.0007267180008057039,
+          "message": null
+        },
+        {
+          "name": "Verify pagination totalCount is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0007204809990071226,
+          "message": null
+        },
+        {
+          "name": "Verify pagination pageSize is a valid number > 0",
+          "outcome": "passed",
+          "duration": 0.0008503919998474885,
+          "message": null
+        },
+        {
+          "name": "Verify pagination currentPage is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0011430190006649354,
+          "message": null
+        },
+        {
+          "name": "Verify pagination hasMore is a boolean flag",
+          "outcome": "passed",
+          "duration": 0.000997531000393792,
+          "message": null
+        },
+        {
+          "name": "Verify tradeRecordId is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0009222240005328786,
+          "message": null
+        },
+        {
+          "name": "Verify transactionId is a populated string",
+          "outcome": "passed",
+          "duration": 0.0013363340021896875,
+          "message": null
+        },
+        {
+          "name": "Verify leg1Id is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0008036489998630714,
+          "message": null
+        },
+        {
+          "name": "Verify createdAt strictly follows ISO-8601 format",
+          "outcome": "passed",
+          "duration": 0.00118456000018341,
+          "message": null
+        },
+        {
+          "name": "Verify tradingParty reflects the Domain B perspective (flipped - counterPartyId)",
+          "outcome": "passed",
+          "duration": 0.0007344269997702213,
+          "message": null
+        },
+        {
+          "name": "Verify source platform is identified as TradeServ",
+          "outcome": "passed",
+          "duration": 0.0012078270010533743,
+          "message": null
+        },
+        {
+          "name": "Verify productType is strictly mapped as FX",
+          "outcome": "passed",
+          "duration": 0.0010067520015581977,
+          "message": null
+        },
+        {
+          "name": "Verify productSubType reflects the injected product type",
+          "outcome": "passed",
+          "duration": 0.0012206610008433927,
+          "message": null
+        },
+        {
+          "name": "Verify primary transaction type is TRADE",
+          "outcome": "passed",
+          "duration": 0.00128994400256488,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetClass maps to CASH",
+          "outcome": "passed",
+          "duration": 0.0009345199978270102,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetType maps to FIAT",
+          "outcome": "passed",
+          "duration": 0.0012138399997638771,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is a populated string",
+          "outcome": "passed",
+          "duration": 0.00098520100073074,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetId is the base currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0012800779986719135,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetId is the reference currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0009907140029099537,
+          "message": null
+        },
+        {
+          "name": "Verify the two leg assets together are the injected currency pair",
+          "outcome": "passed",
+          "duration": 0.0012708190006378572,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is the injected base currency amount",
+          "outcome": "passed",
+          "duration": 0.0011998139998468105,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetValue is the injected reference currency amount",
+          "outcome": "passed",
+          "duration": 0.0008338579991686856,
+          "message": null
+        },
+        {
+          "name": "Verify tradeDate is the trade date that was injected",
+          "outcome": "passed",
+          "duration": 0.0011488049985928228,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryDirection is the counterparty's side (BUY or SELL) of that currency",
+          "outcome": "passed",
+          "duration": 0.0008422549999522744,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryDirection is the counterparty's side (BUY or SELL) of that currency",
+          "outcome": "passed",
+          "duration": 0.000721455999155296,
+          "message": null
+        },
+        {
+          "name": "Verify affirmation status is NEW, AFFIRMED, or CONFIRMED",
+          "outcome": "passed",
+          "duration": 0.0006709659992338857,
+          "message": null
+        },
+        {
+          "name": "Verify settlement status is properly sequenced",
+          "outcome": "passed",
+          "duration": 0.0017026469995471416,
+          "message": null
+        }
+      ],
+      "tradeLabel": "MSERV20261022.031695387510 (3 of 3)"
+    }
+  }
+}

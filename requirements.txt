@@ -1,0 +1,16 @@
+# OSTTRA API Suite - Python port
+#
+#   pip install --user -r requirements.txt
+
+# Test framework
+pytest==8.3.4
+pytest-html==4.1.1
+
+# HTTP client for every API service
+requests==2.32.3
+
+# Credentials and endpoints from .env
+python-dotenv==1.0.1
+
+# Excel run report (reports/excel/osttra-api-suite-report.xlsx)
+openpyxl==3.1.5

@@ -1,0 +1,99 @@
+[
+    {
+        "wrapper": {
+            "metaData": {
+                "determinedCounterpartyId": "BNKB-NY",
+                "determinedCounterpartyName": "BNKB-NY",
+                "determinedPartyId": "BNKA-NY",
+                "determinedPartyName": "BNKA-NY",
+                "ingestionTimeStamp": "2026-10-22T04:10:37.070Z",
+                "osttraTradeId": null,
+                "partyPerspective": "BNKA-NY",
+                "positionStatus": "Active",
+                "processingStatus": "Confirmed",
+                "status": "New",
+                "version": 0
+            },
+            "sourcePlatform": [
+                {
+                    "eventType": "Trade",
+                    "matchId": "MSERV20261022.031695391710",
+                    "messageId": "FXMSG123",
+                    "name": "TradeServ",
+                    "receiptTimeStamp": "2026-10-22T04:10:34.227Z",
+                    "sequence": 1,
+                    "submissionSource": "MQ",
+                    "submissionTimeStamp": "2026-10-22T04:10:34.970Z",
+                    "submissionUserId": "IHSMarkit Inbound System",
+                    "tradeId": "MSERV20261022.031695391710",
+                    "tradeSideId": "57754761",
+                    "tradeStatus": "CONFIRMED",
+                    "type": "TradeCapture",
+                    "uniqueTransactionId": "102777777812345678901234567890123456789013",
+                    "version": "-1"
+                }
+            ],
+            "tradeData": {
+                "assetClass": "FX",
+                "documentationDetail": {
+                    "calculationAgent": "BNKB-NY",
+                    "contractualDefinitions": [
+                        "ISDA1998FX"
+                    ],
+                    "masterAgreementType": "ISDA"
+                },
+                "fx": {
+                    "activeStatus": "Active",
+                    "confirmationTimeStamp": "2026-10-22T04:10:34.388Z",
+                    "fxCash": {
+                        "baseCurrency": "CNH",
+                        "currencyPair": "CNHUSD",
+                        "nearLeg": {
+                            "baseCurrencyAmount": 6740,
+                            "baseCurrencyBuyer": "BNKA-NY",
+                            "baseCurrencySeller": "BNKB-NY",
+                            "dealtCurrency": "CNH",
+                            "partyDirection": "Buy",
+                            "quoteBasis": "RefCcyPerBaseCcy",
+                            "rate": 2,
+                            "referenceCurrencyAmount": 1000,
+                            "valueDate": "2026-10-22"
+                        },
+                        "referenceCurrency": "USD"
+                    },
+                    "productType": "FxSpot",
+                    "tradeDate": "2026-10-22",
+                    "transactionType": "Trade"
+                },
+                "partyDetail": [
+                    {
+                        "partyFullLegalName": "BNKA-NY",
+                        "partyId": "BNKA-NY",
+                        "partyInstitutionName": "OSTTRA",
+                        "partyName": "BNKA-NY",
+                        "partyRole": "Party",
+                        "partySubmissionTimeStamp": "2026-10-22T04:10:34.227Z",
+                        "partyTradeId": "98A657F83CFF42BE9CB62ACE83FDC25801"
+                    },
+                    {
+                        "partyFullLegalName": "BNKB-NY",
+                        "partyId": "BNKB-NY",
+                        "partyInstitutionName": "OSTTRA",
+                        "partyName": "BNKB-NY",
+                        "partyRole": "Counterparty",
+                        "partyTradeId": "98A657F83CFF42BE9CB62ACE83FDC25802"
+                    },
+                    {
+                        "partyId": "BNKA-NY",
+                        "partyRole": "Submitter"
+                    }
+                ],
+                "settlementDetail": {
+                    "pvpFlag": "PVP",
+                    "pvpRegistrationStatus": "Pre-Accepted",
+                    "settlementStatus": false
+                }
+            }
+        }
+    }
+]

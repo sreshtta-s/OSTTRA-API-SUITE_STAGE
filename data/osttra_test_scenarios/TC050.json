@@ -1,0 +1,144 @@
+{
+  "scenario": {
+    "id": "TC050",
+    "traceabilityId": "TC_SM-214_024",
+    "tradeServComment": "Published",
+    "highLevelScenario": "Cancel - All messages in a Netting group. Amount to be recalculated as 0.",
+    "expectation": null,
+    "isValid": true,
+    "settlementCurrency": null,
+    "direction": "Buy",
+    "against": "Base",
+    "ccpAlias": null,
+    "clearingBroker": null,
+    "counterpartyClearingBroker": null,
+    "partyCcp": null,
+    "counterpartyCcp": null,
+    "notes": [
+      "Scope: bilateral trade cancellations. The row's one trade is the only message in its netting group, and it is cancelled once it is there, so the group's amount must be recalculated as 0.",
+      "The trade runs steps 01, 04, 05 and 05b (\"runUpTo\": \"5b\" on the trade), and the group's steps run once for it: 06 / 06b find its netting group, and 07 / 07b find the trade's legs there while it is still live and check their fields and amounts, as for any netted trade. It is written as a netting row (nettingTotal, tradeCount 1), because only a netting row can cancel a trade once it is in its group.",
+      "\"cancelTrade\" (trade 1, after step 07b) then cancels it while the group is open: step 04 cancel resends it under its own ids (tradeId, tradeSideId, UTI, party trade ids) with metaData.status \"Cancelled\", and steps 05ct_a and 05ct_b wait for the Domain A and B ledgers to show it CANCELLED, still as one record.",
+      "The trade is then taken out of the stored sum (utils/sum_storer.py). It was the only one, so the sum is 0 CNH and 0 USD for both parties, and state is marked tradeCancelled.",
+      "The netting total check (07c) then runs, as it must before step 08: nettingTotal.groupAmounts states 0 CNH and 0 USD, so it reads the group 07 / 07b found and requires it to net to exactly 0 on both domains, a CANCELLED leg counting nothing, so the trade's legs must be CANCELLED or gone: the amount recalculated as 0. It saves that 0 net for steps 12 / 12b.",
+      "\"runUpTo\": \"13b\" then runs the flow on that group up to settlement on Domains A and B: close (08 / 08b), status (09 / 09b), proposal match (10, 11 and 11b, run because the BNKA-NY / BNKB-NY FxForward rule in data/trade_scenarios.py is manual; an auto rule skips them), confirmation (12 / 12b, which expect the 0 net 07c read) and settlement (13 / 13b). The Global Operator's settlement (13c), the MT910 funding call (14) and the ledgers (15 / 15b) do not run. No expect, so every step must pass.",
+      "Order in the run and the report: 01, 04, 05, 05b, 06, 06b, 07, 07b, 04 cancel, 05ct_a, 05ct_b, 07c, 08, 08b, 09, 09b, 10, 11, 11b, 12, 12b, 13, 13b.",
+      "Another run's or case's trade with the same parties, pair, product and value date would share the group; 07c counts its live legs in the group's net, so the group would no longer net to 0.",
+      "The cancel steps and 07c are in the HTML report only: they have no Excel column. The trade and the group each get an Excel row.",
+      "The sheet gives the settlement / valuation date as the closed trigger time, which is not a date. The current date is used, as {{TODAY}}, so the group's close falls on the run date; tradeDate is the run date.",
+      "The sheet states the trade as base USD, reference CNH. It is carried as CNHUSD, the order the rest of the pack, TradeServ and the netting rule use, with each amount kept on its own currency. The sheet leaves the amounts and rate blank, so the pack's standard 6740 CNH (baseCurrencyAmount), 1000 USD (referenceCurrencyAmount) and rate 2 are used.",
+      "direction and Against are not given in the sheet. Buy and Base are used, matching the rest of the pack: BNKA-NY is the base currency buyer, partyDirection Buy.",
+      "tradeReference and counterpartyReferenceNumber are free-text boxes, so they are generated per run as tradeId and the counterparty partyTradeId.",
+      "ccpAlias, clearingBroker and counterpartyClearingBroker have no wrapper field, so they are left out of the payload entirely. Party CCP and Cpty CCP are not given in the sheet; the payload carries the ordinary PVP settlement flag."
+    ]
+  },
+  "runUpTo": "13b",
+  "cancelTrade": {
+    "trade": 1,
+    "after": "7b"
+  },
+  "nettingTotal": {
+    "tradeCount": 1,
+    "party": "BNKA-NY",
+    "counterParty": "BNKB-NY",
+    "tradeCurrencyPair": "CNHUSD",
+    "productType": "FxForward",
+    "baseCurrency": "CNH",
+    "referenceCurrency": "USD",
+    "groupAmounts": {
+      "CNH": 0,
+      "USD": 0
+    }
+  },
+  "trades": [
+    {
+      "label": "only trade in the group",
+      "runUpTo": "5b",
+      "trade": {
+        "wrapper": {
+          "metaData": {
+            "determinedCounterpartyId": "BNKB-NY",
+            "determinedPartyId": "BNKA-NY",
+            "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+            "osttraTradeId": "{{GUID1}}",
+            "partyPerspective": "BNKA-NY",
+            "positionStatus": "Active",
+            "processingStatus": "Confirmed",
+            "status": "New",
+            "version": 0
+          },
+          "sourcePlatform": [
+            {
+              "eventType": "Trade",
+              "matchId": "{{GUID2}}",
+              "messageId": "{{GUID2}}",
+              "name": "TradeServ",
+              "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+              "sequence": 1,
+              "submissionSource": "WEB",
+              "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+              "submissionUserId": "Stephen Toal",
+              "tradeId": "{{TRADE_ID}}",
+              "tradeSideId": "{{TRADE_SIDE_ID}}",
+              "tradeStatus": "CONFIRMED",
+              "type": "TradeCapture",
+              "uniqueTransactionId": "{{UTI}}",
+              "version": "-1"
+            }
+          ],
+          "tradeData": {
+            "assetClass": "FX",
+            "documentationDetail": {
+              "contractualDefinitions": [
+                "ISDA1998FX"
+              ]
+            },
+            "fx": {
+              "activeStatus": "Active",
+              "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+              "fxCash": {
+                "baseCurrency": "CNH",
+                "currencyPair": "CNHUSD",
+                "nearLeg": {
+                  "baseCurrencyAmount": 6740,
+                  "baseCurrencyBuyer": "BNKA-NY",
+                  "baseCurrencySeller": "BNKB-NY",
+                  "dealtCurrency": "CNH",
+                  "partyDirection": "Buy",
+                  "quoteBasis": "RefCcyPerBaseCcy",
+                  "rate": 2,
+                  "referenceCurrencyAmount": 1000,
+                  "valueDate": "{{TODAY}}"
+                },
+                "referenceCurrency": "USD"
+              },
+              "productType": "FxForward",
+              "tradeDate": "{{TODAY}}",
+              "transactionType": "Trade"
+            },
+            "partyDetail": [
+              {
+                "partyId": "BNKA-NY",
+                "partyRole": "Party",
+                "partyTradeId": "{{PARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKB-NY",
+                "partyRole": "Counterparty",
+                "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKA-NY",
+                "partyRole": "Submitter"
+              }
+            ],
+            "settlementDetail": {
+              "pvpFlag": "PVP",
+              "pvpRegistrationStatus": "Pre-Accepted",
+              "settlementStatus": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}

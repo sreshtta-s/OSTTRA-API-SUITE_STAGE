@@ -1,0 +1,2255 @@
+{
+  "scenario": "TC005",
+  "recordedAt": "2026-09-29 15:52:58",
+  "trades": [
+    {
+      "label": "original 1 of 3",
+      "tradeId": "MSERV-9941780631",
+      "uniqueTransactionId": "549300CWK6F65W566G32MSFX2026092900884284629693758329",
+      "reqPartyId": "BNKA-HK",
+      "counterPartyId": "BNKB-NY",
+      "tradeCurrencyPair": "USDCNH",
+      "productType": "FxForward",
+      "dealtCurrency": "USD",
+      "referenceCurrency": "CNH",
+      "baseCurrencyAmount": 1000,
+      "referenceCurrencyAmount": 6740,
+      "tradeDate": "2026-09-29",
+      "valueDate": "2026-09-29",
+      "failedSteps": 14
+    },
+    {
+      "label": "duplicate 2 of 3",
+      "tradeId": "MSERV-9941780631",
+      "uniqueTransactionId": "549300CWK6F65W566G32MSFX2026092900884284629693758329",
+      "reqPartyId": "BNKA-HK",
+      "counterPartyId": "BNKB-NY",
+      "tradeCurrencyPair": "USDCNH",
+      "productType": "FxForward",
+      "dealtCurrency": "USD",
+      "referenceCurrency": "CNH",
+      "baseCurrencyAmount": 1000,
+      "referenceCurrencyAmount": 6740,
+      "tradeDate": "2026-09-29",
+      "valueDate": "2026-09-29",
+      "failedSteps": 0
+    },
+    {
+      "label": "duplicate 3 of 3",
+      "tradeId": "MSERV-9941780631",
+      "uniqueTransactionId": "549300CWK6F65W566G32MSFX2026092900884284629693758329",
+      "reqPartyId": "BNKA-HK",
+      "counterPartyId": "BNKB-NY",
+      "tradeCurrencyPair": "USDCNH",
+      "productType": "FxForward",
+      "dealtCurrency": "USD",
+      "referenceCurrency": "CNH",
+      "baseCurrencyAmount": 1000,
+      "referenceCurrencyAmount": 6740,
+      "tradeDate": "2026-09-29",
+      "valueDate": "2026-09-29",
+      "failedSteps": 0
+    }
+  ],
+  "blobs": {
+    "t01-02-4.json": {
+      "step": "4",
+      "label": "Inject trade - original 1 of 3",
+      "file": "tests/test_04_inject_trade.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "API: Endpoint returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 2.0256287990014243,
+          "message": null
+        },
+        {
+          "name": "Verify trade injection status matches expected status",
+          "outcome": "passed",
+          "duration": 0.0005704439972760156,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID exists in the generated payload mapping",
+          "outcome": "passed",
+          "duration": 0.00038715800110367127,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID adheres to MSERV- nomenclature",
+          "outcome": "passed",
+          "duration": 0.003612999000324635,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID meets minimum ledger character limits (>10)",
+          "outcome": "passed",
+          "duration": 0.0005676850014424417,
+          "message": null
+        },
+        {
+          "name": "Verify product type matches the configured product type",
+          "outcome": "passed",
+          "duration": 0.0014481479993264657,
+          "message": null
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-03-5.json": {
+      "step": "5",
+      "label": "Validate trade (A) - original 1 of 3",
+      "file": "tests/test_05_validate_trade.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Verify auth token is present in state",
+          "outcome": "passed",
+          "duration": 10.65413769099905,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0003405899988138117,
+          "message": null
+        },
+        {
+          "name": "Verify unique transaction ID (UTI) is present in state",
+          "outcome": "passed",
+          "duration": 0.00034403999961796217,
+          "message": null
+        },
+        {
+          "name": "Verify request returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.0004750739972223528,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is found on the ledger",
+          "outcome": "passed",
+          "duration": 0.0004042770015075803,
+          "message": null
+        },
+        {
+          "name": "Verify exactly one ledger record carries the injected Trade ID",
+          "outcome": "passed",
+          "duration": 0.00033057399923563935,
+          "message": null
+        },
+        {
+          "name": "Verify response contains a valid trades array",
+          "outcome": "passed",
+          "duration": 0.00033554999754414894,
+          "message": null
+        },
+        {
+          "name": "Verify pagination totalCount is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0003564649996405933,
+          "message": null
+        },
+        {
+          "name": "Verify pagination pageSize is a valid number > 0",
+          "outcome": "passed",
+          "duration": 0.000355791999027133,
+          "message": null
+        },
+        {
+          "name": "Verify pagination currentPage is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.00034854799741879106,
+          "message": null
+        },
+        {
+          "name": "Verify pagination hasMore is a boolean flag",
+          "outcome": "passed",
+          "duration": 0.00033765900298021734,
+          "message": null
+        },
+        {
+          "name": "Verify tradeRecordId is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.00035024199678446166,
+          "message": null
+        },
+        {
+          "name": "Verify transactionId is a populated string",
+          "outcome": "passed",
+          "duration": 0.00034336500175413676,
+          "message": null
+        },
+        {
+          "name": "Verify leg1Id is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.00031851800304139033,
+          "message": null
+        },
+        {
+          "name": "Verify createdAt strictly follows ISO-8601 format",
+          "outcome": "passed",
+          "duration": 0.0003498229998513125,
+          "message": null
+        },
+        {
+          "name": "Verify sourceReferenceId matches injected UTI",
+          "outcome": "passed",
+          "duration": 0.0003215219985577278,
+          "message": null
+        },
+        {
+          "name": "Verify tradingParty reflects the Domain A perspective",
+          "outcome": "passed",
+          "duration": 0.0004459159972611815,
+          "message": null
+        },
+        {
+          "name": "Verify source platform is identified as TradeServ",
+          "outcome": "passed",
+          "duration": 0.0004783590011356864,
+          "message": null
+        },
+        {
+          "name": "Verify productType is strictly mapped as FX",
+          "outcome": "passed",
+          "duration": 0.0002905589972215239,
+          "message": null
+        },
+        {
+          "name": "Verify productSubType reflects the injected product type",
+          "outcome": "passed",
+          "duration": 0.0003538509990903549,
+          "message": null
+        },
+        {
+          "name": "Verify primary transaction type is TRADE",
+          "outcome": "passed",
+          "duration": 0.00044768600128008984,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetClass maps to CASH",
+          "outcome": "passed",
+          "duration": 0.0004033500008517876,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetType maps to FIAT",
+          "outcome": "passed",
+          "duration": 0.0003411510006117169,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is a populated string",
+          "outcome": "passed",
+          "duration": 0.00040356099998462014,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetId is the dealt currency that was injected",
+          "outcome": "passed",
+          "duration": 0.000419388001319021,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetId is the reference currency that was injected",
+          "outcome": "passed",
+          "duration": 0.00038819300243631005,
+          "message": null
+        },
+        {
+          "name": "Verify the two leg assets together are the injected currency pair",
+          "outcome": "passed",
+          "duration": 0.0004259709967300296,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is the injected base currency amount",
+          "outcome": "passed",
+          "duration": 0.00027470399800222367,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetValue is the injected reference currency amount",
+          "outcome": "passed",
+          "duration": 0.0002534550003474578,
+          "message": null
+        },
+        {
+          "name": "Verify tradeDate is the trade date that was injected",
+          "outcome": "passed",
+          "duration": 0.0003497379984764848,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryDirection is distinctly BUY or SELL",
+          "outcome": "passed",
+          "duration": 0.0004447110040928237,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryDirection is distinctly BUY or SELL",
+          "outcome": "passed",
+          "duration": 0.00026857600096263923,
+          "message": null
+        },
+        {
+          "name": "Verify affirmation status is NEW, AFFIRMED, or CONFIRMED",
+          "outcome": "passed",
+          "duration": 0.00030197700107237324,
+          "message": null
+        },
+        {
+          "name": "Verify settlement status is properly sequenced",
+          "outcome": "passed",
+          "duration": 0.0006204259989317507,
+          "message": null
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-04-5b.json": {
+      "step": "5b",
+      "label": "Validate trade (B) - original 1 of 3",
+      "file": "tests/test_05b_validate_trade_domain_b.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Verify Domain B auth token is present in state",
+          "outcome": "passed",
+          "duration": 6.855923747996712,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0002879290041164495,
+          "message": null
+        },
+        {
+          "name": "Verify request returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.0002694809991226066,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is found on the ledger",
+          "outcome": "passed",
+          "duration": 0.00038783600030001253,
+          "message": null
+        },
+        {
+          "name": "Verify exactly one ledger record carries the injected Trade ID",
+          "outcome": "passed",
+          "duration": 0.0004510969993134495,
+          "message": null
+        },
+        {
+          "name": "Verify response contains a valid trades array",
+          "outcome": "passed",
+          "duration": 0.0004883100009465124,
+          "message": null
+        },
+        {
+          "name": "Verify pagination totalCount is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0003015890033566393,
+          "message": null
+        },
+        {
+          "name": "Verify pagination pageSize is a valid number > 0",
+          "outcome": "passed",
+          "duration": 0.00033473999428679235,
+          "message": null
+        },
+        {
+          "name": "Verify pagination currentPage is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0004038619990751613,
+          "message": null
+        },
+        {
+          "name": "Verify pagination hasMore is a boolean flag",
+          "outcome": "passed",
+          "duration": 0.0002614620025269687,
+          "message": null
+        },
+        {
+          "name": "Verify tradeRecordId is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0002465379948262125,
+          "message": null
+        },
+        {
+          "name": "Verify transactionId is a populated string",
+          "outcome": "passed",
+          "duration": 0.0003085329990426544,
+          "message": null
+        },
+        {
+          "name": "Verify leg1Id is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.00036221799746272154,
+          "message": null
+        },
+        {
+          "name": "Verify createdAt strictly follows ISO-8601 format",
+          "outcome": "passed",
+          "duration": 0.0002820490044541657,
+          "message": null
+        },
+        {
+          "name": "Verify tradingParty reflects the Domain B perspective (flipped - counterPartyId)",
+          "outcome": "passed",
+          "duration": 0.00024032999863266014,
+          "message": null
+        },
+        {
+          "name": "Verify source platform is identified as TradeServ",
+          "outcome": "passed",
+          "duration": 0.00022800100123276934,
+          "message": null
+        },
+        {
+          "name": "Verify productType is strictly mapped as FX",
+          "outcome": "passed",
+          "duration": 0.0002329660019313451,
+          "message": null
+        },
+        {
+          "name": "Verify productSubType reflects the injected product type",
+          "outcome": "passed",
+          "duration": 0.00023521599359810352,
+          "message": null
+        },
+        {
+          "name": "Verify primary transaction type is TRADE",
+          "outcome": "passed",
+          "duration": 0.0003018429997609928,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetClass maps to CASH",
+          "outcome": "passed",
+          "duration": 0.0003325180005049333,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetType maps to FIAT",
+          "outcome": "passed",
+          "duration": 0.0004491840008995496,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is a populated string",
+          "outcome": "passed",
+          "duration": 0.00033875300141517073,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetId is the dealt currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0004213439970044419,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetId is the reference currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0003139239961456042,
+          "message": null
+        },
+        {
+          "name": "Verify the two leg assets together are the injected currency pair",
+          "outcome": "passed",
+          "duration": 0.0003227029992558528,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is the injected base currency amount",
+          "outcome": "passed",
+          "duration": 0.00037915099528618157,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetValue is the injected reference currency amount",
+          "outcome": "passed",
+          "duration": 0.00039277800533454865,
+          "message": null
+        },
+        {
+          "name": "Verify tradeDate is the trade date that was injected",
+          "outcome": "passed",
+          "duration": 0.00038496300112456083,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryDirection is distinctly BUY or SELL",
+          "outcome": "passed",
+          "duration": 0.0003686789968924131,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryDirection is distinctly BUY or SELL",
+          "outcome": "passed",
+          "duration": 0.00035728400325751863,
+          "message": null
+        },
+        {
+          "name": "Verify affirmation status is NEW, AFFIRMED, or CONFIRMED",
+          "outcome": "passed",
+          "duration": 0.0003899200019077398,
+          "message": null
+        },
+        {
+          "name": "Verify settlement status is properly sequenced",
+          "outcome": "passed",
+          "duration": 0.0013176240026950836,
+          "message": null
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-05-6.json": {
+      "step": "6",
+      "label": "Netting group (A) - original 1 of 3",
+      "file": "tests/test_06_validate_netting.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "Verify auth token is present in state",
+          "outcome": "passed",
+          "duration": 6.3309811649996846,
+          "message": null
+        },
+        {
+          "name": "Verify expected Rule ID is present in state",
+          "outcome": "passed",
+          "duration": 0.00027345700073055923,
+          "message": null
+        },
+        {
+          "name": "Verify endpoint returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.00023227299607242458,
+          "message": null
+        },
+        {
+          "name": "Verify ledger response contains a valid items array",
+          "outcome": "passed",
+          "duration": 0.00022079499467508867,
+          "message": null
+        },
+        {
+          "name": "Verify netting group utilizing the expected Rule ID exists in ledger",
+          "outcome": "failed",
+          "duration": 0.003564075999747729,
+          "message": "tests/test_06_validate_netting.py:206: in test_netting_group_exists_for_rule\n    assert ctx.matched_netting_group is not None, \\\nE   AssertionError: No Domain A netting group under rule [invalid-fallback-rule-4b8616c20412] was found for value date [2026-09-29] or in the window [2026-09-28 .. 2026-10-29].\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=200, response_body={'items': [{'nettingKey': 'assetPair=CNH-USD,counterParty=BNKB-NY,productType=FX,tradingParty=BNKA-NY,valueDate=2026-10-07,ruleSetId=bilateral-bnka-ny-bnkb-ny-94c59ecb3297', 'configSnapshot': {'nettingGroupId': 305, 'enabledForAutoAffirmation': False, 'autoCloseTriggerTime': '2026-10-07 23:45', 'nettingRuleId': 'bilateral-bnka-ny-bnkb-ny-94c59ecb3297', 'nettingCycleName': None, 'nettingRuleVersion': '1', 'settlementAccountModel': None, 'resolvedSettlementActionJson': '{\"settlementMode\":\"PVP\",\"legs\":[{\"name\":\"NA\",\"venue\":\"OSTTRA\",\"accountType\":\"SEGREGATED\",\"settlementTime\":{\"scheduleType\":\"SCHEDULED\",\"triggerDay\":\"VD\",\"triggerTime\":\"23:55\",\"relativeTo\":null}}]}', 'createdTime': '2026-08-19 11:55:18.000000000', 'lastUpdatedTime': '2026-08-19 11:55:18.000000000'}, 'lastUpdatedBy': 'BATON', 'nettingGroupCloseType': 'MANUAL', 'tradingParty': 'BNKA-NY', 'transactionMetadata': None, 'settlementSystem': 'BATON', 'clearingGroup': None, 'nettingStrategy': 'BILATERAL_ASSET_PAIR', 'valueDate': '2026-10-07', 'version': 8, 'pendingApprovalReason': None, 'createdDate': '2026-08-19', 'commonGroupId': 'bilateralbnkanybnk4XC47L', 'createdBy': 'BATON', 'creat...edBy': 'BATON', 'nettingGroupCloseType': None, 'tradingParty': 'BNKA-NY', 'transactionMetadata': None, 'settlementSystem': 'BATON', 'clearingGroup': None, 'nettingStrategy': 'BILATERAL_ASSET_PAIR', 'valueDate': '2026-09-29', 'version': 0, 'pendingApprovalReason': None, 'createdDate': '2026-09-29', 'commonGroupId': None, 'createdBy': 'BATON', 'createdTime': '2026-09-29 10:18:41.000000000', 'counterParty': 'BNKB-NY', 'comment': None, 'lastUpdatedTime': '2026-09-29 10:18:41.000000000', 'id': 1260, 'nettingGroupId': 'NG-20260929-DX7D377', 'unresolvedExceptionReference': '{}', 'status': 'OPEN_NET'}], 'allItemIdList': None, 'totalItems': 329}, matched_netting_group=None, extracted_numeric_id=None, extracted_string_id=None, server_error=None, token_present=True, expected_rule_id='invalid-fallback-rule-4b8616c20412', expected_party='BNKA-HK', expected_counter_party='BNKB-NY', target_date='2026-09-29', trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29', group='Domain A netting group', window='2026-09-28 .. 2026-10-29').matched_netting_group"
+        },
+        {
+          "name": "Verify extracted numeric netting group ID is valid",
+          "outcome": "skipped",
+          "duration": 0.0005710459990950767,
+          "message": "Skipped: No Domain A netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify extracted string netting group ID follows NG- nomenclature",
+          "outcome": "skipped",
+          "duration": 0.0004642610001610592,
+          "message": "Skipped: No Domain A netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify config snapshot retains accurate Rule ID mapping",
+          "outcome": "skipped",
+          "duration": 0.00038915700133657083,
+          "message": "Skipped: No Domain A netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify trading party precisely matches the origin initiator",
+          "outcome": "skipped",
+          "duration": 0.00030538099963450804,
+          "message": "Skipped: No Domain A netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify counter party precisely matches the destination recipient",
+          "outcome": "skipped",
+          "duration": 0.0003802390019700397,
+          "message": "Skipped: No Domain A netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify netting strategy dynamically resolves to BILATERAL_ASSET_PAIR",
+          "outcome": "skipped",
+          "duration": 0.00042370300070615485,
+          "message": "Skipped: No Domain A netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify settlement system architecture is designated as BATON",
+          "outcome": "skipped",
+          "duration": 0.0004031250027765054,
+          "message": "Skipped: No Domain A netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify auto-affirmation conforms to configuration rules (Boolean)",
+          "outcome": "skipped",
+          "duration": 0.00045674300054088235,
+          "message": "Skipped: No Domain A netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify netting group status implies ledger ingestion success",
+          "outcome": "skipped",
+          "duration": 0.0012382310014800169,
+          "message": "Skipped: No Domain A netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-06-6b.json": {
+      "step": "6b",
+      "label": "Netting group (B) - original 1 of 3",
+      "file": "tests/test_06b_validate_netting_domain_b.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "Verify Domain B auth token is present in state",
+          "outcome": "passed",
+          "duration": 6.304101039004308,
+          "message": null
+        },
+        {
+          "name": "Verify expected Rule ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0004664659973059315,
+          "message": null
+        },
+        {
+          "name": "Verify endpoint returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.00038534199848072603,
+          "message": null
+        },
+        {
+          "name": "Verify ledger response contains a valid items array",
+          "outcome": "passed",
+          "duration": 0.00037430400334415026,
+          "message": null
+        },
+        {
+          "name": "Verify netting group utilizing the expected Rule ID exists in Domain B",
+          "outcome": "failed",
+          "duration": 0.00624319700000342,
+          "message": "tests/test_06b_validate_netting_domain_b.py:211: in test_netting_group_exists_for_rule\n    assert ctx.matched_netting_group is not None, f'{problem}\\n{ctx.trade}'\nE   AssertionError: No Domain B netting group under rule [invalid-fallback-rule-4b8616c20412] was found for value date [2026-09-29] or in the window [2026-09-28 .. 2026-10-29].\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=200, response_body={'items': [{'nettingKey': 'assetPair=CNH-USD,counterParty=BNKA-NY,productType=FX,tradingParty=BNKB-NY,valueDate=2026-10-07,ruleSetId=bilateral-bnka-ny-bnkb-ny-94c59ecb3297', 'configSnapshot': {'nettingGroupId': 296, 'enabledForAutoAffirmation': False, 'autoCloseTriggerTime': '2026-10-07 23:45', 'nettingRuleId': 'bilateral-bnka-ny-bnkb-ny-94c59ecb3297', 'nettingCycleName': None, 'nettingRuleVersion': '1', 'settlementAccountModel': None, 'resolvedSettlementActionJson': '{\"settlementMode\":\"PVP\",\"legs\":[{\"name\":\"NA\",\"venue\":\"OSTTRA\",\"accountType\":\"SEGREGATED\",\"settlementTime\":{\"scheduleType\":\"SCHEDULED\",\"triggerDay\":\"VD\",\"triggerTime\":\"23:55\",\"relativeTo\":null}}]}', 'createdTime': '2026-08-19 11:55:18.000000000', 'lastUpdatedTime': '2026-08-19 11:55:18.000000000'}, 'lastUpdatedBy': 'BATON', 'nettingGroupCloseType': 'MANUAL', 'tradingParty': 'BNKB-NY', 'transactionMetadata': None, 'settlementSystem': 'BATON', 'clearingGroup': None, 'nettingStrategy': 'BILATERAL_ASSET_PAIR', 'valueDate': '2026-10-07', 'version': 8, 'pendingApprovalReason': None, 'createdDate': '2026-08-19', 'commonGroupId': 'bilateralbnkanybnk4XC47L', 'createdBy': 'BATON', 'creat...MANUAL', 'tradingParty': 'BNKB-NY', 'transactionMetadata': None, 'settlementSystem': 'BATON', 'clearingGroup': None, 'nettingStrategy': 'BILATERAL_ASSET_PAIR', 'valueDate': '2026-09-29', 'version': 8, 'pendingApprovalReason': None, 'createdDate': '2026-09-29', 'commonGroupId': 'bilateralbnkahkbnkbnyec77aa279bdd4XOQJP', 'createdBy': 'BATON', 'createdTime': '2026-09-29 10:18:02.000000000', 'counterParty': 'BNKA-HK', 'comment': None, 'lastUpdatedTime': '2026-09-29 10:18:45.000000000', 'id': 1221, 'nettingGroupId': 'NG-20260929-D6CZKDR', 'unresolvedExceptionReference': '{}', 'status': 'CONFIRMED'}], 'allItemIdList': None, 'totalItems': 318}, matched_netting_group=None, extracted_numeric_id=None, extracted_string_id=None, server_error=None, token_present=True, expected_rule_id='invalid-fallback-rule-4b8616c20412', expected_party='BNKA-HK', expected_counter_party='BNKB-NY', target_date='2026-09-29', trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29', group='Domain B netting group', window='2026-09-28 .. 2026-10-29').matched_netting_group"
+        },
+        {
+          "name": "Verify extracted numeric netting group ID is valid",
+          "outcome": "skipped",
+          "duration": 0.000517810996825574,
+          "message": "Skipped: No Domain B netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify extracted Domain B string netting group ID follows NG- nomenclature",
+          "outcome": "skipped",
+          "duration": 0.0004329050025262404,
+          "message": "Skipped: No Domain B netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify trading party precisely matches the destination recipient (flipped)",
+          "outcome": "skipped",
+          "duration": 0.00043739599641412497,
+          "message": "Skipped: No Domain B netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify counter party precisely matches the origin initiator (flipped)",
+          "outcome": "skipped",
+          "duration": 0.00046847599878674373,
+          "message": "Skipped: No Domain B netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify netting strategy dynamically resolves to BILATERAL_ASSET_PAIR",
+          "outcome": "skipped",
+          "duration": 0.0004863760004809592,
+          "message": "Skipped: No Domain B netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify config snapshot retains accurate Rule ID mapping",
+          "outcome": "skipped",
+          "duration": 0.0005276969968690537,
+          "message": "Skipped: No Domain B netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify settlement system architecture is designated as BATON",
+          "outcome": "skipped",
+          "duration": 0.0005697749984392431,
+          "message": "Skipped: No Domain B netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify auto-affirmation conforms to configuration rules (Boolean)",
+          "outcome": "skipped",
+          "duration": 0.0004556920030154288,
+          "message": "Skipped: No Domain B netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        },
+        {
+          "name": "Verify netting group status implies ledger ingestion success",
+          "outcome": "skipped",
+          "duration": 0.001674787996307714,
+          "message": "Skipped: No Domain B netting group was found under rule [invalid-fallback-rule-4b8616c20412]."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-07-7.json": {
+      "step": "7",
+      "label": "Netting underlying (A) - original 1 of 3",
+      "file": "tests/test_07_validate_netting_underlying.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "Pre-flight: Auth token is present in state",
+          "outcome": "passed",
+          "duration": 30.79226039200148,
+          "message": null
+        },
+        {
+          "name": "Pre-flight: Expected Netting Group ID is present in state",
+          "outcome": "failed",
+          "duration": 0.0011390610015951097,
+          "message": "tests/test_07_validate_netting_underlying.py:221: in test_netting_group_id_present\n    assert ctx.expected_netting_group_id is not None, \\\nE   AssertionError: nettingGroupIdString is missing from state, so there is no Domain A netting group to look in. Did step 06 find one?\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, response_body=None, matched_underlying_trade=None, leg_amounts={}, token_present=True, expected_netting_group_id=None, expected_trade_id='MSERV-9941780631', expected_party='BNKA-HK', expected_counter_party='BNKB-NY', expected_rule_id='invalid-fallback-rule-4b8616c20412', injected_product_type='FxForward', expected_dealt_currency='USD', expected_reference_currency='CNH', expected_base_amount=1000, expected_reference_amount=6740, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29', leg=None).expected_netting_group_id"
+        },
+        {
+          "name": "Pre-flight: Expected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.00041275000330642797,
+          "message": null
+        },
+        {
+          "name": "Pre-flight: Expected Rule ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0003943759984395001,
+          "message": null
+        },
+        {
+          "name": "API: Endpoint returns a 2xx Success Status",
+          "outcome": "skipped",
+          "duration": 0.0004924569984723348,
+          "message": "Skipped: API call was not executed due to missing prerequisites."
+        },
+        {
+          "name": "Schema: Ledger response contains a valid items array",
+          "outcome": "skipped",
+          "duration": 0.0005000160053896252,
+          "message": "Skipped: Response data is unavailable."
+        },
+        {
+          "name": "Routing: Trade exists within the assigned Netting Group",
+          "outcome": "failed",
+          "duration": 0.0007502480002585799,
+          "message": "tests/test_07_validate_netting_underlying.py:277: in test_trade_exists_in_netting_group\n    assert ctx.matched_underlying_trade is not None, f'{problem}\\n{ctx.trade}'\nE   AssertionError: Trade [MSERV-9941780631] has no leg in Domain A netting group [None], nor in any other Domain A group under rule [invalid-fallback-rule-4b8616c20412].\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, response_body=None, matched_underlying_trade=None, leg_amounts={}, token_present=True, expected_netting_group_id=None, expected_trade_id='MSERV-9941780631', expected_party='BNKA-HK', expected_counter_party='BNKB-NY', expected_rule_id='invalid-fallback-rule-4b8616c20412', injected_product_type='FxForward', expected_dealt_currency='USD', expected_reference_currency='CNH', expected_base_amount=1000, expected_reference_amount=6740, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29', leg=None).matched_underlying_trade"
+        },
+        {
+          "name": "Business Logic: Asset class resolves correctly as CASH",
+          "outcome": "skipped",
+          "duration": 0.0004765599987877067,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain A netting group."
+        },
+        {
+          "name": "Business Logic: Settlement Mode resolves correctly as NET",
+          "outcome": "skipped",
+          "duration": 0.0005828360008308664,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain A netting group."
+        },
+        {
+          "name": "Business Logic: Product Category matches the injected product type",
+          "outcome": "skipped",
+          "duration": 0.0008606820010754745,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain A netting group."
+        },
+        {
+          "name": "Business Logic: Origin source identifies as TRADE_MANAGEMENT",
+          "outcome": "skipped",
+          "duration": 0.0006010480028635357,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain A netting group."
+        },
+        {
+          "name": "Business Logic: Settlement System architecture confirms BATON",
+          "outcome": "skipped",
+          "duration": 0.0004527649980445858,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain A netting group."
+        },
+        {
+          "name": "Business Logic: Confirmation status implies successful netting inclusion",
+          "outcome": "skipped",
+          "duration": 0.000482161995023489,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain A netting group."
+        },
+        {
+          "name": "Business Logic: Trading Party precisely matches the injected origin",
+          "outcome": "skipped",
+          "duration": 0.0005275139992590994,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain A netting group."
+        },
+        {
+          "name": "Business Logic: Counter Party precisely matches the injected recipient",
+          "outcome": "skipped",
+          "duration": 0.00033509399872855283,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain A netting group."
+        },
+        {
+          "name": "Business Logic: Root Netting Group ID matches the requested group parameters",
+          "outcome": "skipped",
+          "duration": 0.0007898299991211388,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain A netting group."
+        },
+        {
+          "name": "Business Logic: The trade's base currency leg in the group carries the injected base amount",
+          "outcome": "skipped",
+          "duration": 0.0004675879972637631,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain A netting group."
+        },
+        {
+          "name": "Business Logic: The trade's reference currency leg in the group carries the injected reference amount",
+          "outcome": "skipped",
+          "duration": 0.00037753999640699476,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain A netting group."
+        },
+        {
+          "name": "Business Logic: Underlying details confirm the net is active (not dissolved)",
+          "outcome": "skipped",
+          "duration": 0.0010061330031021498,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain A netting group."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-08-7b.json": {
+      "step": "7b",
+      "label": "Netting underlying (B) - original 1 of 3",
+      "file": "tests/test_07b_validate_netting_underlying_domain_b.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "Pre-flight: Auth token is present in state",
+          "outcome": "passed",
+          "duration": 46.13490984999953,
+          "message": null
+        },
+        {
+          "name": "Pre-flight: Expected Netting Group ID is present in state",
+          "outcome": "failed",
+          "duration": 0.0006282329959503841,
+          "message": "tests/test_07b_validate_netting_underlying_domain_b.py:232: in test_netting_group_id_present\n    assert ctx.expected_netting_group_id is not None, \\\nE   AssertionError: nettingGroupIdStringB is missing from state, so there is no Domain B netting group to look in. Did step 06b find one?\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, response_body=None, matched_underlying_trade=None, leg_amounts={}, token_present=True, expected_netting_group_id=None, expected_trade_id='MSERV-9941780631', expected_party='BNKA-HK', expected_counter_party='BNKB-NY', expected_rule_id='invalid-fallback-rule-4b8616c20412', injected_product_type='FxForward', expected_dealt_currency='USD', expected_reference_currency='CNH', expected_base_amount=1000, expected_reference_amount=6740, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29', leg=None).expected_netting_group_id"
+        },
+        {
+          "name": "Pre-flight: Expected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0003090799982601311,
+          "message": null
+        },
+        {
+          "name": "Pre-flight: Expected Rule ID is present in state",
+          "outcome": "passed",
+          "duration": 0.00025235300199710764,
+          "message": null
+        },
+        {
+          "name": "API: Endpoint returns a 2xx Success Status",
+          "outcome": "skipped",
+          "duration": 0.0003399960005481262,
+          "message": "Skipped: API call was not executed due to missing prerequisites."
+        },
+        {
+          "name": "Schema: Ledger response contains a valid items array",
+          "outcome": "skipped",
+          "duration": 0.00031013699481263757,
+          "message": "Skipped: Response data is unavailable."
+        },
+        {
+          "name": "Routing: Trade exists within the assigned Netting Group",
+          "outcome": "failed",
+          "duration": 0.0005790619979961775,
+          "message": "tests/test_07b_validate_netting_underlying_domain_b.py:288: in test_trade_exists_in_netting_group\n    assert ctx.matched_underlying_trade is not None, f'{problem}\\n{ctx.trade}'\nE   AssertionError: Trade [MSERV-9941780631] has no leg in Domain B netting group [None], nor in any other Domain B group under rule [invalid-fallback-rule-4b8616c20412].\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, response_body=None, matched_underlying_trade=None, leg_amounts={}, token_present=True, expected_netting_group_id=None, expected_trade_id='MSERV-9941780631', expected_party='BNKA-HK', expected_counter_party='BNKB-NY', expected_rule_id='invalid-fallback-rule-4b8616c20412', injected_product_type='FxForward', expected_dealt_currency='USD', expected_reference_currency='CNH', expected_base_amount=1000, expected_reference_amount=6740, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29', leg=None).matched_underlying_trade"
+        },
+        {
+          "name": "Business Logic: Asset class resolves correctly as CASH",
+          "outcome": "skipped",
+          "duration": 0.000439864001236856,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain B netting group."
+        },
+        {
+          "name": "Business Logic: Settlement Mode resolves correctly as NET",
+          "outcome": "skipped",
+          "duration": 0.0003755630023078993,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain B netting group."
+        },
+        {
+          "name": "Business Logic: Product Category matches the injected product type",
+          "outcome": "skipped",
+          "duration": 0.00036429299507290125,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain B netting group."
+        },
+        {
+          "name": "Business Logic: Origin source identifies as TRADE_MANAGEMENT",
+          "outcome": "skipped",
+          "duration": 0.00035807699532597326,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain B netting group."
+        },
+        {
+          "name": "Business Logic: Settlement System architecture confirms BATON",
+          "outcome": "skipped",
+          "duration": 0.0004931830007990357,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain B netting group."
+        },
+        {
+          "name": "Business Logic: Confirmation status implies successful netting inclusion",
+          "outcome": "skipped",
+          "duration": 0.0009547869958623778,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain B netting group."
+        },
+        {
+          "name": "Business Logic: Trading Party precisely matches the injected recipient (Flipped for Domain B)",
+          "outcome": "skipped",
+          "duration": 0.0004451120039448142,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain B netting group."
+        },
+        {
+          "name": "Business Logic: Counter Party precisely matches the injected origin (Flipped for Domain B)",
+          "outcome": "skipped",
+          "duration": 0.00041585000144550577,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain B netting group."
+        },
+        {
+          "name": "Business Logic: Root Netting Group ID matches the requested group parameters",
+          "outcome": "skipped",
+          "duration": 0.0003709279953909572,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain B netting group."
+        },
+        {
+          "name": "Business Logic: The trade's base currency leg in the group carries the injected base amount",
+          "outcome": "skipped",
+          "duration": 0.0002802070011966862,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain B netting group."
+        },
+        {
+          "name": "Business Logic: The trade's reference currency leg in the group carries the injected reference amount",
+          "outcome": "skipped",
+          "duration": 0.0003637730042100884,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain B netting group."
+        },
+        {
+          "name": "Business Logic: Underlying details confirm the net is active (not dissolved)",
+          "outcome": "skipped",
+          "duration": 0.0011291569971945137,
+          "message": "Skipped: Trade [MSERV-9941780631] was not found in a Domain B netting group."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-09-8.json": {
+      "step": "8",
+      "label": "Close netting group (A) - original 1 of 3",
+      "file": "tests/test_08_close_netting_group.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "Pre-flight: Auth token is present in state",
+          "outcome": "passed",
+          "duration": 0.0012072210010956042,
+          "message": null
+        },
+        {
+          "name": "Pre-flight: Netting Group ID is present in state",
+          "outcome": "failed",
+          "duration": 0.0005805070031783544,
+          "message": "tests/test_08_close_netting_group.py:110: in test_netting_group_id_present\n    assert ctx.target_netting_group_id is not None, \\\nE   AssertionError: nettingGroupIdString is missing from state, so there is no Domain A netting group to close. Did steps 06 / 07 find one?\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, response_body=None, rejection=None, value_date=None, time_of_update=None, token_present=True, target_netting_group_id=None, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29').target_netting_group_id"
+        },
+        {
+          "name": "API: Close Netting Group endpoint returns a 2xx Success Status",
+          "outcome": "skipped",
+          "duration": 0.00046590900456067175,
+          "message": "Skipped: API call was not executed due to missing prerequisites."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-10-8b.json": {
+      "step": "8b",
+      "label": "Close netting group (B) - original 1 of 3",
+      "file": "tests/test_08b_close_netting_group_domain_b.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "Pre-flight: Domain B Auth token (tokenB) is present in state",
+          "outcome": "passed",
+          "duration": 0.0011704220014507882,
+          "message": null
+        },
+        {
+          "name": "Pre-flight: Netting Group ID is present in state",
+          "outcome": "failed",
+          "duration": 0.0006275850028032437,
+          "message": "tests/test_08b_close_netting_group_domain_b.py:106: in test_netting_group_id_present\n    assert ctx.target_netting_group_id is not None, \\\nE   AssertionError: nettingGroupIdStringB is missing from state, so there is no Domain B netting group to close. Did steps 06b / 07b find one?\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, response_body=None, rejection=None, value_date=None, time_of_update=None, token_present=True, target_netting_group_id=None, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29').target_netting_group_id"
+        },
+        {
+          "name": "API: Close Netting Group endpoint returns a 2xx Success Status",
+          "outcome": "skipped",
+          "duration": 0.000671461002639262,
+          "message": "Skipped: API call was not executed due to missing prerequisites."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-11-9.json": {
+      "step": "9",
+      "label": "Netting group status (A) - original 1 of 3",
+      "file": "tests/test_09_validate_netting_group_status.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "Pre-flight: Auth token and Netting Group ID are present",
+          "outcome": "failed",
+          "duration": 0.0014778299992030952,
+          "message": "tests/test_09_validate_netting_group_status.py:242: in test_preflight\n    assert ctx.target_netting_group_id is not None, \\\nE   AssertionError: nettingGroupIdString is missing from state, so there is no Domain A netting group to check. Did step 08 close one?\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, response_body=None, server_error=None, group_details=None, candidate_status=None, candidate_error=None, candidate_amounts={}, value_date=None, returned_ids=None, token_present=True, target_netting_group_id=None, expected_source='injected trade', expected_base_currency='USD', expected_base_amount=1000, expected_reference_currency='CNH', expected_reference_amount=6740, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29', group='Domain A netting group [None]').target_netting_group_id"
+        },
+        {
+          "name": "API: Endpoint returns a 200 Success Status",
+          "outcome": "skipped",
+          "duration": 0.000492870996822603,
+          "message": "Skipped: API call was not executed."
+        },
+        {
+          "name": "Data: Netting Group exists in ledger response",
+          "outcome": "failed",
+          "duration": 0.0004879120060650166,
+          "message": "tests/test_09_validate_netting_group_status.py:267: in test_netting_group_in_response\n    assert ctx.group_details is not None, f'{problem}\\n{ctx.trade}'\nE   AssertionError: Domain A netting group details were not fetched: a pre-flight check above failed.\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, response_body=None, server_error=None, group_details=None, candidate_status=None, candidate_error=None, candidate_amounts={}, value_date=None, returned_ids=None, token_present=True, target_netting_group_id=None, expected_source='injected trade', expected_base_currency='USD', expected_base_amount=1000, expected_reference_currency='CNH', expected_reference_amount=6740, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29', group='Domain A netting group [None]').group_details"
+        },
+        {
+          "name": "Business Logic: isEligibleToClose is accurately set to false",
+          "outcome": "skipped",
+          "duration": 0.00034293500357307494,
+          "message": "Skipped: Details of Domain A netting group [None] are unavailable."
+        },
+        {
+          "name": "Business Logic: Status transitioned to CONFIRMED",
+          "outcome": "skipped",
+          "duration": 0.000386749001336284,
+          "message": "Skipped: Details of Domain A netting group [None] are unavailable."
+        },
+        {
+          "name": "State Persistence: settlementId (commonGroupId) exists and is present in response",
+          "outcome": "skipped",
+          "duration": 0.0003471139971225057,
+          "message": "Skipped: Details of Domain A netting group [None] are unavailable."
+        },
+        {
+          "name": "Data: The group's settlement candidates are in the expected currencies",
+          "outcome": "skipped",
+          "duration": 0.0003574049987946637,
+          "message": "Skipped: Settlement candidates of Domain A netting group [None] were not fetched: the group did not reach CONFIRMED."
+        },
+        {
+          "name": "Business Logic: The base currency candidate carries the expected base amount",
+          "outcome": "skipped",
+          "duration": 0.00031894799758447334,
+          "message": "Skipped: Settlement candidates of Domain A netting group [None] were not fetched: the group did not reach CONFIRMED."
+        },
+        {
+          "name": "Business Logic: The reference currency candidate carries the expected reference amount",
+          "outcome": "skipped",
+          "duration": 0.0004488710001169238,
+          "message": "Skipped: Settlement candidates of Domain A netting group [None] were not fetched: the group did not reach CONFIRMED."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-12-9b.json": {
+      "step": "9b",
+      "label": "Netting group status (B) - original 1 of 3",
+      "file": "tests/test_09b_validate_netting_group_status_domain_b.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "Pre-flight: Domain B auth token and Netting Group ID are present",
+          "outcome": "failed",
+          "duration": 0.001524164999864297,
+          "message": "tests/test_09b_validate_netting_group_status_domain_b.py:245: in test_preflight\n    assert ctx.target_netting_group_id is not None, \\\nE   AssertionError: nettingGroupIdStringB is missing from state, so there is no Domain B netting group to check. Did step 08b close one?\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, response_body=None, group_details=None, server_error=None, candidate_status=None, candidate_error=None, candidate_amounts={}, value_date=None, returned_ids=None, token_present=True, target_netting_group_id=None, expected_source='injected trade', expected_base_currency='USD', expected_base_amount=1000, expected_reference_currency='CNH', expected_reference_amount=6740, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29', group='Domain B netting group [None]').target_netting_group_id"
+        },
+        {
+          "name": "API: Endpoint returns a 200 Success Status",
+          "outcome": "skipped",
+          "duration": 0.0012949040028615855,
+          "message": "Skipped: API call was not executed."
+        },
+        {
+          "name": "Data: Netting Group exists in Domain B ledger response",
+          "outcome": "skipped",
+          "duration": 0.0003542459999152925,
+          "message": "Skipped: Details of Domain B netting group [None] are unavailable."
+        },
+        {
+          "name": "Business Logic: isEligibleToClose is accurately set to false",
+          "outcome": "skipped",
+          "duration": 0.0005038600029365625,
+          "message": "Skipped: Details of Domain B netting group [None] are unavailable."
+        },
+        {
+          "name": "Business Logic: Status transitioned to CONFIRMED",
+          "outcome": "skipped",
+          "duration": 0.0004140189957979601,
+          "message": "Skipped: Details of Domain B netting group [None] are unavailable."
+        },
+        {
+          "name": "State Persistence: settlementIdB (commonGroupId) exists and is present in response",
+          "outcome": "skipped",
+          "duration": 0.00043150800047442317,
+          "message": "Skipped: Details of Domain B netting group [None] are unavailable."
+        },
+        {
+          "name": "Data: The group's settlement candidates are in the expected currencies",
+          "outcome": "skipped",
+          "duration": 0.0003736709986696951,
+          "message": "Skipped: Settlement candidates of Domain B netting group [None] were not fetched: the group did not reach CONFIRMED."
+        },
+        {
+          "name": "Business Logic: The base currency candidate carries the expected base amount",
+          "outcome": "skipped",
+          "duration": 0.00045433399645844474,
+          "message": "Skipped: Settlement candidates of Domain B netting group [None] were not fetched: the group did not reach CONFIRMED."
+        },
+        {
+          "name": "Business Logic: The reference currency candidate carries the expected reference amount",
+          "outcome": "skipped",
+          "duration": 0.0008762519973970484,
+          "message": "Skipped: Settlement candidates of Domain B netting group [None] were not fetched: the group did not reach CONFIRMED."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-13-10.json": {
+      "step": "10",
+      "label": "Initiate settlement (A) - original 1 of 3",
+      "file": "tests/test_10_initiate_settlement.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "Pre-flight: Auth token is present in state",
+          "outcome": "passed",
+          "duration": 0.0009422789953532629,
+          "message": null
+        },
+        {
+          "name": "Pre-flight: Settlement ID and Trading Party are present in state",
+          "outcome": "failed",
+          "duration": 0.0005870970016985666,
+          "message": "tests/test_10_initiate_settlement.py:95: in test_settlement_id_and_party_present\n    assert ctx.target_settlement_id is not None, \\\nE   AssertionError: settlementId is missing from state, so there is no Domain A settlement to initiate. Did step 09 confirm netting group [None]?\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, response_body=None, rejection=None, token_present=True, target_settlement_id=None, trading_party='BNKA-HK', netting_group_id=None, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29').target_settlement_id"
+        },
+        {
+          "name": "API: Initiate Settlement endpoint returns a 2xx Success Status",
+          "outcome": "skipped",
+          "duration": 0.0004957520031894092,
+          "message": "Skipped: API call was not executed due to missing prerequisites."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-14-10b.json": {
+      "step": "10b",
+      "label": "Initiate settlement (B) - original 1 of 3",
+      "file": "tests/test_10b_initiate_settlement_domain_b.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "Pre-flight: Domain B Auth token (tokenB) is present in state",
+          "outcome": "passed",
+          "duration": 0.0013746210024692118,
+          "message": null
+        },
+        {
+          "name": "Pre-flight: Settlement ID (settlementId_B) and Trading Party are present",
+          "outcome": "failed",
+          "duration": 0.0005603839999821503,
+          "message": "tests/test_10b_initiate_settlement_domain_b.py:98: in test_settlement_id_and_party_present\n    assert ctx.target_settlement_id is not None, \\\nE   AssertionError: settlementIdB is missing from state, so there is no Domain B settlement to initiate. Did step 09b confirm netting group [None]?\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, response_body=None, rejection=None, token_present=True, target_settlement_id=None, trading_party='BNKB-NY', netting_group_id=None, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29').target_settlement_id"
+        },
+        {
+          "name": "API: Initiate Settlement endpoint returns a 2xx Success Status",
+          "outcome": "skipped",
+          "duration": 0.0008071779993770178,
+          "message": "Skipped: API call was not executed due to missing prerequisites."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-15-10c.json": {
+      "step": "10c",
+      "label": "Initiate settlement (Global) - original 1 of 3",
+      "file": "tests/test_10c_initiate_settlement_global.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "Pre-flight: Global Auth token (token-global) is present in state",
+          "outcome": "passed",
+          "duration": 0.001213293999171583,
+          "message": null
+        },
+        {
+          "name": "Pre-flight: Settlement ID and Trading Party are present in state",
+          "outcome": "failed",
+          "duration": 0.001063816001988016,
+          "message": "tests/test_10c_initiate_settlement_global.py:101: in test_settlement_id_and_party_present\n    assert ctx.target_settlement_id is not None, \\\nE   AssertionError: settlementId is missing from state, so there is no settlement for the Global operator to initiate. Did step 09 confirm netting group [None]?\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, response_body=None, rejection=None, token_present=True, target_settlement_id=None, trading_party='OPERATOR', netting_group_id=None, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29').target_settlement_id"
+        },
+        {
+          "name": "API: Initiate Settlement endpoint returns a 2xx Success Status",
+          "outcome": "skipped",
+          "duration": 0.0009803409993764944,
+          "message": "Skipped: API call was not executed due to missing prerequisites."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-16-11.json": {
+      "step": "11",
+      "label": "Generate MT910 funding call - original 1 of 3",
+      "file": "tests/test_11_generate_mt910_funding_call.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "Pre-flight: Settlement ID and Value Date are present in state",
+          "outcome": "failed",
+          "duration": 0.0012975630015716888,
+          "message": "tests/test_11_generate_mt910_funding_call.py:168: in test_settlement_id_and_value_date_present\n    assert ctx.target_settlement_id is not None, \\\nE   AssertionError: settlementId is missing from state, so there is no settlement to fund. Did step 09 confirm netting group [None]?\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, response_body=None, rejection=None, discovered_message_ids=[], target_settlement_id=None, value_date='2026-09-29', netting_group_id=None, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29').target_settlement_id"
+        },
+        {
+          "name": "Simulator: Fetched valid message_ids for current settlement",
+          "outcome": "failed",
+          "duration": 0.0011540969971974846,
+          "message": "tests/test_11_generate_mt910_funding_call.py:186: in test_message_ids_discovered\n    assert len(ctx.discovered_message_ids) > 0, f'{problem}\\n{ctx.trade}'\nE   AssertionError: Simulator tasks were not fetched: a pre-flight check above failed.\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert 0 > 0\nE    +  where 0 = len([])\nE    +    where [] = namespace(res_status=None, response_body=None, rejection=None, discovered_message_ids=[], target_settlement_id=None, value_date='2026-09-29', netting_group_id=None, trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29').discovered_message_ids"
+        },
+        {
+          "name": "API: Funding Call Pump endpoint returns a 2xx Success Status",
+          "outcome": "skipped",
+          "duration": 0.003804591000516666,
+          "message": "Skipped: API call was not executed due to missing prerequisites."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-17-12.json": {
+      "step": "12",
+      "label": "Validate ledger (A) - original 1 of 3",
+      "file": "tests/test_12_validate_ledger.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "API: Ledger endpoint returns a 200 Success Status",
+          "outcome": "skipped",
+          "duration": 0.0012333829981798772,
+          "message": "Skipped: API call was not executed."
+        },
+        {
+          "name": "Ledger entry successfully exists for the Settlement ID",
+          "outcome": "failed",
+          "duration": 0.0007196359983936418,
+          "message": "tests/test_12_validate_ledger.py:133: in test_ledger_entry_exists\n    assert ctx.ledger_item is not None, missing_entry(ctx)\nE   AssertionError: The Domain A settlement ledger was not searched for Domain A settlement [None] (netting group [None]): settlementId, valueDate or the Domain A token is missing from state.\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, ledger_item=None, target_settlement_id=None, value_date='2026-09-29', expected_party='BNKA-HK', expected_counter_party='BNKB-NY', netting_group_id=None, settlement='Domain A settlement [None] (netting group [None])', trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29').ledger_item"
+        },
+        {
+          "name": "Final Settlement Status is strictly SETTLEMENT_COMPLETE",
+          "outcome": "failed",
+          "duration": 0.0006230680010048673,
+          "message": "tests/test_12_validate_ledger.py:138: in test_settlement_status_complete\n    assert ctx.ledger_item is not None, missing_entry(ctx)\nE   AssertionError: The Domain A settlement ledger was not searched for Domain A settlement [None] (netting group [None]): settlementId, valueDate or the Domain A token is missing from state.\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, ledger_item=None, target_settlement_id=None, value_date='2026-09-29', expected_party='BNKA-HK', expected_counter_party='BNKB-NY', netting_group_id=None, settlement='Domain A settlement [None] (netting group [None])', trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29').ledger_item"
+        },
+        {
+          "name": "Business Logic: Settlement Type is PVP",
+          "outcome": "skipped",
+          "duration": 0.0004962339953635819,
+          "message": "Skipped: Domain A settlement [None] (netting group [None]) was not found on the Domain A settlement ledger."
+        },
+        {
+          "name": "Business Logic: Trading Party matches the injected trade's party",
+          "outcome": "skipped",
+          "duration": 0.0003820229976554401,
+          "message": "Skipped: Domain A settlement [None] (netting group [None]) was not found on the Domain A settlement ledger."
+        },
+        {
+          "name": "Business Logic: Counterparty matches the injected trade's counterparty",
+          "outcome": "skipped",
+          "duration": 0.0003507659966999199,
+          "message": "Skipped: Domain A settlement [None] (netting group [None]) was not found on the Domain A settlement ledger."
+        },
+        {
+          "name": "Business Logic: Value Date matches the injected trade's value date",
+          "outcome": "skipped",
+          "duration": 0.0005153149977559224,
+          "message": "Skipped: Domain A settlement [None] (netting group [None]) was not found on the Domain A settlement ledger."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t01-18-12b.json": {
+      "step": "12b",
+      "label": "Validate ledger (B) - original 1 of 3",
+      "file": "tests/test_12b_validate_ledger_domain_b.py",
+      "exitStatus": 1,
+      "tests": [
+        {
+          "name": "API: Ledger endpoint returns a 200 Success Status",
+          "outcome": "skipped",
+          "duration": 0.0013329539979167748,
+          "message": "Skipped: API call was not executed."
+        },
+        {
+          "name": "Ledger entry successfully exists for the Settlement ID",
+          "outcome": "failed",
+          "duration": 0.0006048750001355074,
+          "message": "tests/test_12b_validate_ledger_domain_b.py:129: in test_ledger_entry_exists\n    assert ctx.ledger_item is not None, missing_entry(ctx)\nE   AssertionError: The Domain B settlement ledger was not searched for Domain B settlement [None] (netting group [None]): settlementIdB, valueDate or the Domain B token is missing from state.\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, ledger_item=None, target_settlement_id=None, value_date='2026-09-29', expected_party='BNKA-HK', expected_counter_party='BNKB-NY', netting_group_id=None, settlement='Domain B settlement [None] (netting group [None])', trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29').ledger_item"
+        },
+        {
+          "name": "Final Settlement Status is strictly SETTLEMENT_COMPLETE",
+          "outcome": "failed",
+          "duration": 0.0005442360015877057,
+          "message": "tests/test_12b_validate_ledger_domain_b.py:134: in test_settlement_status_complete\n    assert ctx.ledger_item is not None, missing_entry(ctx)\nE   AssertionError: The Domain B settlement ledger was not searched for Domain B settlement [None] (netting group [None]): settlementIdB, valueDate or the Domain B token is missing from state.\nE     Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29\nE   assert None is not None\nE    +  where None = namespace(res_status=None, ledger_item=None, target_settlement_id=None, value_date='2026-09-29', expected_party='BNKA-HK', expected_counter_party='BNKB-NY', netting_group_id=None, settlement='Domain B settlement [None] (netting group [None])', trade='Trade MSERV-9941780631 | UTI 549300CWK6F65W566G32MSFX2026092900884284629693758329 | party BNKA-HK, counterparty BNKB-NY | FxForward USDCNH | amounts 1000 USD / 6740 CNH | trade date 2026-09-29 | value date 2026-09-29').ledger_item"
+        },
+        {
+          "name": "Business Logic: Settlement Type is PVP",
+          "outcome": "skipped",
+          "duration": 0.00032957099756458774,
+          "message": "Skipped: Domain B settlement [None] (netting group [None]) was not found on the Domain B settlement ledger."
+        },
+        {
+          "name": "Business Logic: Trading Party matches the injected counterparty (Flipped for Domain B)",
+          "outcome": "skipped",
+          "duration": 0.00028938699688296765,
+          "message": "Skipped: Domain B settlement [None] (netting group [None]) was not found on the Domain B settlement ledger."
+        },
+        {
+          "name": "Business Logic: Counterparty matches the injected party (Flipped for Domain B)",
+          "outcome": "skipped",
+          "duration": 0.00032467200071550906,
+          "message": "Skipped: Domain B settlement [None] (netting group [None]) was not found on the Domain B settlement ledger."
+        },
+        {
+          "name": "Business Logic: Value Date matches the injected trade's value date",
+          "outcome": "skipped",
+          "duration": 0.0004484550045162905,
+          "message": "Skipped: Domain B settlement [None] (netting group [None]) was not found on the Domain B settlement ledger."
+        }
+      ],
+      "tradeLabel": "original 1 of 3"
+    },
+    "t02-02-4.json": {
+      "step": "4",
+      "label": "Inject trade - duplicate 2 of 3",
+      "file": "tests/test_04_inject_trade.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "API: Endpoint returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 1.0798442770028487,
+          "message": null
+        },
+        {
+          "name": "Verify trade injection status matches expected status",
+          "outcome": "passed",
+          "duration": 0.0015915019976091571,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID exists in the generated payload mapping",
+          "outcome": "passed",
+          "duration": 0.000706468999851495,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID adheres to MSERV- nomenclature",
+          "outcome": "passed",
+          "duration": 0.0017534820035507437,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID meets minimum ledger character limits (>10)",
+          "outcome": "passed",
+          "duration": 0.0004395539981487673,
+          "message": null
+        },
+        {
+          "name": "Verify product type matches the configured product type",
+          "outcome": "passed",
+          "duration": 0.0012034529972879682,
+          "message": null
+        }
+      ],
+      "tradeLabel": "duplicate 2 of 3"
+    },
+    "t02-03-5.json": {
+      "step": "5",
+      "label": "Validate trade (A) - duplicate 2 of 3",
+      "file": "tests/test_05_validate_trade.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Verify auth token is present in state",
+          "outcome": "passed",
+          "duration": 11.102486297000723,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0005243260020506568,
+          "message": null
+        },
+        {
+          "name": "Verify unique transaction ID (UTI) is present in state",
+          "outcome": "passed",
+          "duration": 0.0004774020017066505,
+          "message": null
+        },
+        {
+          "name": "Verify request returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.0007150290039135143,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is found on the ledger",
+          "outcome": "passed",
+          "duration": 0.0005703459974029101,
+          "message": null
+        },
+        {
+          "name": "Verify exactly one ledger record carries the injected Trade ID",
+          "outcome": "passed",
+          "duration": 0.0004572610014292877,
+          "message": null
+        },
+        {
+          "name": "Verify response contains a valid trades array",
+          "outcome": "passed",
+          "duration": 0.00043459299922687933,
+          "message": null
+        },
+        {
+          "name": "Verify pagination totalCount is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0004192339947621804,
+          "message": null
+        },
+        {
+          "name": "Verify pagination pageSize is a valid number > 0",
+          "outcome": "passed",
+          "duration": 0.00044560500100487843,
+          "message": null
+        },
+        {
+          "name": "Verify pagination currentPage is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.00047430599806830287,
+          "message": null
+        },
+        {
+          "name": "Verify pagination hasMore is a boolean flag",
+          "outcome": "passed",
+          "duration": 0.00050560000090627,
+          "message": null
+        },
+        {
+          "name": "Verify tradeRecordId is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0005611050037259702,
+          "message": null
+        },
+        {
+          "name": "Verify transactionId is a populated string",
+          "outcome": "passed",
+          "duration": 0.00048600200534565374,
+          "message": null
+        },
+        {
+          "name": "Verify leg1Id is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.00048311100545106456,
+          "message": null
+        },
+        {
+          "name": "Verify createdAt strictly follows ISO-8601 format",
+          "outcome": "passed",
+          "duration": 0.00047644299775129184,
+          "message": null
+        },
+        {
+          "name": "Verify sourceReferenceId matches injected UTI",
+          "outcome": "passed",
+          "duration": 0.00043503899723873474,
+          "message": null
+        },
+        {
+          "name": "Verify tradingParty reflects the Domain A perspective",
+          "outcome": "passed",
+          "duration": 0.00042692600254667923,
+          "message": null
+        },
+        {
+          "name": "Verify source platform is identified as TradeServ",
+          "outcome": "passed",
+          "duration": 0.00046340299741132185,
+          "message": null
+        },
+        {
+          "name": "Verify productType is strictly mapped as FX",
+          "outcome": "passed",
+          "duration": 0.00045395499910227954,
+          "message": null
+        },
+        {
+          "name": "Verify productSubType reflects the injected product type",
+          "outcome": "passed",
+          "duration": 0.0009243090025847778,
+          "message": null
+        },
+        {
+          "name": "Verify primary transaction type is TRADE",
+          "outcome": "passed",
+          "duration": 0.000723709996236721,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetClass maps to CASH",
+          "outcome": "passed",
+          "duration": 0.0006358809987432323,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetType maps to FIAT",
+          "outcome": "passed",
+          "duration": 0.0004103009960090276,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is a populated string",
+          "outcome": "passed",
+          "duration": 0.00040825600081006996,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetId is the dealt currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0004079249993083067,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetId is the reference currency that was injected",
+          "outcome": "passed",
+          "duration": 0.000431858999945689,
+          "message": null
+        },
+        {
+          "name": "Verify the two leg assets together are the injected currency pair",
+          "outcome": "passed",
+          "duration": 0.000411923996580299,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is the injected base currency amount",
+          "outcome": "passed",
+          "duration": 0.0004227029967296403,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetValue is the injected reference currency amount",
+          "outcome": "passed",
+          "duration": 0.00043503900087671354,
+          "message": null
+        },
+        {
+          "name": "Verify tradeDate is the trade date that was injected",
+          "outcome": "passed",
+          "duration": 0.0004251969985489268,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryDirection is distinctly BUY or SELL",
+          "outcome": "passed",
+          "duration": 0.000586058999033412,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryDirection is distinctly BUY or SELL",
+          "outcome": "passed",
+          "duration": 0.0004989329936506692,
+          "message": null
+        },
+        {
+          "name": "Verify affirmation status is NEW, AFFIRMED, or CONFIRMED",
+          "outcome": "passed",
+          "duration": 0.0008412710012635216,
+          "message": null
+        },
+        {
+          "name": "Verify settlement status is properly sequenced",
+          "outcome": "passed",
+          "duration": 0.0016490880007040687,
+          "message": null
+        }
+      ],
+      "tradeLabel": "duplicate 2 of 3"
+    },
+    "t02-04-5b.json": {
+      "step": "5b",
+      "label": "Validate trade (B) - duplicate 2 of 3",
+      "file": "tests/test_05b_validate_trade_domain_b.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Verify Domain B auth token is present in state",
+          "outcome": "passed",
+          "duration": 11.990816903002269,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0002762600015557837,
+          "message": null
+        },
+        {
+          "name": "Verify request returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.0003512580005917698,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is found on the ledger",
+          "outcome": "passed",
+          "duration": 0.00028911900517414324,
+          "message": null
+        },
+        {
+          "name": "Verify exactly one ledger record carries the injected Trade ID",
+          "outcome": "passed",
+          "duration": 0.0002518259971111547,
+          "message": null
+        },
+        {
+          "name": "Verify response contains a valid trades array",
+          "outcome": "passed",
+          "duration": 0.00023290600074687973,
+          "message": null
+        },
+        {
+          "name": "Verify pagination totalCount is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.00026520300161791965,
+          "message": null
+        },
+        {
+          "name": "Verify pagination pageSize is a valid number > 0",
+          "outcome": "passed",
+          "duration": 0.0002591759985079989,
+          "message": null
+        },
+        {
+          "name": "Verify pagination currentPage is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0003405150018807035,
+          "message": null
+        },
+        {
+          "name": "Verify pagination hasMore is a boolean flag",
+          "outcome": "passed",
+          "duration": 0.0002680349971342366,
+          "message": null
+        },
+        {
+          "name": "Verify tradeRecordId is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0003108119999524206,
+          "message": null
+        },
+        {
+          "name": "Verify transactionId is a populated string",
+          "outcome": "passed",
+          "duration": 0.0003096229993388988,
+          "message": null
+        },
+        {
+          "name": "Verify leg1Id is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0002490239967301022,
+          "message": null
+        },
+        {
+          "name": "Verify createdAt strictly follows ISO-8601 format",
+          "outcome": "passed",
+          "duration": 0.00029966099828016013,
+          "message": null
+        },
+        {
+          "name": "Verify tradingParty reflects the Domain B perspective (flipped - counterPartyId)",
+          "outcome": "passed",
+          "duration": 0.0005229929993220139,
+          "message": null
+        },
+        {
+          "name": "Verify source platform is identified as TradeServ",
+          "outcome": "passed",
+          "duration": 0.00034861499807448126,
+          "message": null
+        },
+        {
+          "name": "Verify productType is strictly mapped as FX",
+          "outcome": "passed",
+          "duration": 0.00032282800020766445,
+          "message": null
+        },
+        {
+          "name": "Verify productSubType reflects the injected product type",
+          "outcome": "passed",
+          "duration": 0.00031011200189823285,
+          "message": null
+        },
+        {
+          "name": "Verify primary transaction type is TRADE",
+          "outcome": "passed",
+          "duration": 0.00029130599432392046,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetClass maps to CASH",
+          "outcome": "passed",
+          "duration": 0.0003033440007129684,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetType maps to FIAT",
+          "outcome": "passed",
+          "duration": 0.0002962629987450782,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is a populated string",
+          "outcome": "passed",
+          "duration": 0.0002849220036296174,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetId is the dealt currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0004062119987793267,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetId is the reference currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0003531800066411961,
+          "message": null
+        },
+        {
+          "name": "Verify the two leg assets together are the injected currency pair",
+          "outcome": "passed",
+          "duration": 0.00029522999830078334,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is the injected base currency amount",
+          "outcome": "passed",
+          "duration": 0.0003092139995715115,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetValue is the injected reference currency amount",
+          "outcome": "passed",
+          "duration": 0.000298515002214117,
+          "message": null
+        },
+        {
+          "name": "Verify tradeDate is the trade date that was injected",
+          "outcome": "passed",
+          "duration": 0.00028209499942022376,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryDirection is distinctly BUY or SELL",
+          "outcome": "passed",
+          "duration": 0.00026827699548448436,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryDirection is distinctly BUY or SELL",
+          "outcome": "passed",
+          "duration": 0.0003337779999128543,
+          "message": null
+        },
+        {
+          "name": "Verify affirmation status is NEW, AFFIRMED, or CONFIRMED",
+          "outcome": "passed",
+          "duration": 0.0002629730006447062,
+          "message": null
+        },
+        {
+          "name": "Verify settlement status is properly sequenced",
+          "outcome": "passed",
+          "duration": 0.0005620060001092497,
+          "message": null
+        }
+      ],
+      "tradeLabel": "duplicate 2 of 3"
+    },
+    "t03-02-4.json": {
+      "step": "4",
+      "label": "Inject trade - duplicate 3 of 3",
+      "file": "tests/test_04_inject_trade.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "API: Endpoint returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 1.7895259569959308,
+          "message": null
+        },
+        {
+          "name": "Verify trade injection status matches expected status",
+          "outcome": "passed",
+          "duration": 0.000541333996807225,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID exists in the generated payload mapping",
+          "outcome": "passed",
+          "duration": 0.0003980490037065465,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID adheres to MSERV- nomenclature",
+          "outcome": "passed",
+          "duration": 0.0004023469955427572,
+          "message": null
+        },
+        {
+          "name": "Verify trade ID meets minimum ledger character limits (>10)",
+          "outcome": "passed",
+          "duration": 0.00043916199865634553,
+          "message": null
+        },
+        {
+          "name": "Verify product type matches the configured product type",
+          "outcome": "passed",
+          "duration": 0.0012804499965568539,
+          "message": null
+        }
+      ],
+      "tradeLabel": "duplicate 3 of 3"
+    },
+    "t03-03-5.json": {
+      "step": "5",
+      "label": "Validate trade (A) - duplicate 3 of 3",
+      "file": "tests/test_05_validate_trade.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Verify auth token is present in state",
+          "outcome": "passed",
+          "duration": 14.576183689001482,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.0003102669943473302,
+          "message": null
+        },
+        {
+          "name": "Verify unique transaction ID (UTI) is present in state",
+          "outcome": "passed",
+          "duration": 0.00026469899603398517,
+          "message": null
+        },
+        {
+          "name": "Verify request returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.00027499700081534684,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is found on the ledger",
+          "outcome": "passed",
+          "duration": 0.0002320179992238991,
+          "message": null
+        },
+        {
+          "name": "Verify exactly one ledger record carries the injected Trade ID",
+          "outcome": "passed",
+          "duration": 0.0002758740010904148,
+          "message": null
+        },
+        {
+          "name": "Verify response contains a valid trades array",
+          "outcome": "passed",
+          "duration": 0.00036021200139657594,
+          "message": null
+        },
+        {
+          "name": "Verify pagination totalCount is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.00035619000118458644,
+          "message": null
+        },
+        {
+          "name": "Verify pagination pageSize is a valid number > 0",
+          "outcome": "passed",
+          "duration": 0.0004126090025238227,
+          "message": null
+        },
+        {
+          "name": "Verify pagination currentPage is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.0007129910009098239,
+          "message": null
+        },
+        {
+          "name": "Verify pagination hasMore is a boolean flag",
+          "outcome": "passed",
+          "duration": 0.00040408800487057306,
+          "message": null
+        },
+        {
+          "name": "Verify tradeRecordId is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.00037304599754861556,
+          "message": null
+        },
+        {
+          "name": "Verify transactionId is a populated string",
+          "outcome": "passed",
+          "duration": 0.0002477749985700939,
+          "message": null
+        },
+        {
+          "name": "Verify leg1Id is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0002840670022123959,
+          "message": null
+        },
+        {
+          "name": "Verify createdAt strictly follows ISO-8601 format",
+          "outcome": "passed",
+          "duration": 0.00027010200210497715,
+          "message": null
+        },
+        {
+          "name": "Verify sourceReferenceId matches injected UTI",
+          "outcome": "passed",
+          "duration": 0.00026480200176592916,
+          "message": null
+        },
+        {
+          "name": "Verify tradingParty reflects the Domain A perspective",
+          "outcome": "passed",
+          "duration": 0.00023841099755372852,
+          "message": null
+        },
+        {
+          "name": "Verify source platform is identified as TradeServ",
+          "outcome": "passed",
+          "duration": 0.0002533900005801115,
+          "message": null
+        },
+        {
+          "name": "Verify productType is strictly mapped as FX",
+          "outcome": "passed",
+          "duration": 0.0002540479981689714,
+          "message": null
+        },
+        {
+          "name": "Verify productSubType reflects the injected product type",
+          "outcome": "passed",
+          "duration": 0.00026008899658336304,
+          "message": null
+        },
+        {
+          "name": "Verify primary transaction type is TRADE",
+          "outcome": "passed",
+          "duration": 0.0002470139988872688,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetClass maps to CASH",
+          "outcome": "passed",
+          "duration": 0.0002491449995432049,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetType maps to FIAT",
+          "outcome": "passed",
+          "duration": 0.00025365200053784065,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is a populated string",
+          "outcome": "passed",
+          "duration": 0.0002682310005184263,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetId is the dealt currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0002457230002619326,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetId is the reference currency that was injected",
+          "outcome": "passed",
+          "duration": 0.0003068549958697986,
+          "message": null
+        },
+        {
+          "name": "Verify the two leg assets together are the injected currency pair",
+          "outcome": "passed",
+          "duration": 0.00024902199947973713,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is the injected base currency amount",
+          "outcome": "passed",
+          "duration": 0.00022910500410944223,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetValue is the injected reference currency amount",
+          "outcome": "passed",
+          "duration": 0.00022987600095802918,
+          "message": null
+        },
+        {
+          "name": "Verify tradeDate is the trade date that was injected",
+          "outcome": "passed",
+          "duration": 0.0002463140008330811,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryDirection is distinctly BUY or SELL",
+          "outcome": "passed",
+          "duration": 0.0002859369960788172,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryDirection is distinctly BUY or SELL",
+          "outcome": "passed",
+          "duration": 0.00035599199691205285,
+          "message": null
+        },
+        {
+          "name": "Verify affirmation status is NEW, AFFIRMED, or CONFIRMED",
+          "outcome": "passed",
+          "duration": 0.0003104489987890702,
+          "message": null
+        },
+        {
+          "name": "Verify settlement status is properly sequenced",
+          "outcome": "passed",
+          "duration": 0.0008367389964405447,
+          "message": null
+        }
+      ],
+      "tradeLabel": "duplicate 3 of 3"
+    },
+    "t03-04-5b.json": {
+      "step": "5b",
+      "label": "Validate trade (B) - duplicate 3 of 3",
+      "file": "tests/test_05b_validate_trade_domain_b.py",
+      "exitStatus": 0,
+      "tests": [
+        {
+          "name": "Verify Domain B auth token is present in state",
+          "outcome": "passed",
+          "duration": 20.650010443998326,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is present in state",
+          "outcome": "passed",
+          "duration": 0.00034985899765160866,
+          "message": null
+        },
+        {
+          "name": "Verify request returns a 2xx success status",
+          "outcome": "passed",
+          "duration": 0.0003806220011028927,
+          "message": null
+        },
+        {
+          "name": "Verify injected Trade ID is found on the ledger",
+          "outcome": "passed",
+          "duration": 0.0003252689966757316,
+          "message": null
+        },
+        {
+          "name": "Verify exactly one ledger record carries the injected Trade ID",
+          "outcome": "passed",
+          "duration": 0.0003389000012248289,
+          "message": null
+        },
+        {
+          "name": "Verify response contains a valid trades array",
+          "outcome": "passed",
+          "duration": 0.0002884420027839951,
+          "message": null
+        },
+        {
+          "name": "Verify pagination totalCount is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.00037509799949475564,
+          "message": null
+        },
+        {
+          "name": "Verify pagination pageSize is a valid number > 0",
+          "outcome": "passed",
+          "duration": 0.00030846899971948005,
+          "message": null
+        },
+        {
+          "name": "Verify pagination currentPage is a valid number >= 0",
+          "outcome": "passed",
+          "duration": 0.00027915099781239405,
+          "message": null
+        },
+        {
+          "name": "Verify pagination hasMore is a boolean flag",
+          "outcome": "passed",
+          "duration": 0.0002872619988920633,
+          "message": null
+        },
+        {
+          "name": "Verify tradeRecordId is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.00027012600185116753,
+          "message": null
+        },
+        {
+          "name": "Verify transactionId is a populated string",
+          "outcome": "passed",
+          "duration": 0.00026855800024350174,
+          "message": null
+        },
+        {
+          "name": "Verify leg1Id is a valid numerical ID > 0",
+          "outcome": "passed",
+          "duration": 0.0003262229984102305,
+          "message": null
+        },
+        {
+          "name": "Verify createdAt strictly follows ISO-8601 format",
+          "outcome": "passed",
+          "duration": 0.0002973139962705318,
+          "message": null
+        },
+        {
+          "name": "Verify tradingParty reflects the Domain B perspective (flipped - counterPartyId)",
+          "outcome": "passed",
+          "duration": 0.0003292159999546129,
+          "message": null
+        },
+        {
+          "name": "Verify source platform is identified as TradeServ",
+          "outcome": "passed",
+          "duration": 0.00031220899836625904,
+          "message": null
+        },
+        {
+          "name": "Verify productType is strictly mapped as FX",
+          "outcome": "passed",
+          "duration": 0.00029024000468780287,
+          "message": null
+        },
+        {
+          "name": "Verify productSubType reflects the injected product type",
+          "outcome": "passed",
+          "duration": 0.00029794099827995524,
+          "message": null
+        },
+        {
+          "name": "Verify primary transaction type is TRADE",
+          "outcome": "passed",
+          "duration": 0.0003073310035688337,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetClass maps to CASH",
+          "outcome": "passed",
+          "duration": 0.0003099630012002308,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetType maps to FIAT",
+          "outcome": "passed",
+          "duration": 0.0002455060021020472,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is a populated string",
+          "outcome": "passed",
+          "duration": 0.00024665599994477816,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetId is the dealt currency that was injected",
+          "outcome": "passed",
+          "duration": 0.00033008799437084235,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetId is the reference currency that was injected",
+          "outcome": "passed",
+          "duration": 0.00033231800262001343,
+          "message": null
+        },
+        {
+          "name": "Verify the two leg assets together are the injected currency pair",
+          "outcome": "passed",
+          "duration": 0.0005497679958352819,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryAssetValue is the injected base currency amount",
+          "outcome": "passed",
+          "duration": 0.0005113410006742924,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryAssetValue is the injected reference currency amount",
+          "outcome": "passed",
+          "duration": 0.0003141549968859181,
+          "message": null
+        },
+        {
+          "name": "Verify tradeDate is the trade date that was injected",
+          "outcome": "passed",
+          "duration": 0.00034273300116183236,
+          "message": null
+        },
+        {
+          "name": "Verify leg1PrimaryDirection is distinctly BUY or SELL",
+          "outcome": "passed",
+          "duration": 0.00044620699918596074,
+          "message": null
+        },
+        {
+          "name": "Verify leg1SecondaryDirection is distinctly BUY or SELL",
+          "outcome": "passed",
+          "duration": 0.0003756810037884861,
+          "message": null
+        },
+        {
+          "name": "Verify affirmation status is NEW, AFFIRMED, or CONFIRMED",
+          "outcome": "passed",
+          "duration": 0.00031153800227912143,
+          "message": null
+        },
+        {
+          "name": "Verify settlement status is properly sequenced",
+          "outcome": "passed",
+          "duration": 0.00065571899904171,
+          "message": null
+        }
+      ],
+      "tradeLabel": "duplicate 3 of 3"
+    }
+  }
+}

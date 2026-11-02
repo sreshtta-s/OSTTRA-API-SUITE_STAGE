@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TC011 (TC_SM-29_007) — not run — 2026-10-09 15:04:08</title>
+<style>
+:root {
+  --bg: #ffffff; --fg: #1a1c1f; --muted: #5b6472; --line: #e3e6eb;
+  --card: #f7f8fa; --pass: #197a4b; --fail: #b3261e; --skip: #8a6d1f;
+  --pass-bg: #e7f5ed; --fail-bg: #fdeceb; --skip-bg: #fdf4e0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14161a; --fg: #e8eaed; --muted: #9aa3b0; --line: #2b3038;
+    --card: #1b1e24; --pass: #6ede9f; --fail: #ff8a80; --skip: #f3cf6b;
+    --pass-bg: #16301f; --fail-bg: #35191a; --skip-bg: #322a12;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -0.01em; }
+.sub { color: var(--muted); font-size: 13px; margin: 0 0 24px; }
+.totals { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.pill { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 13px; }
+.pill b { font-variant-numeric: tabular-nums; }
+.pill.pass { color: var(--pass); background: var(--pass-bg); border-color: transparent; }
+.pill.fail { color: var(--fail); background: var(--fail-bg); border-color: transparent; }
+.pill.skip { color: var(--skip); background: var(--skip-bg); border-color: transparent; }
+.step { border: 1px solid var(--line); border-radius: 10px; margin-bottom: 12px; overflow: hidden; background: var(--card); }
+.step > summary { cursor: pointer; padding: 12px 16px; display: flex; gap: 10px;
+  align-items: baseline; flex-wrap: wrap; list-style: none; }
+.step > summary::-webkit-details-marker { display: none; }
+.step > summary::before { content: "\25B8"; color: var(--muted); font-size: 11px; }
+.step[open] > summary::before { content: "\25BE"; }
+.token { font-weight: 600; font-variant-numeric: tabular-nums; min-width: 34px; }
+.label { flex: 1; min-width: 160px; }
+.count { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.tests { list-style: none; margin: 0; padding: 0 0 6px; border-top: 1px solid var(--line); background: var(--bg); }
+.tests li { padding: 8px 16px 8px 40px; position: relative; border-bottom: 1px solid var(--line); }
+.tests li:last-child { border-bottom: 0; }
+.tests li::before { position: absolute; left: 16px; top: 8px; font-size: 13px; }
+.t-passed::before { content: "\2713"; color: var(--pass); }
+.t-failed::before { content: "\2717"; color: var(--fail); }
+.t-skipped::before { content: "\2013"; color: var(--skip); }
+.t-failed { background: var(--fail-bg); }
+.name { font-size: 14px; }
+.dur { color: var(--muted); font-size: 12px; margin-left: 6px; font-variant-numeric: tabular-nums; }
+pre.msg { margin: 8px 0 2px; padding: 10px 12px; background: var(--bg); color: var(--fail);
+  border: 1px solid var(--line); border-radius: 6px; font-size: 12.5px;
+  white-space: pre-wrap; word-break: break-word; overflow-x: auto; }
+.missing { color: var(--muted); font-style: italic; padding: 10px 16px; font-size: 13px; }
+@media (max-width: 600px) { .wrap { padding: 20px 16px 48px; } h1 { font-size: 19px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>TC011 (TC_SM-29_007) — not run — 2026-10-09 15:04:08</h1>
+<p class="sub">OSTTRA API Suite &middot; 1 step(s)</p>
+<div class="totals"><span class="pill"><b>1</b> tests</span><span class="pill fail"><b>1</b> failed</span></div>
+<details class="step" open><summary><span class="token">4</span><span class="label">Inject trade</span><span class="count">1 failed</span></summary><ul class="tests"><li class="t-failed"><span class="name">Step 4 not run</span><span class="dur">0.00s</span><pre class="msg">TC011 is not run on the trades test_results_174138.xlsx names for it: it books 8 trades, but only 0 of the 10 the Excel lists for it are in import_trade/trades/09_10_2026; missing: MSERV20261009.0316591829, MSERV20261009.0316591846, MSERV20261009.0316591850, MSERV20261009.0316591851, MSERV20261009.0316591854, MSERV20261009.0316591843, MSERV20261009.0316591838, MSERV20261009.0316591844, MSERV20261009.0316591834, MSERV20261009.0316591847</pre></li></ul></details>
+</div>
+</body>
+</html>

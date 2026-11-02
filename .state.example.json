@@ -1,0 +1,8 @@
+{
+  "reqPartyId": "BNKA-NY",
+  "counterPartyId": "BNKB-NY",
+  "tradeCurrencyPair": "CNHUSD",
+  "productType": "FxForward",
+  "dealtCurrency": "USD",
+  "referenceCurrency": "CNH"
+}

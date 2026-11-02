@@ -1,0 +1,99 @@
+[
+  {
+    "wrapper": {
+      "metaData": {
+        "determinedCounterpartyId": "BNKB-HK",
+        "determinedCounterpartyName": "BNKB-HK",
+        "determinedPartyId": "BNKA-HK",
+        "determinedPartyName": "BNKA-HK",
+        "ingestionTimeStamp": "2026-10-05T10:52:19.643Z",
+        "osttraTradeId": null,
+        "partyPerspective": "BNKA-HK",
+        "positionStatus": "Active",
+        "processingStatus": "Confirmed",
+        "status": "New",
+        "version": 0
+      },
+      "sourcePlatform": [
+        {
+          "eventType": "Trade",
+          "matchId": "MSERV20261005.01529747043831",
+          "messageId": "FXMSG123",
+          "name": "TradeServ",
+          "receiptTimeStamp": "2026-10-05T10:52:14.806Z",
+          "sequence": 1,
+          "submissionSource": "MQ",
+          "submissionTimeStamp": "2026-10-05T10:52:17.348Z",
+          "submissionUserId": "IHSMarkit Inbound System",
+          "tradeId": "MSERV20261005.01529747043831",
+          "tradeSideId": "70928676",
+          "tradeStatus": "CONFIRMED",
+          "type": "TradeCapture",
+          "uniqueTransactionId": "102777777812345678909358428464573671276638",
+          "version": "-1"
+        }
+      ],
+      "tradeData": {
+        "assetClass": "FX",
+        "documentationDetail": {
+          "calculationAgent": "BNKB-HK",
+          "contractualDefinitions": [
+            "ISDA1998FX"
+          ],
+          "masterAgreementType": "ISDA"
+        },
+        "fx": {
+          "activeStatus": "Active",
+          "confirmationTimeStamp": "2026-10-05T10:52:17.147Z",
+          "fxCash": {
+            "baseCurrency": "CNH",
+            "currencyPair": "CNHUSD",
+            "nearLeg": {
+              "baseCurrencyAmount": 67404.04,
+              "baseCurrencyBuyer": "BNKA-HK",
+              "baseCurrencySeller": "BNKB-HK",
+              "dealtCurrency": "CNH",
+              "partyDirection": "Buy",
+              "quoteBasis": "RefCcyPerBaseCcy",
+              "rate": 2,
+              "referenceCurrencyAmount": 10000.6,
+              "valueDate": "2026-10-08"
+            },
+            "referenceCurrency": "USD"
+          },
+          "productType": "FxForward",
+          "tradeDate": "2026-10-05",
+          "transactionType": "Trade"
+        },
+        "partyDetail": [
+          {
+            "partyFullLegalName": "BNKA-HK",
+            "partyId": "BNKA-HK",
+            "partyInstitutionName": "OSTTRA",
+            "partyName": "BNKA-HK",
+            "partyRole": "Party",
+            "partySubmissionTimeStamp": "2026-10-05T10:52:14.806Z",
+            "partyTradeId": "E11D54B0673C6342954BC8D8041BB89401"
+          },
+          {
+            "partyFullLegalName": "BNKB-HK",
+            "partyId": "BNKB-HK",
+            "partyInstitutionName": "OSTTRA",
+            "partyName": "BNKB-HK",
+            "partyRole": "Counterparty",
+            "partyTradeId": "E11D54B0673C6342954BC8D8041BB89402"
+          },
+          {
+            "partyId": "BNKA-HK",
+            "partyRole": "Submitter"
+          }
+        ],
+        "settlementDetail": {
+          "pvpFlag": "PVP",
+          "pvpRegistrationStatus": "Pre-Accepted",
+          "settlementStatus": false
+        }
+      }
+    }
+  }
+]

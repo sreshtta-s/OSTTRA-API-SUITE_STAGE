@@ -1,0 +1,63 @@
+{
+  "scenario": "TC037",
+  "recordedAt": "2026-10-22 11:31:22",
+  "trades": [
+    {
+      "tradeId": "MSERV20261022.031695388110",
+      "party": "BNKA-NY",
+      "counterParty": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxSpot",
+      "valueDate": "2026-10-22",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": "6740",
+      "referenceCurrencyAmount": "1000",
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY"
+    },
+    {
+      "tradeId": "MSERV20261022.031695388710",
+      "party": "BNKA-NY",
+      "counterParty": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxSpot",
+      "valueDate": "2026-10-22",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": "6740",
+      "referenceCurrencyAmount": "1000",
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY"
+    },
+    {
+      "tradeId": "MSERV20261022.031695389310",
+      "party": "BNKA-NY",
+      "counterParty": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxSpot",
+      "valueDate": "2026-10-22",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": "6740",
+      "referenceCurrencyAmount": "1000",
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY"
+    }
+  ],
+  "problems": [],
+  "gross": {
+    "CNH": "20220",
+    "USD": "3000"
+  },
+  "net": {
+    "BNKA-NY": {
+      "CNH": "20220",
+      "USD": "-3000"
+    },
+    "BNKB-NY": {
+      "CNH": "-20220",
+      "USD": "3000"
+    }
+  }
+}

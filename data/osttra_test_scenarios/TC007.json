@@ -1,0 +1,133 @@
+{
+  "scenario": {
+    "id": "TC007",
+    "traceabilityId": "TC_SM-28_018",
+    "tradeServComment": "Published",
+    "highLevelScenario": "Reference data not exists -NACK- LE are incorrect -",
+    "expectation": "NACK",
+    "expectedErrorMessage": "Reference data / Legal Entity does not exist",
+    "isValid": true,
+    "settlementCurrency": "USD",
+    "direction": "Buy",
+    "against": "Reference",
+    "ccpAlias": null,
+    "clearingBroker": null,
+    "counterpartyClearingBroker": null,
+    "partyCcp": "STMPVP",
+    "counterpartyCcp": "STMPVP",
+    "notes": [
+      "BNKA-ABC against BNKB-HK: BNKA-ABC is a legal entity whose reference data does not exist in Baton, which is the point of the row. Everything else is an ordinary CNH / USD spot trade between PVP parties (CRDS relation PVP; pvpIntent and stmIntent true for both sides), so the legal entity is the only thing that is wrong.",
+      "The trade runs to step 05b, not 05: the step order is 4, 5, 5b, so stopping at 5 would skip the Domain B check. Steps 05 and 05b are declared to fail, so the NACK is proven on both domains rather than just the injecting one.",
+      "Step 04 is declared to pass: the simulator takes the trade and the rejection happens downstream, so the trade never reaches either ledger and test_trade_found_on_ledger fails in 05 and 05b.",
+      "Those declared failures are written into the HTML report as passed and do not count against the exit code. If either step PASSES, the runner turns it into a failure instead, because a trade with a legal entity Baton does not know reaching the ledger means the rejection stopped happening.",
+      "The ledger lookups in 05 and 05b cannot see the NACK itself, so they prove the rejection by the trade's absence. The sheet gives no error code; its expected result is recorded as expectedErrorMessage.",
+      "The sheet states the trade as USD-CNH: base 1234 USD, reference 8317.16 CNH. It is carried as CNHUSD, the order the rest of the pack and TradeServ use, with each amount kept on its own currency: 8317.16 CNH (baseCurrencyAmount) and 1234 USD (referenceCurrencyAmount).",
+      "direction and Against list both options in the sheet (Buy/Sell, Base/Reference). The side is taken from the trade TradeServ actually published for this row, in the 25 Sep and 5 Oct exports: BNKA-ABC buys 8317.16 CNH from BNKB-HK and pays 1234 USD. So BNKA-ABC is the base currency (CNH) buyer and partyDirection is Buy, which is Buy against the sheet's Reference currency; direction and against above record that choice. Step 04 checks the buyer, seller and partyDirection agree.",
+      "Were the trade to reach the ledgers, Domain A (BNKA-ABC) would show CNH BUY / USD SELL and Domain B (BNKB-HK) the reverse; steps 05 and 05b assert those sides, but are expected to fail before them at the ledger lookup.",
+      "It is written as a one-entry trades list rather than a bare trade, because only a trades entry carries runUpTo and expect through to the runner.",
+      "Settlement is the current date and tradeDate is the run date, both resolved from the run clock.",
+      "tradeReference, tradeReferenceSupplement and counterpartyReferenceNumber are free-text boxes, so they are generated per run as tradeId, the party partyTradeId and the counterparty partyTradeId.",
+      "ccpAlias, clearingBroker and counterpartyClearingBroker are blank in the sheet and have no wrapper field, so they are left out of the payload entirely.",
+      "Party CCP (STMPVP) and Cpty CCP (STMPVP) are legal-entity reference data in Baton, not trade fields, so they are recorded here and the payload carries the ordinary PVP settlement flag.",
+      "settlementCcy (USD) has no field in the wrapper, so it is recorded here only.",
+      "rate is carried as the sheet states it (2) even though 8317.16/1234 implies 6.74."
+    ]
+  },
+  "trades": [
+    {
+      "label": "legal entity not in reference data",
+      "runUpTo": "5b",
+      "expect": {
+        "4": "pass",
+        "5": "fail",
+        "5b": "fail"
+      },
+      "trade": {
+        "wrapper": {
+          "metaData": {
+            "determinedCounterpartyId": "BNKB-HK",
+            "determinedPartyId": "BNKA-ABC",
+            "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+            "osttraTradeId": "{{GUID1}}",
+            "partyPerspective": "BNKA-ABC",
+            "positionStatus": "Active",
+            "processingStatus": "Confirmed",
+            "status": "New",
+            "version": 0
+          },
+          "sourcePlatform": [
+            {
+              "eventType": "Trade",
+              "matchId": "{{GUID2}}",
+              "messageId": "{{GUID2}}",
+              "name": "TradeServ",
+              "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+              "sequence": 1,
+              "submissionSource": "WEB",
+              "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+              "submissionUserId": "Stephen Toal",
+              "tradeId": "{{TRADE_ID}}",
+              "tradeSideId": "{{TRADE_SIDE_ID}}",
+              "tradeStatus": "CONFIRMED",
+              "type": "TradeCapture",
+              "uniqueTransactionId": "{{UTI}}",
+              "version": "-1"
+            }
+          ],
+          "tradeData": {
+            "assetClass": "FX",
+            "documentationDetail": {
+              "contractualDefinitions": [
+                "ISDA1998FX"
+              ]
+            },
+            "fx": {
+              "activeStatus": "Active",
+              "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+              "fxCash": {
+                "baseCurrency": "CNH",
+                "currencyPair": "CNHUSD",
+                "nearLeg": {
+                  "baseCurrencyAmount": 8317.16,
+                  "baseCurrencyBuyer": "BNKA-ABC",
+                  "baseCurrencySeller": "BNKB-HK",
+                  "dealtCurrency": "CNH",
+                  "partyDirection": "Buy",
+                  "quoteBasis": "RefCcyPerBaseCcy",
+                  "rate": 2,
+                  "referenceCurrencyAmount": 1234,
+                  "valueDate": "{{TODAY}}"
+                },
+                "referenceCurrency": "USD"
+              },
+              "productType": "FxSpot",
+              "tradeDate": "{{TODAY}}",
+              "transactionType": "Trade"
+            },
+            "partyDetail": [
+              {
+                "partyId": "BNKA-ABC",
+                "partyRole": "Party",
+                "partyTradeId": "{{PARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKB-HK",
+                "partyRole": "Counterparty",
+                "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNKA-ABC",
+                "partyRole": "Submitter"
+              }
+            ],
+            "settlementDetail": {
+              "pvpFlag": "PVP",
+              "pvpRegistrationStatus": "Pre-Accepted",
+              "settlementStatus": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}

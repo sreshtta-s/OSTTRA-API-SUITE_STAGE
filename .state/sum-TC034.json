@@ -1,0 +1,150 @@
+{
+  "scenario": "TC034",
+  "recordedAt": "2026-10-22 11:31:22",
+  "trades": [
+    {
+      "tradeId": "MSERV20261022.031695374310",
+      "party": "BNKA-NY",
+      "counterParty": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxForward",
+      "valueDate": "2026-10-25",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": "67404.04",
+      "referenceCurrencyAmount": "10000.6",
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY"
+    },
+    {
+      "tradeId": "MSERV20261022.031695374910",
+      "party": "BNKA-NY",
+      "counterParty": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxForward",
+      "valueDate": "2026-10-25",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": "67404.04",
+      "referenceCurrencyAmount": "10000.6",
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY"
+    },
+    {
+      "tradeId": "MSERV20261022.031695375510",
+      "party": "BNKA-NY",
+      "counterParty": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxForward",
+      "valueDate": "2026-10-25",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": "67404.04",
+      "referenceCurrencyAmount": "10000.6",
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY"
+    },
+    {
+      "tradeId": "MSERV20261022.031695376110",
+      "party": "BNKA-NY",
+      "counterParty": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxForward",
+      "valueDate": "2026-10-25",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": "67404.04",
+      "referenceCurrencyAmount": "10000.6",
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY"
+    },
+    {
+      "tradeId": "MSERV20261022.031695376710",
+      "party": "BNKA-NY",
+      "counterParty": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxForward",
+      "valueDate": "2026-10-25",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": "67404.04",
+      "referenceCurrencyAmount": "10000.6",
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY"
+    },
+    {
+      "tradeId": "MSERV20261022.031695379110",
+      "party": "BNKA-NY",
+      "counterParty": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxForward",
+      "valueDate": "2026-10-25",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": "67404.04",
+      "referenceCurrencyAmount": "10000.6",
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY"
+    },
+    {
+      "tradeId": "MSERV20261022.031695379710",
+      "party": "BNKA-NY",
+      "counterParty": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxForward",
+      "valueDate": "2026-10-25",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": "67404.04",
+      "referenceCurrencyAmount": "10000.6",
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY"
+    },
+    {
+      "tradeId": "MSERV20261022.031695377310",
+      "party": "BNKA-NY",
+      "counterParty": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxForward",
+      "valueDate": "2026-10-25",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": "67404.04",
+      "referenceCurrencyAmount": "10000.6",
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY"
+    },
+    {
+      "tradeId": "MSERV20261022.031695377910",
+      "party": "BNKA-NY",
+      "counterParty": "BNKB-NY",
+      "tradeCurrencyPair": "CNHUSD",
+      "productType": "FxForward",
+      "valueDate": "2026-10-25",
+      "baseCurrency": "CNH",
+      "referenceCurrency": "USD",
+      "baseCurrencyAmount": "67404.04",
+      "referenceCurrencyAmount": "10000.6",
+      "baseCurrencyBuyer": "BNKA-NY",
+      "baseCurrencySeller": "BNKB-NY"
+    }
+  ],
+  "problems": [],
+  "gross": {
+    "CNH": "606636.36",
+    "USD": "90005.4"
+  },
+  "net": {
+    "BNKA-NY": {
+      "CNH": "606636.36",
+      "USD": "-90005.4"
+    },
+    "BNKB-NY": {
+      "CNH": "-606636.36",
+      "USD": "90005.4"
+    }
+  },
+  "cancelled": [
+    "MSERV20261022.031695378510"
+  ]
+}

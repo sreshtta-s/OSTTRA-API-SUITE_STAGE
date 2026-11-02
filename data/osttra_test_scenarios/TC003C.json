@@ -1,0 +1,133 @@
+{
+  "scenario": {
+    "id": "TC003C",
+    "traceabilityId": null,
+    "tradeServComment": "Published",
+    "highLevelScenario": "partyId not found in Baton - NACK",
+    "expectation": "NACK",
+    "expectedErrorCode": "E056",
+    "expectedErrorMessage": "Party1 (and Party2) is not valid",
+    "isValid": true,
+    "settlementCurrency": "USD",
+    "direction": "Buy",
+    "against": "Base",
+    "ccpAlias": null,
+    "clearingBroker": null,
+    "counterpartyClearingBroker": null,
+    "partyCcp": "PVPNONSTM",
+    "counterpartyCcp": "PVPNONSTM",
+    "notes": [
+      "BNK -MEGA against BNK -GIGA: party ids Baton does not know, which is the point of the row. They are carried exactly as the sheet writes them, space included, because an id that is not valid is the input under test. The currencies are the ordinary CNH / USD pair, so the parties are the only thing that is wrong.",
+      "The sheet assigns no traceability id, so traceabilityId is null and the report heading carries the case id alone.",
+      "The trade runs to step 05b, not 05: the step order is 4, 5, 5b, so stopping at 5 would skip the Domain B check. Steps 05 and 05b are declared to fail, so the NACK is proven on both domains rather than just the injecting one.",
+      "Step 04 is declared to pass: the simulator takes the trade and the rejection happens downstream, so the trade never reaches either ledger and test_trade_found_on_ledger fails in 05 and 05b.",
+      "Those declared failures are written into the HTML report as passed and do not count against the exit code. If either step PASSES, the runner turns it into a failure instead, because a trade between unknown parties reaching the ledger means the rejection stopped happening.",
+      "The expected error code and message are recorded here. The ledger lookups in 05 and 05b cannot see the NACK itself, so they prove the rejection by the trade's absence, not by the code.",
+      "It is written as a one-entry trades list rather than a bare trade, because only a trades entry carries runUpTo and expect through to the runner.",
+      "Settlement is the current date and tradeDate is the run date, both resolved from the run clock.",
+      "tradeReference, tradeReferenceSupplement and counterpartyReferenceNumber are free-text boxes, so they are generated per run as tradeId, the party partyTradeId and the counterparty partyTradeId.",
+      "ccpAlias, clearingBroker and counterpartyClearingBroker are blank in the sheet and have no wrapper field, so they are left out of the payload entirely.",
+      "Party CCP and Cpty CCP are legal-entity reference data in Baton, not trade fields, so they are recorded here and the payload carries the ordinary PVP settlement flag.",
+      "settlementCcy has no field in the wrapper, so it is recorded here only.",
+      "direction and Against list both options in the sheet. The first of each, Buy and Base, is used, matching the rest of the pack.",
+      "rate is carried as the sheet states it (2) even though 100/674 implies 6.74."
+    ]
+  },
+  "trades": [
+    {
+      "label": "unknown party ids",
+      "runUpTo": "5b",
+      "expect": {
+        "4": "pass",
+        "5": "fail",
+        "5b": "fail"
+      },
+      "trade": {
+        "wrapper": {
+          "metaData": {
+            "determinedCounterpartyId": "BNK -GIGA",
+            "determinedPartyId": "BNK -MEGA",
+            "ingestionTimeStamp": "{{ISO_TIMESTAMP}}",
+            "osttraTradeId": "{{GUID1}}",
+            "partyPerspective": "BNK -MEGA",
+            "positionStatus": "Active",
+            "processingStatus": "Confirmed",
+            "status": "New",
+            "version": 0
+          },
+          "sourcePlatform": [
+            {
+              "eventType": "Trade",
+              "matchId": "{{GUID2}}",
+              "messageId": "{{GUID2}}",
+              "name": "TradeServ",
+              "receiptTimeStamp": "{{ISO_TIMESTAMP}}",
+              "sequence": 1,
+              "submissionSource": "WEB",
+              "submissionTimeStamp": "{{ISO_TIMESTAMP}}",
+              "submissionUserId": "Stephen Toal",
+              "tradeId": "{{TRADE_ID}}",
+              "tradeSideId": "{{TRADE_SIDE_ID}}",
+              "tradeStatus": "CONFIRMED",
+              "type": "TradeCapture",
+              "uniqueTransactionId": "{{UTI}}",
+              "version": "-1"
+            }
+          ],
+          "tradeData": {
+            "assetClass": "FX",
+            "documentationDetail": {
+              "contractualDefinitions": [
+                "ISDA1998FX"
+              ]
+            },
+            "fx": {
+              "activeStatus": "Active",
+              "confirmationTimeStamp": "{{ISO_TIMESTAMP}}",
+              "fxCash": {
+                "baseCurrency": "CNH",
+                "currencyPair": "CNHUSD",
+                "nearLeg": {
+                  "baseCurrencyAmount": 674,
+                  "baseCurrencyBuyer": "BNK -MEGA",
+                  "baseCurrencySeller": "BNK -GIGA",
+                  "dealtCurrency": "CNH",
+                  "partyDirection": "Buy",
+                  "quoteBasis": "RefCcyPerBaseCcy",
+                  "rate": 2,
+                  "referenceCurrencyAmount": 100,
+                  "valueDate": "{{TODAY}}"
+                },
+                "referenceCurrency": "USD"
+              },
+              "productType": "FxSpot",
+              "tradeDate": "{{TODAY}}",
+              "transactionType": "Trade"
+            },
+            "partyDetail": [
+              {
+                "partyId": "BNK -MEGA",
+                "partyRole": "Party",
+                "partyTradeId": "{{PARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNK -GIGA",
+                "partyRole": "Counterparty",
+                "partyTradeId": "{{COUNTERPARTY_TRADE_ID}}"
+              },
+              {
+                "partyId": "BNK -MEGA",
+                "partyRole": "Submitter"
+              }
+            ],
+            "settlementDetail": {
+              "pvpFlag": "PVP",
+              "pvpRegistrationStatus": "Pre-Accepted",
+              "settlementStatus": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}
