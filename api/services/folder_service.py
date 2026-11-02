@@ -1,4 +1,4 @@
-"""Rule-center folder client on Domain A, used by the disabled step 02.
+"""Rule-center folder client on Domain A, used by step 02.
 
 Posts to DOMAIN_A directly rather than through BaseService, so its calls are
 logged but not added to the report's call log.
@@ -17,7 +17,7 @@ class FolderService:
         self.token = token
 
     def get_folders(self, payload):
-        """List rule-center folders; step 02 picks the one shared by both parties."""
+        """List rule-center folders; step 02 saves each bilateral one for step 03."""
         log_request('POST', 'A rule-center/folders/list', payload)
         return self.session.post(
             f'{os.environ["DOMAIN_A"]}/access-gateway/api/reference-data/rule-center/folders/list',

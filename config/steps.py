@@ -11,12 +11,13 @@ import functools
 import re
 
 # 'enabled': False drops a step from the Excel columns; steps 02 and 03 are also
-# absent from runner.py's STEP_TOKENS. 'requires' lists the steps each one
+# absent from runner.py's STEP_TOKENS, and are run with pytest to refresh
+# data/trade_scenarios.py NETTING_RULES from the rule center. 'requires' lists the steps each one
 # depends on, as in config/steps.js; nothing in this suite enforces it.
 STEPS = {
     '1':   {'file': 'tests/test_01_auth.py',                                  'requires': [],     'label': 'Auth (A, B, Global)'},
-    '2':   {'file': 'tests/test_02_create_ruleset.py',                        'requires': ['1'],  'enabled': False, 'label': 'Create ruleset'},
-    '3':   {'file': 'tests/test_03_validate_ruleset.py',                      'requires': ['2'],  'enabled': False, 'label': 'Validate ruleset'},
+    '2':   {'file': 'tests/test_02_create_ruleset.py',                        'requires': ['1'],  'enabled': False, 'label': 'Fetch rule-center folders'},
+    '3':   {'file': 'tests/test_03_validate_ruleset.py',                      'requires': ['2'],  'enabled': False, 'label': 'Sync netting rule ids'},
     '4':   {'file': 'tests/test_04_inject_trade.py',                          'requires': ['1'],  'label': 'Inject trade'},
     '5':   {'file': 'tests/test_05_validate_trade.py',                        'requires': ['4'],  'label': 'Validate trade (A)'},
     '5b':  {'file': 'tests/test_05b_validate_trade_domain_b.py',              'requires': ['4'],  'label': 'Validate trade (B)'},

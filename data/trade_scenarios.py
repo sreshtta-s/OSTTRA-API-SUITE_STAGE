@@ -49,6 +49,10 @@ SCENARIOS = [
 #
 # The comment on each entry names the injection modes and scenarios that inject
 # it.
+#
+# Steps 02 and 03 (tests/test_02_create_ruleset.py, tests/test_03_validate_ruleset.py)
+# rewrite each entry's ruleId and mode from the Domain A rule center, and add an
+# entry for a rule set with none. Run them after rules are recreated there.
 NETTING_RULES = [
     # DYNAMIC, TC029, TC030, TC034, TC036 (and TC031, which stops at 13c, TC045, which stops at 07c, TC050, which stops at 13b, and TC008, which stops at 05b)
     {
@@ -68,42 +72,42 @@ NETTING_RULES = [
     {
         'party': 'BNKA-NY', 'counterParty': 'BNKB-HK',
         'tradeCurrencyPair': 'CNHUSD', 'productType': 'FxSpot',
-        'ruleId': 'bilateral-bnka-ny-bnkb-hk-bc7af117f464',
+        'ruleId': 'bilateral-bnka-ny-bnkb-hk-533f7fdb827e',
         'mode': 'auto',
     },
     # TC026
     {
         'party': 'BNKA-NY', 'counterParty': 'BNKB-HK',
         'tradeCurrencyPair': 'CNHUSD', 'productType': 'FxForward',
-        'ruleId': 'bilateral-bnka-ny-bnkb-hk-38fd82e515d4',
+        'ruleId': 'bilateral-bnka-ny-bnkb-hk-c164eedd82ed',
         'mode': 'auto',
     },
     # TC001, TC010, TC011, TC018, TC020 (and TC016, which stops at 13c)
     {
         'party': 'BNKA-HK', 'counterParty': 'BNKB-HK',
         'tradeCurrencyPair': 'CNHUSD', 'productType': 'FxSpot',
-        'ruleId': 'bilateral-bnka-hk-bnkb-hk-a09b0d7c4257',
+        'ruleId': 'bilateral-bnka-hk-bnkb-hk-e0aaf7d3ab86',
         'mode': 'manual',
     },
     # TC002, TC004
     {
         'party': 'BNKA-HK', 'counterParty': 'BNKB-HK',
         'tradeCurrencyPair': 'CNHUSD', 'productType': 'FxForward',
-        'ruleId': 'bilateral-bnka-hk-bnkb-hk-13441e85f7ac',
+        'ruleId': 'bilateral-bnka-hk-bnkb-hk-74dc8035615b',
         'mode': 'manual',
     },
     # TC009, TC012
     {
         'party': 'BNKA-HK', 'counterParty': 'BNKB-NY',
         'tradeCurrencyPair': 'CNHUSD', 'productType': 'FxSpot',
-        'ruleId': 'bilateral-bnka-hk-bnkb-ny-1f8f7db24c2e',
+        'ruleId': 'bilateral-bnka-hk-bnkb-ny-5178d549e1fe',
         'mode': 'manual',
     },
     # TC005, TC013
     {
         'party': 'BNKA-HK', 'counterParty': 'BNKB-NY',
         'tradeCurrencyPair': 'CNHUSD', 'productType': 'FxForward',
-        'ruleId': 'bilateral-bnka-hk-bnkb-ny-6e85d741dd00',
+        'ruleId': 'bilateral-bnka-hk-bnkb-ny-b71bfcec9556',
         'mode': 'manual',
     },
 ]

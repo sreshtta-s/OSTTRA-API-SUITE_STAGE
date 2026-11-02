@@ -1,4 +1,4 @@
-"""Request bodies for creating and listing rule sets (disabled steps 02 and 03)."""
+"""Request bodies for creating rule sets (unused) and listing them (step 03)."""
 
 
 def get_rule_set_payload(party_id, counter_party_id, rule_set_name, folder_id, currency_pair,
@@ -72,5 +72,5 @@ def get_rule_set_payload(party_id, counter_party_id, rule_set_name, folder_id, c
 
 
 def get_rule_set_list_payload():
-    """Return an unfiltered body for the first 50 rule sets."""
-    return {'filters': [], 'page_no': 0, 'page_size': 50}
+    """Return an unfiltered body for the first 500 rule sets in a folder."""
+    return {'filters': [], 'sortBy': [], 'paging': {'offset': 0, 'limit': 500}}

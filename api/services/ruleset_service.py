@@ -1,4 +1,4 @@
-"""Rule-center rule-set client on Domain A, used by the disabled steps 02 and 03.
+"""Rule-center rule-set client on Domain A, used by step 03.
 
 Posts to DOMAIN_A directly rather than through BaseService, so its calls are
 logged but not added to the report's call log.
@@ -10,7 +10,7 @@ from utils.api_logger import log_request
 
 
 class RuleSetService:
-    """Client for the Domain A rule-center rule-set endpoints (create and list)."""
+    """Client for the Domain A rule-center rule-set endpoints (create, list and detail)."""
 
     def __init__(self, session, token):
         self.session = session
@@ -41,4 +41,13 @@ class RuleSetService:
             f'/folders/{folder_id}/rule-sets/list',
             headers=self._headers,
             json=payload,
+        )
+
+    def get_rule_set(self, rule_set_id):
+        """Fetch one rule set's detail, including its scopes (product and currency pair)."""
+        log_request('GET', f'A rule-center/rule-sets/{rule_set_id}')
+        return self.session.get(
+            f'{os.environ["DOMAIN_A"]}/access-gateway/api/reference-data/rule-center'
+            f'/rule-sets/{rule_set_id}',
+            headers=self._headers,
         )

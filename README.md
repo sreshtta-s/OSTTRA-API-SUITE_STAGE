@@ -128,6 +128,7 @@ Steps ending in `b` run on Domain B. `13c` runs on the Global Operator.
 | Step | Checks |
 | --- | --- |
 | 01 | Login on all three domains |
+| 02, 03 | Rule-center sync, not run by `runner.py`: 02 lists the Domain A rule-center folders, 03 lists each folder's rule sets and writes their ids and modes into `NETTING_RULES` (see [Netting rules](#netting-rules)) |
 | 04 | Trade sent in through the simulator |
 | 05, 05b | Trade booked correctly |
 | 04 cancel, 05ct_a, 05ct_b | Trade resent as Cancelled and shown CANCELLED on both ledgers. 05ct_b starts 20s after 05ct_a, and each polls its ledger every 3s for up to 15s until the trade is CANCELLED. Runs only for a scenario trade with `"cancel": true` (all three after 05b, as in TC032: 01, 04, 05, 05b, 04 cancel, 05ct_a, 05ct_b), or for the netting group trade a row's `"cancelTrade"` names, after the group step it names: after 07b in TC034, TC045 and TC050, where 07c then checks the group's balance without it (to 0 in TC045 and TC050, which cancel their only trade; TC045's group stops after 07c, with no top-level `"runUpTo"`, and TC050's runs on to 13 / 13b, `"runUpTo": "13b"`); after 08b in TC035, where the closed group refuses the cancel and 05ct_a / 05ct_b are expected to fail. |
@@ -152,7 +153,17 @@ each combination of party, counterparty, currency pair and product.
 - Write the product as `FxSpot` or `FxForward`.
 - Mode `manual` runs steps 10 to 11b. Any other mode skips them.
 - A trade with no entry gets an invalid rule id on purpose, so it fails at step 06.
-- A rule gets a new id when it is recreated in the rule center. Update the id here.
+- A rule gets a new id when it is recreated in the rule center. To pick up the
+  new ids, run steps 01 to 03:
+
+  ```bash
+  AUTH_DOMAINS=A python -m pytest tests/test_01_auth.py tests/test_02_create_ruleset.py tests/test_03_validate_ruleset.py
+  ```
+
+  Step 03 sets each entry's `ruleId` and `mode` from the matching rule set's
+  logical id and name (`...-AUTO` or `...-MANUAL`), adds an entry for a rule set
+  with none, and leaves the rest of the file as it is. It warns about entries no
+  rule set matches.
 
 ## Reports
 
